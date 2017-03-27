@@ -1,0 +1,2 @@
+class TargetCondition < ApplicationRecord
+end
