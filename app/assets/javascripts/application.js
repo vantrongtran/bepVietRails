@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap
+//= require demo
+//= require material-dashboard
+//= require material.min
+//= require chartist.min
