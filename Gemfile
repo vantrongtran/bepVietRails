@@ -17,9 +17,11 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "devise"
 gem 'bootstrap-sass', '~> 3.2.0'
+gem "faker", "1.6.6"
 
 group :development, :test do
   gem "byebug", platform: :mri
+  gem "pry"
 end
 
 group :development do
