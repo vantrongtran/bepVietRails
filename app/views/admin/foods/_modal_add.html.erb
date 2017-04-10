@@ -1,0 +1,32 @@
+<div class="modal fade in" id="modal-add-food" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= form_for [:admin, food], remote: true do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="material-icons">clear</i>
+          </button>
+          <h4 class="modal-title">Add food</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Calorie</label>
+            <input type="text" class="form-control">
+          </div>
+          <label class="control-label">Cooking method</label>
+            <div>
+              <%= f.cktext_area :cooking_method, rows: 10 %>
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-simple">Nice Button</button>
+          <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Add</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -18,6 +18,11 @@ gem "jbuilder", "~> 2.5"
 gem "devise"
 gem 'bootstrap-sass', '~> 3.2.0'
 gem "faker", "1.6.6"
+gem "kaminari"
+gem "mini_magick"
+gem "carrierwave"
+gem "ckeditor"
+gem "paperclip"
 
 group :development, :test do
   gem "byebug", platform: :mri

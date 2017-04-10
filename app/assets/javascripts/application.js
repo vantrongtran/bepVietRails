@@ -19,7 +19,7 @@
 //= require material.min
 //= require chartist.min
 //= require material-kit
-//= require material.min
 //= require nouislider.min
 //= require bootstrap-datepicker
 //= require bootstrap-notify
+//= require ckeditor/init
