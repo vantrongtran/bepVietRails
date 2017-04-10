@@ -1,8 +1,41 @@
 en:
+  manager: "%{managed} Management."
+  remove: "Remove"
+  info: "INFO"
+  success: "SUCCESS"
+  warning: "WARNING"
+  danger: "DANGER"
+  primary: "PRIMARY"
+  edit: "Edit"
+  deleted: "Deleted!!!"
+  deleted_fail: "Deleted fail!!!"
+  updated_fail: "updated fail!!!"
+  updated: "Updated!!!"
+  update: "Update"
+  Create: "Create"
+  created: "Created!!!"
+  id: "ID"
+  name: "Name"
+  layouts:
+    admin:
+      application_name: "Bếp Việt"
   admin:
     dashboard:
       index:
         dashboard: "Dashboard"
-    food:
+    foods:
       index:
         foods: "Foods"
+    categories:
+      index:
+        title: "Categories"
+        left: "Left"
+        right: "Right"
+        name: "Name"
+        children: "Children"
+        category_tree: "Table Tree of category"
+      category:
+        edit_category: "Edit category name"
+      modal_edit_categories:
+        title: "Edit Category Name"
+        old_name: "Old Name"

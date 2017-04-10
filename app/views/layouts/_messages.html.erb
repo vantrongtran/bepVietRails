@@ -1,0 +1,9 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    <% flash.each do |message_type, messages| %>
+      <% messages.each do |message| %>
+        showNotification("<%= message_type %>", "<%= message %>");
+      <% end %>
+    <% end %>
+  });
+</script>
