@@ -15,7 +15,11 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
-//= require demo
 //= require material-dashboard
 //= require material.min
 //= require chartist.min
+//= require material-kit
+//= require material.min
+//= require nouislider.min
+//= require bootstrap-datepicker
+//= require bootstrap-notify
