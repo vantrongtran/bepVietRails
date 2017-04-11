@@ -22,3 +22,6 @@
 //= require bootstrap-datepicker
 //= require bootstrap-notify
 //= require ckeditor/init
+//= require perfect-scrollbar
+//= require Treant
+//= require raphael

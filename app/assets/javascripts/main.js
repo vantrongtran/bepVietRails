@@ -49,4 +49,9 @@ function showNotification(type, message){
 }
 
 $(document).ready(function() {
+  $("a").tooltip({
+    title: function(){
+      return $(this).attr('title');
+    }
+  });
 });

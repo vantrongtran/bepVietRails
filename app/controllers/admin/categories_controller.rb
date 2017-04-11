@@ -4,6 +4,14 @@ class Admin::CategoriesController < Admin::AdminController
   def index
     @categories = Category.all
     @ends = []
+    @json = to_node_structure Category.unscoped.first
+  end
+
+  def create
+    parent = Category.unscoped.find params[:parent_id]
+    respont = Category.add params[:name], parent.right
+    add_message_flash respont[:type], respont[:messages]
+    redirect_to admin_categories_path
   end
 
   def update
@@ -25,6 +33,19 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   private
+  def to_node_structure category
+    children = category.children
+    if children.any?
+      {
+        text: {name: category.name, title: "Left: #{category.left}  |  Right: #{category.right}"},
+        children: children.map {|child| to_node_structure child}
+      }
+    else
+      {
+        text: {name: category.name, title: "Left: #{category.left}  |  Right: #{category.right}"}
+      }
+    end
+  end
   def load_category
     @category = Category.find params[:id]
   end
