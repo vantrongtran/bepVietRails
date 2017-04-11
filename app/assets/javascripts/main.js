@@ -21,7 +21,7 @@ function showNotification(type, message){
       icon = "info_outline";
       break;
     case "success":
-      icon = "done_all";
+      icon = "done";
       break;
     case "warning":
       icon = "warning";

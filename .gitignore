@@ -19,3 +19,7 @@
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
 .env
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

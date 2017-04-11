@@ -1,7 +1,7 @@
 <div class="modal fade in" id="modal-add-food" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <%= form_for [:admin, food], remote: true do |f| %>
+      <%= form_for [:admin, @food], remote: true do |f| %>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             <i class="material-icons">clear</i>
@@ -10,21 +10,24 @@
         </div>
         <div class="modal-body">
           <div class="form-group label-floating is-empty">
-            <label class="control-label">Name</label>
-            <input type="text" class="form-control">
+            <%= f.label t(".name"), class: "control-label" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div>
+            <%= f.label t(".image"), class: "control-label" %>
+            <%= f.file_field :image %>
           </div>
           <div class="form-group label-floating is-empty">
-            <label class="control-label">Calorie</label>
-            <input type="text" class="form-control">
+            <%= f.label t(".calorie"), class: "control-label" %>
+            <%= f.number_field :calorie, class: "form-control" %>
           </div>
           <label class="control-label">Cooking method</label>
             <div>
-              <%= f.cktext_area :cooking_method, rows: 10 %>
+              <%= f.cktext_area :cooking_method, rows: 20 %>
             </div>
           </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default btn-simple">Nice Button</button>
-          <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Add</button>
+          <%= f.submit t(".add"), class: "btn btn-default btn-simple" %>
         </div>
       </div>
     <% end %>

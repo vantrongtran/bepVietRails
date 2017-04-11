@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407162244) do
+ActiveRecord::Schema.define(version: 20170410043652) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20170407162244) do
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "left"
-    t.integer  "right"
+    t.integer  "left",       null: false
+    t.integer  "right",      null: false
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170407162244) do
     t.float    "calorie",        limit: 24
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "image"
   end
 
   create_table "hashtags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170407162244) do
     t.string   "inscription"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "image"
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
