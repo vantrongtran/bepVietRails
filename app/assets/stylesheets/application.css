@@ -14,6 +14,10 @@
  *= require_self
  *= require bootstrap.min
  *= require material-dashboard
+ *= require Treant
+ *= require perfect-scrollbar
+
  */
 @import "bootstrap-sprockets"
 @import "bootstrap"
+

@@ -16,6 +16,8 @@ en:
   created: "Created!!!"
   id: "ID"
   name: "Name"
+  blank: "%{name} can be blank!!!"
+  wrong: "Somthing was worng, please try laster!"
   layouts:
     admin:
       application_name: "Bếp Việt"
@@ -34,8 +36,13 @@ en:
         name: "Name"
         children: "Children"
         category_tree: "Table Tree of category"
+        base_category: "Base Category"
       category:
         edit_category: "Edit category name"
+        add: "Add new children category"
       modal_edit_categories:
         title: "Edit Category Name"
         old_name: "Old Name"
+      modal_new_categories:
+        title: "Add New Category"
+        parent_name: "Parent name"
