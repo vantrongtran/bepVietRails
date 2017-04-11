@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index", path: "/"
     resources :foods
+    resources :categories
   end
   root "static_pages#index"
 end
