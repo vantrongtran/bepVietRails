@@ -22,6 +22,7 @@ gem "mini_magick"
 gem "carrierwave"
 gem "ckeditor"
 gem "paperclip"
+gem "config"
 
 group :development, :test do
   gem "byebug", platform: :mri

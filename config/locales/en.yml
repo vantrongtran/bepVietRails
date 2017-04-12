@@ -18,6 +18,7 @@ en:
   name: "Name"
   blank: "%{name} can be blank!!!"
   wrong: "Somthing was worng, please try laster!"
+  confirm_delete: "Are you sure?"
   layouts:
     admin:
       application_name: "Bếp Việt"
@@ -28,6 +29,26 @@ en:
     foods:
       index:
         foods: "Foods"
+        title: "Foods Management"
+      modal_add:
+        name: "Name"
+        image: "Image"
+        calorie: "Calorie"
+        add: "Add"
+    ingredients:
+      index:
+        ingredient: "Ingredient"
+        title: "Ingredient Management"
+      modal_add:
+        name: "Name"
+        image: "Image"
+        inscription: "Inscription"
+        add: "Add"
+      modal_edit:
+        name: "Name"
+        image: "Image"
+        inscription: "Inscription"
+        update: "Update"
     categories:
       index:
         title: "Categories"

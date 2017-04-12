@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     root "dashboard#index", path: "/"
     resources :foods
     resources :categories
+    resources :ingredients
   end
   root "static_pages#index"
 end
