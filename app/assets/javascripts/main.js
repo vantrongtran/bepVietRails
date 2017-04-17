@@ -40,7 +40,7 @@ function showNotification(type, message){
     message: message
   },{
     type: type,
-    timer: 4000,
+    timer: 1000,
     placement: {
       from: "top",
       align: "right"

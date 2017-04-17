@@ -5,6 +5,7 @@ class Admin::CategoriesController < Admin::AdminController
     @categories = Category.all
     @ends = []
     @json = to_node_structure Category.unscoped.first
+    @json1 = C45.new.to_json
   end
 
   def create
@@ -46,6 +47,8 @@ class Admin::CategoriesController < Admin::AdminController
       }
     end
   end
+
+
   def load_category
     @category = Category.find params[:id]
   end
