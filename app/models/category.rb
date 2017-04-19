@@ -12,7 +12,7 @@ class Category < ApplicationRecord
       ActiveRecord::Base.transaction do
         Category.unscoped.where("`categories`.`right` >= ?", parent_right).update_all "`categories`.`right` = `categories`.`right` + 2"
         Category.unscoped.where("`categories`.`left` > ?", parent_right).update_all "`categories`.`left` = `categories`.`left` + 2"
-        category = Category.new name: name, left: parent_right,right: parent_right + 1, level: parent_level
+        category = Category.new name: name, left: parent_right,right: parent_right + 1, level: parent_level + 1
         if category.save
           return {type: :success, messages: I18n.t(:created)}
         end
@@ -24,7 +24,7 @@ class Category < ApplicationRecord
       ActiveRecord::Base.transaction do
         Category.unscoped.where("`categories`.`right` >= ?", parent_right).update_all "`categories`.`right` = `categories`.`right` + 2"
         Category.unscoped.where("`categories`.`left` > ?", parent_right).update_all "`categories`.`left` = `categories`.`left` + 2"
-        category = Category.create! name: name, left: parent_right,right: parent_right + 1, level: parent_level
+        category = Category.create! name: name, left: parent_right,right: parent_right + 1, level: parent_level + 1
       end
     end
   end
