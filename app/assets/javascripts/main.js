@@ -54,9 +54,4 @@ $(document).ready(function() {
       return $(this).attr('title');
     }
   });
-  $(".nodeExample1").hover(function(e){
-
-  }), .hover(function(e){
-
-  });
 });
