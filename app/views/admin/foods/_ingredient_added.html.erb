@@ -1,0 +1,14 @@
+<div class="result_ingredient" id="ingredient_template">
+  <button type="button" class="close">
+    <i class="material-icons">clear</i>
+  </button>
+  <div class="ingredient_image">
+     <img class="ingredient_image" src="/uploads/ingredient/image/10/login.jpeg">
+  </div>
+  <div class="ingredient_detail">
+    <a>Name</a>
+    <div>
+      <%= number_field_tag :value, nil, class: "form-control", step: "0.1", placeholder: t(".value") %>
+    </div>
+  </div>
+</div>

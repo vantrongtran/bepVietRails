@@ -1,10 +1,14 @@
 class Food < ApplicationRecord
-  belongs_to :category, optional: true
 
+  has_many :food_ingredients, dependent: :destroy
+  has_many :ingredients, through: :food_ingredients
   has_many :food_conditions, foreign_key: :target_id, class_name: Condition::FoodCondition.name
   has_many :condition_details, through: :food_conditions
   has_many :conditions, through: :condition_details
-  validates :name, :cooking_method, :calorie, presence: true, allow_nil: true
+
+  validates :name, :cooking_method, :calorie, presence: true
+
+  mount_uploader :image, PictureUploader
 
   scope :match_condition, -> condition_id do
     joins(:food_conditions)

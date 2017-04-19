@@ -1,4 +1,4 @@
-function call_form_edit_ingredient(url){
+function call_form_edit(url){
   $.ajax({
     type: "GET",
     url: url,

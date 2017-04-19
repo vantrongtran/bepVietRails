@@ -13,7 +13,6 @@ class Admin::IngredientsController < Admin::AdminController
     else
       add_message_flash_now :error, t(:failed)
     end
-    redirect_to admin_ingredients_path
   end
 
   def update

@@ -1,5 +1,4 @@
 class Category < ApplicationRecord
-  has_many :foods
 
   before_destroy :delete_children_category
 
