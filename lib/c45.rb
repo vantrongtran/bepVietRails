@@ -63,7 +63,14 @@ class C45
     text[:desc] = "Gain Ratio: #{node.value}" if node.value != 0
     json = {text: text}
     json[:children] = children.map {|child| to_node_food child} if(children.any?)
-    json[:HTMLclass] = "light-gray" unless node.value == 0
+    case
+    when node.value != 0
+      json[:HTMLclass] = "light-gray"
+    when node.is_match
+      json[:HTMLclass] = "match"
+    when !node.is_match
+      json[:HTMLclass] = "not-match"
+    end
     json
   end
 
