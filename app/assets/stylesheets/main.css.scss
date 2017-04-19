@@ -60,6 +60,11 @@ body { background: #fff; }
   font-size: 12px;
   color: #fff;
 }
+
+.nodeExample1 .node-name{
+  white-space: normal;
+}
+
 .nodeExample1:hover {
   z-index: 1000;
   border-radius: 8px;
