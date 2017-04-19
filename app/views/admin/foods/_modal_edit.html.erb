@@ -1,7 +1,7 @@
-<div class="modal fade in" id="modal-add-food" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<div class="modal fade in" id="modal-edit-food" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <%= form_tag admin_foods_path, method: :post, authenticity_token: true, multipart: true do |f| %>
+      <%= form_tag admin_foods_path, method: :put, authenticity_token: true, multipart: true do |f| %>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             <i class="material-icons">clear</i>

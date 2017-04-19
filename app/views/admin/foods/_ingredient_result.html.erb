@@ -1,0 +1,8 @@
+<div class="ingredient_item" onclick="addIngredient(this, '<%= ingredient.id %>')">
+  <div class="ingredient_item_images">
+    <%= image_tag ingredient.image, class: "ingredient_item_images" %>
+  </div>
+  <div class="ingredient_item_detail">
+    <a><%= ingredient.name %></a>
+  </div>
+</div>

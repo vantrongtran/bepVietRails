@@ -35,6 +35,17 @@ en:
         image: "Image"
         calorie: "Calorie"
         add: "Add"
+        cooking_method: "Cooking method"
+        ingredients: "Ingredients"
+        value: "Value"
+      modal_edit:
+        name: "Name"
+        image: "Image"
+        calorie: "Calorie"
+        add: "Add"
+        cooking_method: "Cooking method"
+        ingredients: "Ingredients"
+        value: "Value"
     ingredients:
       index:
         ingredient: "Ingredient"
