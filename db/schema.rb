@@ -23,11 +23,12 @@ ActiveRecord::Schema.define(version: 20170410043652) do
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "left",       null: false
-    t.integer  "right",      null: false
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "left",                   null: false
+    t.integer  "right",                  null: false
+    t.string   "name",                   null: false
+    t.integer  "level",      default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -124,7 +125,7 @@ ActiveRecord::Schema.define(version: 20170410043652) do
     t.string   "type"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.index ["condition_detail_id", "target_id", "type"], name: "add_indexarget_condition_handle", unique: true, using: :btree
+    t.index ["condition_detail_id", "target_id", "type"], name: "add_indexarget_condition", unique: true, using: :btree
     t.index ["condition_detail_id"], name: "index_target_conditions_on_condition_detail_id", using: :btree
   end
 

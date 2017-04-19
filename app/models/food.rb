@@ -22,4 +22,8 @@ class Food < ApplicationRecord
   scope :is_match, -> is_match do
     joins(:food_conditions).where(target_conditions: {is_match: is_match}).distinct
   end
+
+  def food_ingredients
+    super.includes(:ingredient)
+  end
 end

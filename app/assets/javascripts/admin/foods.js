@@ -1,11 +1,15 @@
-function search_ingredient(url){
-  key = $("#ingredient").val();
+function search_ingredient(selector, url){
+  key = $(selector).val();
+  console.log(key);
   if(key) {
     $.ajax({
       type: "GET",
       url: url + "?ingredient=" + key,
       dataType: "script",
       success: function(data){
+        $("body").on("click", ".close", function() {
+          $(this).parents(".result_ingredient").remove();
+        });
       },
       error: function(){
         console.log("error");
@@ -21,10 +25,13 @@ $( document ).ready(function() {
   $("body").on("click", ".close", function() {
     $(this).parents(".result_ingredient").remove();
   });
+  $("#modal-add-food").on('show.bs.modal', function(e){
+    $(".ingredient_items_result").html("");
+  });
 });
 
 function addIngredient(selector, id){
-  if (!$("#ingredient_add_" + id).length) {
+  if (!$(selector).closest(".col-md-7").find("#ingredient_added").find("#ingredient_add_" + id).length) {
     var element = document.getElementById(id);
     var img_src = selector.getElementsByTagName('img')[0].src;
     var name = selector.getElementsByTagName('a')[0].innerHTML;
@@ -38,15 +45,21 @@ function addIngredient(selector, id){
                 + "<a>" + name + "</a>"
                 + "<div class='form-group is-empty'><input type='number' name='food[ingredients][" + id + "][ingredient_value]' id='value' class='form-control' step='0.1' placeholder='Value' required><span class='material-input'></span></div>"
                 + "</div></div>";
-    $("#ingredient_added").append(html);
+    $(selector).closest(".col-md-7").find("#ingredient_added").append(html);
   }
-  $(selector).closest(".ingredient_items").find("#ingredient_items").hide();
+  $(selector).closest(".ingredient_items").find(".ingredient_items_result").hide();
 }
 
 function show_form_edit_food(){
   $("#modal-edit-food").modal({
-    ready: function(modal, trigger){
+    ready: function(modal, trigger) {
+    },
+    complete: function() {
     }
+  });
+  $("#modal-edit-food").find(".ingredient_items_result").hide();
+  $( "#modal-edit-food" ).on('hidden.bs.modal', function(e){
+     $("#edit_form").last().html("");
   });
   $("#modal-edit-food").modal("open");
 }

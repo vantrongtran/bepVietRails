@@ -27,9 +27,11 @@
             <div class="col-md-7">
               <div class="form-group label-floating is-empty">
                 <%= label_tag t(".ingredients"), nil, class: "control-label" %>
-                <%= text_field_tag "ingredient", nil, class: "form-control", onkeyup: "search_ingredient('#{admin_foods_path}')"  %>
+                <%= text_field_tag "ingredient", nil, class: "form-control", onkeyup: "search_ingredient(this, '#{admin_foods_path}')"  %>
               </div>
-              <div class="ingredient_items"><div id="ingredient_items"></div></div>
+              <div class="ingredient_items">
+                <div id="ingredient_items" class="ingredient_items_result"></div>
+              </div>
               <div id="ingredient_added">
               </div>
             </div>

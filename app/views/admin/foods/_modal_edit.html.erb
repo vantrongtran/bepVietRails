@@ -1,50 +1,71 @@
 <div class="modal fade in" id="modal-edit-food" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <%= form_tag admin_foods_path, method: :put, authenticity_token: true, multipart: true do |f| %>
+      <%= form_for [:admin, @food], multipart: true do |f| %>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             <i class="material-icons">clear</i>
           </button>
-          <h4 class="modal-title">Add food</h4>
+          <h4 class="modal-title">Edit food</h4>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-md-5">
               <div class="form-group label-floating is-empty">
-                <%= label_tag t(".name"), nil, class: "control-label" %>
-                <%= text_field_tag "food[name]",  nil, class: "form-control", required: true %>
+                <%= label_tag "",t(".name") %>
+                <%= f.text_field :name, class: "form-control", required: true %>
               </div>
               <div>
-                <%= label_tag t(".image"),  nil, class: "control-label" %>
-                <%= file_field_tag "food[image]", accept: Settings.accepted_files, required: true %>
+                <%= label_tag "",t(".image") %>
+                <%= f.file_field :image, accept: Settings.accepted_files %>
               </div>
               <div class="form-group label-floating is-empty">
-                <%= label_tag t(".calorie"), nil, class: "control-label" %>
-                <%= number_field_tag "food[calorie]", nil, class: "form-control", step: "0.1", required: true %>
+                <%= label_tag "",t(".calorie") %>
+                <%= f.number_field :calorie, class: "form-control", step: "0.1", required: true %>
               </div>
             </div>
             <div class="col-md-7">
               <div class="form-group label-floating is-empty">
-                <%= label_tag t(".ingredients"), nil, class: "control-label" %>
-                <%= text_field_tag "ingredient", nil, class: "form-control", onkeyup: "search_ingredient('#{admin_foods_path}')"  %>
+                <%= label_tag "",t(".ingredients") %>
+                <%= text_field_tag :ingredients, nil, class: "form-control", onkeyup: "search_ingredient(this, '#{admin_foods_path}')" %>
               </div>
-              <div class="ingredient_items"><div id="ingredient_items"></div></div>
+              <div class="ingredient_items">
+                <div id="ingredient_items" class="ingredient_items_result"></div>
+              </div>
               <div id="ingredient_added">
+                <% @food.food_ingredients.each_with_index do |ingredient, i| %>
+                  <div class="result_ingredient" id="ingredient_add_1">
+                    <input type="hidden" name="food[ingredients][1][ingredient_id]" value="1">
+                    <button type="button" class="close"><i class="material-icons">clear</i></button>
+                    <div class="ingredient_image">
+                      <%= image_tag ingredient.image, class: "ingredient_image" %>
+                    </div>
+                    <div class="ingredient_detail">
+                      <a><%= ingredient.name %></a>
+                      <div class="form-group is-empty">
+                        <input type="number" name="food[ingredients][#{i}][ingredient_value]" id="value"
+                          class="form-control" step="0.1" placeholder="Value" required="required" value="<%= ingredient.value %>">
+                        <span class="material-input"></span>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
           <div class="row">
             <div>
-              <%= label_tag t(".cooking_method"), nil, class: "control-label" %>
-              <%= cktext_area_tag "food[cooking_method]", nil, rows: 20 %>
+              <%= label_tag "",t(".cooking_method") %>
+              <%= cktext_area_tag :cooking_method, @food.cooking_method, rows: 20, id: "edit-ingredients" %>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <%= button_tag t(".add"), class: "btn btn-default btn-simple" %>
+          <%= button_tag t(".update"), class: "btn btn-default btn-simple" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+
