@@ -7,12 +7,12 @@ class Category < ApplicationRecord
   default_scope {where.not(id: 1).order(left: :asc)}
 
   class << self
-    def add name, parent_right
+    def add name, parent_right, parent_level
       return {type: :danger, messages: I18n.t(:blank, name: :name)} unless name.present?
       ActiveRecord::Base.transaction do
         Category.unscoped.where("`categories`.`right` >= ?", parent_right).update_all "`categories`.`right` = `categories`.`right` + 2"
         Category.unscoped.where("`categories`.`left` > ?", parent_right).update_all "`categories`.`left` = `categories`.`left` + 2"
-        category = Category.new name: name, left: parent_right,right: parent_right + 1
+        category = Category.new name: name, left: parent_right,right: parent_right + 1, level: parent_level
         if category.save
           return {type: :success, messages: I18n.t(:created)}
         end
@@ -20,17 +20,21 @@ class Category < ApplicationRecord
       return {type: :danger, messages: I18n.t(:worng)}
     end
 
-    def add! name, parent_right
+    def add! name, parent_right, parent_level
       ActiveRecord::Base.transaction do
         Category.unscoped.where("`categories`.`right` >= ?", parent_right).update_all "`categories`.`right` = `categories`.`right` + 2"
         Category.unscoped.where("`categories`.`left` > ?", parent_right).update_all "`categories`.`left` = `categories`.`left` + 2"
-        category = Category.create! name: name, left: parent_right,right: parent_right + 1
+        category = Category.create! name: name, left: parent_right,right: parent_right + 1, level: parent_level
       end
     end
   end
 
   def children
     Category.where left: (self.left+1)...self.right
+  end
+
+  def instance_children
+    children.where level: self.level + 1
   end
 
   def leaf_node?

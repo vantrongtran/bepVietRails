@@ -1,7 +1,7 @@
-$("#ingredient_items").html("");
-<% if @ingredients %>
-  $("#ingredient_items").show();
+$(".ingredient_items_result").html("");
+<% if @ingredients.any? %>
+  $(".ingredient_items_result").last().show();
   <% @ingredients.each do |i| %>
-    $("#ingredient_items").append("<%= j render "ingredient_result", ingredient: i %>");
+    $(".ingredient_items_result").last().append("<%= j render "ingredient_result", ingredient: i %>");
   <% end %>
 <% end %>

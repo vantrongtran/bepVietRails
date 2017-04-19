@@ -2,9 +2,13 @@ class Admin::FoodsController < Admin::AdminController
   before_action :load_food, only: [:edit, :update, :destroy]
 
   def index
-    @food = Food.new
-    @foods = Food.all
-    @ingredients = Ingredient.search_by_name params[:ingredient] if params[:ingredient]
+    if params[:ingredient]
+      @ingredients = Ingredient.search_by_name params[:ingredient]
+    else
+      @food = Food.new
+      @foods = Food.all
+      @json = C45.new.to_json
+    end
   end
 
   def create
@@ -19,7 +23,6 @@ class Admin::FoodsController < Admin::AdminController
   end
 
   def edit
-
   end
 
   def update

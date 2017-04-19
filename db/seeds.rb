@@ -1,10 +1,14 @@
 puts "---------------------"
+puts "Create ingredients"
+20.times { |i| Ingredient.create! name: Faker::Name.name, inscription: "g" }
+
+puts "---------------------"
 puts "Create base Category"
-c = Category.create! name: "BASE CATEGORY", left: 1, right: 2
+c = Category.create! name: "BASE CATEGORY", left: 1, right: 2, level: 0
   5.times do |n|
-    s = Category.add! Faker::Name.name, c.right
+    s = Category.add! Faker::Name.name, c.right, c.level
       5.times do
-        Category.add! Faker::Name.name, s.right
+        Category.add! Faker::Name.name, s.right, s.level
         s.reload
       end
     c.reload
@@ -33,5 +37,10 @@ puts "Create food"
       condition = ([*ConditionDetail.first.id..ConditionDetail.last.id] - conditions).sample
       conditions.push condition
       Condition::FoodCondition.create! target_id: food.id,condition_detail_id: condition, is_match: ((i+n) % 2 == 0)
+    end
+    used = []
+    10.times do |i|
+      used.push *(ingredient = ([*1..20] - used).sample)
+      food.food_ingredients.create! ingredient_id: ingredient, value: Faker::Number.decimal(2, 3)
     end
 end
