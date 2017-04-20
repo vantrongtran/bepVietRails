@@ -29,46 +29,34 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active">
-            <a href="dashboard.html">
+            <%= link_to admin_categories_path do %>
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
+              <p><%= t ".dashboard" %></p>
+            <% end %>
           </li>
           <li>
-            <a href="user.html">
+            <a href="#">
               <i class="material-icons">person</i>
-              <p>User Profile</p>
+              <p><%= t ".users" %></p>
             </a>
           </li>
           <li>
-            <a href="table.html">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="typography.html">
+            <%= link_to admin_categories_path do %>
               <i class="material-icons">library_books</i>
-              <p>Typography</p>
-            </a>
+              <p><%= t(".categories") %> </p>
+            <% end %>
           </li>
           <li>
-            <a href="icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
+            <%= link_to admin_foods_path do %>
+              <i class="material-icons">content_paste</i>
+              <p><%= t :food %></p>
+            <% end %>
           </li>
           <li>
-            <a href="maps.html">
-              <i class="material-icons">location_on</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li>
-            <a href="notifications.html">
-              <i class="material-icons text-gray">notifications</i>
-              <p>Notifications</p>
-            </a>
+            <%= link_to admin_ingredients_path do %>
+              <i class="material-icons">list</i>
+              <p><%= t ".ingredients" %></p>
+            <% end %>
           </li>
         </ul>
       </div>
