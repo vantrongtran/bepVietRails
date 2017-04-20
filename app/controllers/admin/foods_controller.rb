@@ -6,18 +6,17 @@ class Admin::FoodsController < Admin::AdminController
       @ingredients = Ingredient.search_by_name params[:ingredient]
     else
       @food = Food.new
-      @foods = Food.all
-      @json = C45.new.to_json
+      @foods = Food.all.page(params[:page])
+      @json = C45.new(@foods).to_json
     end
   end
 
   def create
     @food = Food.new food_params
     if @food.save
-      @food.ingredient_ids = foods_params[:ingredients].keys
       add_message_flash :success, t(:created)
     else
-      add_message_flash_now :error, t(:failed)
+      add_message_flash_now :error, t(:created_fail)
     end
     redirect_to admin_foods_path
   end
@@ -26,7 +25,12 @@ class Admin::FoodsController < Admin::AdminController
   end
 
   def update
-
+    if @food.update_attributes food_params
+      add_message_flash :success, t(:updated)
+    else
+      add_message_flash_now :error, t(:updated_fail)
+    end
+    redirect_to admin_foods_path
   end
 
   def destroy
@@ -40,14 +44,10 @@ class Admin::FoodsController < Admin::AdminController
 
   private
   def load_food
-    @food = Food.find_by params[:id]
-  end
-
-  def foods_params
-    params.require(:food).permit :name, :image, :calorie, :cooking_method, ingredients: [:ingredient_id, :ingredient_value]
+    @food = Food.find params[:id]
   end
 
   def food_params
-    params.require(:food).permit :name, :image, :calorie, :cooking_method
+    params.require(:food).permit :name, :image, :calorie, :cooking_method, food_ingredients_attributes: [:id, :ingredient_id, :value]
   end
 end

@@ -2,82 +2,33 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-        <div class="card">
-          <div class="card-header" data-background-color="purple">
-            <h4 class="title">
-              <%= t :manager, managed: t(".title") %>
-            </h4>
-          </div>
-          <div class="card-content table-responsive">
-            <button class="btn btn-primary btn-round btn-just-icon pull-right" data-toggle="modal" data-target="#modal-add-food"
-              onclick="openModalNewCategory(1, '<%= t".base_category" %>')">
-              <i class="material-icons">add</i>
-            </button>
-            <table class="table table-hover">
-              <thead class="text-primary">
-                <th><%= t :id %></th>
-                <th><%= t ".name" %></th>
-                <th><%= t ".left" %></th>
-                <th><%= t ".right" %></th>
-                <th></th>
-              </thead>
-              <tbody>
-                <% @categories.each do |category| %>
-                  <%= render "category", category: category %>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-<!--     <div class="col-md-12">
       <div class="card">
         <div class="card-header" data-background-color="purple">
           <h4 class="title">
             <%= t :manager, managed: t(".title") %>
           </h4>
-          <p class="category"><%= t ".category_tree"%></p>
         </div>
         <div class="card-content table-responsive">
-          <table class="table table-hover">
-            <thead class="text-primary">
-              <th><%= t :id %></th>
-              <th><%= t ".name" %></th>
-              <th><%= t ".left" %></th>
-              <th><%= t ".right" %></th>
-              <th></th>
-            </thead>
-            <tbody>
-              <% @categories.each do |category| %>
-                <% if @ends.include? (category.left) %>
-                    </tbody></table></td></tr>
-                    <% @ends.delete (category.left) %>
-                <% end %>
-                <%= render "category", category: category %>
-                <% unless category.leaf_node? %>
-                  <% @ends.push category.right + 1 %>
-                  <tr>
-                    <td></td>
-                    <td colspan="4">
-                      <table class="table table-hover">
-                        <thead class="text-primary">
-                          <th><%= t :id %></th>
-                          <th><%= t ".name" %></th>
-                          <th><%= t ".left" %></th>
-                          <th><%= t ".right" %></th>
-                          <th></th>
-                        </thead>
-                        <tbody>
-                <% end %>
-              <% end %>
-              <% @ends.size.times do %>
-                </tbody></table></td></tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+          <button class="btn btn-primary btn-round btn-just-icon pull-right" data-toggle="modal" data-target="#modal-add-food"
+          onclick="openModalNewCategory(1, '<%= t".base_category" %>')">
+          <i class="material-icons">add</i>
+        </button>
+        <table class="table table-hover">
+          <thead class="text-primary">
+            <th><%= t :id %></th>
+            <th><%= t ".name" %></th>
+            <th><%= t ".left" %></th>
+            <th><%= t ".right" %></th>
+            <th></th>
+          </thead>
+          <tbody>
+          <%= render @categories %>
+          </tbody>
+        </table>
+        <%= paginate @categories %>
       </div>
-    </div> -->
+    </div>
+  </div>
     <div class="col-md-12">
       <div class="card">
         <div class="card-header" data-background-color="purple">

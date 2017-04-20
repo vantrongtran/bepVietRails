@@ -2,7 +2,7 @@ class Admin::CategoriesController < Admin::AdminController
   before_action :load_category, only: [:update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.page(params[:page])
     @ends = []
     @json = to_node_structure Category.unscoped.first
   end

@@ -15,13 +15,20 @@
                 <%= label_tag "",t(".name") %>
                 <%= f.text_field :name, class: "form-control", required: true %>
               </div>
-              <div>
-                <%= label_tag "",t(".image") %>
-                <%= f.file_field :image, accept: Settings.accepted_files %>
+              <div class="form-group row">
+                <div class="file-field input-field">
+                  <div class="btn btn-primary">
+                    <span><%= t :image %></span>
+                    <%= f.file_field  :image, accept: Settings.accepted_files %>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate form-control" type="text" disabled="disabled" value="<%= t(:instance) if f.object.image.file %>">
+                  </div>
+                </div>
               </div>
               <div class="form-group label-floating is-empty">
                 <%= label_tag "",t(".calorie") %>
-                <%= f.number_field :calorie, class: "form-control", step: "0.1", required: true %>
+                <%= f.number_field :calorie, class: "form-control", step: "0.001", required: true %>
               </div>
             </div>
             <div class="col-md-7">
@@ -33,18 +40,17 @@
                 <div id="ingredient_items" class="ingredient_items_result"></div>
               </div>
               <div id="ingredient_added">
-                <% @food.food_ingredients.each_with_index do |ingredient, i| %>
+                <%= f.fields_for :food_ingredients do |ingredient| %>
                   <div class="result_ingredient" id="ingredient_add_1">
                     <input type="hidden" name="food[ingredients][1][ingredient_id]" value="1">
                     <button type="button" class="close"><i class="material-icons">clear</i></button>
                     <div class="ingredient_image">
-                      <%= image_tag ingredient.image, class: "ingredient_image" %>
+                      <%= image_tag ingredient.object.image, class: "ingredient_image" %>
                     </div>
                     <div class="ingredient_detail">
-                      <a><%= ingredient.name %></a>
+                      <a><%= ingredient.object.name %></a>
                       <div class="form-group is-empty">
-                        <input type="number" name="food[ingredients][#{i}][ingredient_value]" id="value"
-                          class="form-control" step="0.1" placeholder="Value" required="required" value="<%= ingredient.value %>">
+                        <%= ingredient.number_field :value,class: "form-control", step: "0.001", required: true  %>
                         <span class="material-input"></span>
                       </div>
                     </div>

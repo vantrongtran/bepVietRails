@@ -5,12 +5,12 @@
   <td><%= category.right %></td>
   <td class="management-action category">
   <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="<%= t ".add" %>"
-      onclick="openModalNewCategory(<%= category.id %>,'<%= category.name %>')">
+      onclick='openModalNewCategory(<%= category.id %>,"<%= category.name %>")'>
       <i class="material-icons">add</i>
       <div class="ripple-container"></div>
     </button>
     <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="<%= t ".edit_category" %>"
-      onclick="openModalEditCategory(<%= category.id %>, '<%= category.name %>', '<%= admin_category_path category %>')">
+      onclick='openModalEditCategory(<%= category.id %>, "<%= category.name %>", "<%= admin_category_path category %>")''>
       <i class="material-icons">edit</i>
       <div class="ripple-container"></div>
     </button>
