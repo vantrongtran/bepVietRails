@@ -39,6 +39,10 @@ en:
   layouts:
     admin:
       application_name: "Bếp Việt"
+      dashboard: "Dashboard"
+      users: "User Profiles"
+      categories: "Categories"
+      ingredients: "Ingredients"
   admin:
     dashboard:
       index:
