@@ -1,8 +1,8 @@
 class C45
   attr_accessor :data, :root, :arr_gain_ratios, :attributes
 
-  def initialize
-    @data = Food.all
+  def initialize data
+    @data = data
     @s = @data.size.to_f
     @arr_gain_ratios = Array.new
     @attributes = Condition.all.includes(:condition_details)

@@ -1,5 +1,6 @@
 en:
   manager: "%{managed} Management."
+  instance: "Instance"
   remove: "Remove"
   info: "INFO"
   success: "SUCCESS"
@@ -9,7 +10,7 @@ en:
   edit: "Edit"
   deleted: "Deleted!!!"
   deleted_fail: "Deleted fail!!!"
-  updated_fail: "updated fail!!!"
+  updated_fail: "Updated fail!!!"
   updated: "Updated!!!"
   update: "Update"
   Create: "Create"
@@ -19,6 +20,22 @@ en:
   blank: "%{name} can be blank!!!"
   wrong: "Somthing was worng, please try laster!"
   confirm_delete: "Are you sure?"
+  views:
+    pagination:
+      first: "« First"
+      last: "Last »"
+      previous: "‹ Prev"
+      next: "Next ›"
+      truncate: "…"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first} - %{last}</b> of <b>%{total}</b> in total"
   layouts:
     admin:
       application_name: "Bếp Việt"

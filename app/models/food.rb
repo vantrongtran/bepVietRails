@@ -8,6 +8,9 @@ class Food < ApplicationRecord
 
   validates :name, :cooking_method, :calorie, presence: true
 
+  accepts_nested_attributes_for :food_ingredients,
+    reject_if: ->attributes{attributes[:value].blank?}, allow_destroy: true
+
   mount_uploader :image, PictureUploader
 
   scope :match_condition, -> condition_id do

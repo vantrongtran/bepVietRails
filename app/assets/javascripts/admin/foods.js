@@ -43,7 +43,7 @@ function addIngredient(selector, id){
                 + "<img class='ingredient_image' src=" + img_src + "></div>"
                 + "<div class='ingredient_detail'>"
                 + "<a>" + name + "</a>"
-                + "<div class='form-group is-empty'><input type='number' name='food[ingredients][" + id + "][ingredient_value]' id='value' class='form-control' step='0.1' placeholder='Value' required><span class='material-input'></span></div>"
+                + "<div class='form-group is-empty'><input type='number' name='food[food_ingredients_attributes][" + id + "][value]' id='value' class='form-control' step='0.1' placeholder='Value' required><span class='material-input'></span></div>"
                 + "</div></div>";
     $(selector).closest(".col-md-7").find("#ingredient_added").append(html);
   }
