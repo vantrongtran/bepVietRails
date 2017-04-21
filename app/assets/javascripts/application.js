@@ -25,3 +25,4 @@
 //= require perfect-scrollbar
 //= require Treant
 //= require raphael
+//= require login-register
