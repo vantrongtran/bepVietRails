@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 
   <!--     Fonts and icons     -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
@@ -18,11 +19,13 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
 
 </head>
 
   <body class="index-page">
     <%= render "layouts/header" %>
+    <%= render "layouts/login_modal" %>
     <%= yield %>
     <%= render "layouts/footer" %>
   </body>
