@@ -26,3 +26,4 @@
 //= require Treant
 //= require raphael
 //= require login-register
+//= require material-bootstrap-wizard

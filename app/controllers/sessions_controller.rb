@@ -1,6 +1,7 @@
 class SessionsController < Devise::SessionsController
+  respond_to :json
   def create
-    resource = warden.authenticate!(:scope => resource_name, :recall => '#{controller_path}#failure')
+    self.resource = warden.authenticate!(auth_options)
     sign_in_and_redirect(resource_name, resource)
   end
 
@@ -8,11 +9,17 @@ class SessionsController < Devise::SessionsController
     scope = Devise::Mapping.find_scope!(resource_or_scope)
     resource ||= resource_or_scope
     sign_in(scope, resource) unless warden.user(scope) == resource
-    return render :json => {:success => true}
-    redirect_to root_path
+    render :json => {:success => true}
+    add_message_flash :notice, t(:welcome, name: current_user.name)
   end
 
   def failure
-    return render :json => {:success => false, :errors => ["Login failed."]}
+    warden.custom_failure!
+    render json: { success: false, errors: ["Invalid username or password!"] }
+  end
+
+  protected
+  def auth_options
+    {:scope => resource_name, :recall => "#{controller_path}#failure"}
   end
 end
