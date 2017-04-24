@@ -1,8 +1,12 @@
 <script type="text/javascript">
   $(document).ready(function() {
     <% flash.each do |message_type, messages| %>
-      <% messages.each do |message| %>
-        showNotification("<%= message_type %>", "<%= message %>");
+      <% if messages.class == String %>
+        showNotification("<%= message_type %>", "<%= messages %>");
+      <% else %>
+        <% messages.each do |message| %>
+          showNotification("<%= message_type %>", "<%= message %>");
+        <% end %>
       <% end %>
     <% end %>
   });

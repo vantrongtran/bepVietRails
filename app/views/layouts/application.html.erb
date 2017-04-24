@@ -24,8 +24,10 @@
 </head>
 
   <body class="index-page">
+    <%= render "layouts/messages" %>
     <%= render "layouts/header" %>
     <%= render "layouts/login_modal" %>
+    <%= render "layouts/edit_profile_modal" %>
     <%= yield %>
     <%= render "layouts/footer" %>
   </body>
