@@ -7,7 +7,7 @@ class Admin::FoodsController < Admin::AdminController
     else
       @food = Food.new
       @foods = Food.all.page(params[:page])
-      @json = C45.new(@foods).to_json
+      @json = C45.new(Food.all).to_json
     end
   end
 
@@ -16,7 +16,8 @@ class Admin::FoodsController < Admin::AdminController
     if @food.save
       add_message_flash :success, t(:created)
     else
-      add_message_flash_now :error, t(:created_fail)
+      add_message_flash :error, t(:created_fail)
+      add_message_flash :error, @food.errors.full_messages
     end
     redirect_to admin_foods_path
   end
@@ -28,7 +29,7 @@ class Admin::FoodsController < Admin::AdminController
     if @food.update_attributes food_params
       add_message_flash :success, t(:updated)
     else
-      add_message_flash_now :error, t(:updated_fail)
+      add_message_flash :error, t(:updated_fail)
     end
     redirect_to admin_foods_path
   end
@@ -44,10 +45,11 @@ class Admin::FoodsController < Admin::AdminController
 
   private
   def load_food
-    @food = Food.find params[:id]
+    @food = Food.includes(:ingredients, food_hashtags: :hashtag).find(params[:id])
   end
 
   def food_params
-    params.require(:food).permit :name, :image, :calorie, :cooking_method, food_ingredients_attributes: [:id, :ingredient_id, :value]
+    params.require(:food).permit :name, :image, :calorie, :cooking_method, food_ingredients_attributes: [:id, :ingredient_id, :value, :_destroy],
+      food_hashtags_attributes: [:id, :hashtag_id, :_destroy], hashtags_attributes: [:name]
   end
 end

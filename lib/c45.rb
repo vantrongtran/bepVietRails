@@ -24,7 +24,7 @@ class C45
   end
 
   def gain attribute
-    tinh_IS - calc_entropy(attribute)
+    tinh_IS(attribute) - calc_entropy(attribute)
   end
 
   def split_info attribute
@@ -32,25 +32,21 @@ class C45
     attribute.condition_details.each do |condition_details|
       c = condition_details.food_conditions.match(true).size.to_f
       k = condition_details.food_conditions.match(false).size.to_f
-      instance = (-(c + k) / @s) * (((k + c) / @s) * Math.log(((k + c) / @s), 2)) || 0
+      instance = (-(c + k) / @s) * (((k + c) / @s) * Math.log(((k + c) / @s), 2))
       split += instance unless instance.is_a?(Float) && instance.nan?
     end
     split
   end
 
   def gain_ration attribute
-    g = gain(attribute)
-    g = 0 if g.is_a?(Float) && g.nan?
-    s = split_info(attribute)
-    s = 0 if s.is_a?(Float) && s.nan?
-    g - s
+    gain(attribute) - split_info(attribute)
   end
 
   def gain_ratio
     @attributes.each do |attribute|
       @arr_gain_ratios.push GainRatio.new(gain_ration(attribute), attribute)
     end
-    @arr_gain_ratios = @arr_gain_ratios.sort_by {|gain| gain.value}
+    @arr_gain_ratios = @arr_gain_ratios.sort_by! {|gain| gain.value}
   end
 
   def to_node_food node
@@ -88,13 +84,13 @@ class C45
       new_root = Node.new attribute.name, node.foods.includes(:food_conditions), gain_ratio.value, "True/Flase"
     end
     attribute.condition_details.each do |value|
-      match_foods = node.foods.match_condition value.id
+      match_foods = Food.in(node.foods.map(&:id)).match_condition value.id
       if match_foods.any?
         m = Node.new( value.value, match_foods, 0, true)
         recursive_tree m, level + 1
         new_root.add_children m if m
       end
-      not_match_foods = node.foods.not_match_condition value.id
+      not_match_foods = Food.in(node.foods.map(&:id)).not_match_condition value.id
       if not_match_foods.any?
         nm = Node.new(value.value, not_match_foods, 0, false)
         recursive_tree nm, level + 1
@@ -111,9 +107,8 @@ class C45
   end
 
   private
-  def tinh_IS
-    return @tinh_IS if @tinh_IS
-    c = @data.is_match(true).size.to_f
+  def tinh_IS attribute
+    c = attribute.foods.is_match(true).size.to_f
     k = @s - c
     @tinh_IS = (-(k/c) * Math.log(k / @s,2) - ((c/@s) * Math.log(c/@s, 2)))
   end

@@ -20,8 +20,9 @@ body { background: #fff; }
 /* optional Container STYLES */
 .chart {
   width: 100%;
-  min-height: 400px;
-  max-height: 600px;
+  /*min-height: 400px;*/
+  /*max-height: 600px;*/
+  height: 500px;
   height: auto;
   margin: 5px;
   margin: 5px auto;
@@ -32,6 +33,11 @@ body { background: #fff; }
 .Treant > .node {  }
 .Treant > p { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: bold; font-size: 12px; }
 .node-name {
+  /*font-weight: bold;*/
+  text-align: center;
+  font-size: xx-small;
+}
+.nodeExample1:hover .node-name {
   font-weight: bold;
   text-align: center;
   font-size: medium;
@@ -113,3 +119,82 @@ body { background: #fff; }
   color: #9c27b0 !important;
 }
 
+.hashtag-group{
+  margin: 7px;
+}
+.hashtag {
+  max-width: 100%;
+  font-weight: 500;
+  padding: 4px 6px;
+  margin-bottom: 4px;
+  font-size: 1.25rem;
+  background-color: #dbe3e8;
+  color: #0b1a33!important;
+  border-radius: 5%;
+  margin: 5px;
+  padding: 5px;
+  cursor: default;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.hashtag {
+  margin: 5px;
+  padding: 0;
+  cursor: default;
+  display: inline-block;
+  text-align: center;
+  vertical-align: baseline;
+  text-overflow: ellipsis;
+  span{
+    font-size: large;
+    color: #8f3a9e;
+    padding-left: 7px;
+  }
+  .remove-tag-icon{
+    cursor: pointer;
+    font: normal normal normal 14px/1 -webkit-pictograph;
+    font-family: monospace;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: large;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    box-sizing: inherit;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-left: 3px;
+    color: #999999;
+  }
+}
+.autocomplete-suggestion{
+  right: 0;
+  width: 100%;
+  z-index: 99;
+  margin-top: 0;
+  overflow-y: auto;
+  position: absolute;
+  background-color: #FFF;
+  max-height: calc(100vh - 80px);
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.autocomplete-suggestion>.suggestion-item {
+  padding-left: 20px;
+  cursor: text;
+  line-height: 3;
+}
+.autocomplete-suggestion>.suggestion-item:hover {
+  cursor: pointer;
+  color: #FFF;
+  background-color: #5488c7;
+}
+.autocomplete input {
+  padding: .5rem .75rem;
+}

@@ -9,6 +9,7 @@ en:
   danger: "DANGER"
   primary: "PRIMARY"
   edit: "Edit"
+  created_fail: "Created fail!!!"
   deleted: "Deleted!!!"
   deleted_fail: "Deleted fail!!!"
   updated_fail: "Updated fail!!!"
@@ -21,6 +22,7 @@ en:
   blank: "%{name} can be blank!!!"
   wrong: "Somthing was worng, please try laster!"
   confirm_delete: "Are you sure?"
+  tag: "Hashtag"
   views:
     pagination:
       first: "« First"

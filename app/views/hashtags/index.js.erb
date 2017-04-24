@@ -1,0 +1,6 @@
+$(".autocomplete .autocomplete-suggestion").html(
+  "<%= j render partial: "shared/search_hashtag_result", collection: @hashtags, as: :hashtag %>"
+);
+<% if @hashtags.any? %>
+  $(".autocomplete .autocomplete-suggestion").show();
+<% end %>
