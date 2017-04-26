@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :ingredients
   end
+  resources :hashtags
   root "static_pages#index"
 end

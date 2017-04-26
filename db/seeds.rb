@@ -33,10 +33,10 @@ puts "Create food"
   food = Food.create! name: Faker::Name.name, cooking_method: Faker::Lorem.paragraphs,
     calorie: Faker::Number.decimal(2, 3)
     conditions = []
-    7.times do |i|
+    9.times do |i|
       condition = ([*ConditionDetail.first.id..ConditionDetail.last.id] - conditions).sample
       conditions.push condition
-      Condition::FoodCondition.create! target_id: food.id,condition_detail_id: condition, is_match: ((i+n) % 2 == 0)
+      Condition::FoodCondition.create! target_id: food.id,condition_detail_id: condition, is_match: rand(0..1)
     end
     used = []
     10.times do |i|

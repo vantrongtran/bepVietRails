@@ -29,6 +29,10 @@ function showNotification(type, message){
     case "danger":
       icon = "error_outline";
       break;
+    case "error":
+      icon = "error_outline";
+      type = "danger";
+      break;
     case "primary":
       icon = "notifications";
       break;
@@ -67,15 +71,50 @@ function configCKEditor(){
   }
 }
 
+function removeParent(element, parent, callback = function(){console.log("None callback!!!");}){
+  $(element).closest(parent).remove();
+  callback();
+}
+function removeServer(element, parent, callback = function(){console.log("None callback!!!");}){
+  $(element).closest(parent).hide();
+  $(element).closest(parent).find("input[type=hidden][name*='[_destroy]']").prop('disabled', false);;
+  callback();
+}
+
+
+function revertIndexInput(collectionGroup, asElement){
+  index = 0;
+  $(collectionGroup).find(asElement).each(function(index, element){
+    $(element).find("input").each(function(i, input){
+      try {
+        selector.attr("id", selector.attr("id").replace(/\d/, index));
+        selector.attr("name", selector.attr("name").replace(/\d/, index));
+      }
+      catch(err) {
+      }
+    });
+    index++;
+  });
+}
+function revertIndexInput(collectionGroup, asElement, groupBy){
+  index = 0;
+  $(collectionGroup).find(asElement).each(function(index, element){
+    $(element).find("groupBy").each(function(i, input){
+      try {
+        selector.attr("id", selector.attr("id").replace(/\d/, index));
+        selector.attr("name", selector.attr("name").replace(/\d/, index));
+      }
+      catch(err) {
+      }
+    });
+    index++;
+  });
+}
+
 $(document).ready(function() {
   $("a").tooltip({
     title: function(){
       return $(this).attr('title');
     }
-  });
-  $(".nodeExample1").hover(function(e){
-
-  }, function(e){
-
   });
 });

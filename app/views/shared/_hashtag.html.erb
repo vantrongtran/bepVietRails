@@ -1,0 +1,8 @@
+<span class="hashtag">
+  <span>
+    <%= hashtag&.name || tag %>
+    <%= hidden_field_tag "#{name}[name]", tag %>
+  </span>
+  <%= hidden_field_tag "#{name}[id]", hashtag&.id %>
+  <i class="remove-tag-icon" onclick="removeParent(this, '.hashtag', revertIndexInputHastag)">&times;</i>
+</span>

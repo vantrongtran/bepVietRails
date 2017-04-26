@@ -4,6 +4,7 @@
   width: 220px;
   height: 60px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
   .close{
     padding-top: 5px;
     padding-right: 5px;
@@ -20,7 +21,7 @@
   height: 60px !important;
   width: 60px !important;
   float: left;
-
+  border-top-left-radius: 5px;
   }
   .ingredient_detail{
     float: left;
@@ -43,6 +44,10 @@
   z-index: 1000;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow-y: auto;
+  display: none;
+  position: absolute;
+  background-color: #FFFFFF;
+  border-radius: 3px;
 }
 .ingredient_item{
   border-width: 1px;
@@ -52,9 +57,11 @@
   padding-left: 10px;
   padding-top: 10px;
   .ingredient_item_images{
+    display: inline-block;
     width: 30px;
     height: 30px;
   }
   .ingredient_item_detail{
+    display: inline-block;
   }
 }
