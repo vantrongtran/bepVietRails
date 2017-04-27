@@ -1,11 +1,14 @@
 function sendRequestScript(link, method){
+  loadnig();
   $.ajax({
     type: method,
     url: link,
     dataType: "script",
     success: function(data){
+      loaded();
     },
     error: function(errorMessage){
+      loaded();
     }
   });
 }
@@ -111,10 +114,60 @@ function revertIndexInput(collectionGroup, asElement, groupBy){
   });
 }
 
+function loading(){
+  $(".loading").show();
+}
+
+function loaded(){
+  $(".loading").hide();
+}
+
+function confrimMaterial(contentText, okAction, cancelAction = function(){console.log("none cancelAction");}){
+  $.confirm({
+    title: 'Confirm',
+    icon: 'fa fa-question',
+    theme: 'material',
+    closeIcon: true,
+    animation: 'scale',
+    type: 'purple',
+    content: contentText,
+    buttons: {
+      confirm: {
+        text: 'OK',
+        btnClass: 'btn btn-primary',
+        action: function () {
+          okAction();
+        }
+      },
+      cancel: {
+        text: 'Cancel',
+        btnClass: 'btn btn-default',
+        action: function () {
+          cancelAction();
+        }
+      }
+    },
+  });
+}
 $(document).ready(function() {
   $("a").tooltip({
     title: function(){
       return $(this).attr('title');
     }
+  });
+  $("a.data-confirm").click(function(e){
+    e.preventDefault();
+    confrimMaterial(
+      $(e.target).attr("confirmcontent"),
+      function(){
+        $("a.data-confirm").unbind('click');
+        $(e.target).click();
+        loading();
+      }
+    );
+    return false;
+  });
+  $("a:not(.data-confirm)").click(function(e){
+    loading();
   });
 });

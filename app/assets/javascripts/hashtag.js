@@ -41,13 +41,16 @@ function searchHashtag(element, event){
     $(".autocomplete-suggestion").hide();
   }
   else if(key.length > 0) {
+    loading();
     $.ajax({
       type: "GET",
       url: "/hashtags?hashtag=" + key,
       dataType: "script",
       success: function(data){
+        loaded();
       },
       error: function(){
+        loaded();
         console.log("error");
       }
     });
