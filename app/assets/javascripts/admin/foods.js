@@ -1,6 +1,7 @@
 function search_ingredient(selector, url){
   key = $(selector).val();
   if(key) {
+    loading();
     $.ajax({
       type: "GET",
       url: url + "?ingredient=" + key,
@@ -9,8 +10,10 @@ function search_ingredient(selector, url){
         $("body").on("click", ".close", function() {
           $(this).parents(".result_ingredient").remove();
         });
+        loaded();
       },
       error: function(){
+        loaded();
         console.log("error");
       }
     });

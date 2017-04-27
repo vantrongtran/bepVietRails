@@ -1,11 +1,15 @@
 function call_form_edit(url){
+  loading();
   $.ajax({
     type: "GET",
     url: url,
     dadaType: "script",
     success: function(){
+      loaded();
     },
     error: function(){
+      loaded();
+
     }
   });
 }

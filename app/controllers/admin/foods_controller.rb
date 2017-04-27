@@ -40,7 +40,7 @@ class Admin::FoodsController < Admin::AdminController
     else
       add_message_flash_now :error, t(:failed)
     end
-    redirect_to admin_ingredients_path
+    redirect_to admin_foods_path
   end
 
   private

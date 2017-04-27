@@ -13,9 +13,16 @@
             <%= f.label t (".name"), class: "control-label" %>
             <%= f.text_field :name, class: "form-control", required: true %>
           </div>
-          <div>
-            <%= f.label t(".image"), class: "control-label" %>
-            <%= f.file_field :image, accept: Settings.accepted_files %>
+          <div class="form-group">
+            <div class="file-field input-field">
+              <div class="btn btn-primary">
+                <span><%= t ".image" %></span>
+                <%= f.file_field :image, accept: Settings.accepted_files %>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate form-control" type="text" disabled="disabled">
+              </div>
+            </div>
           </div>
           <div class="form-group label-floating is-empty">
             <%= f.label t (".inscription"), class: "control-label" %>

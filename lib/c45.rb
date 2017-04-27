@@ -109,6 +109,7 @@ class C45
   private
   def tinh_IS attribute
     c = attribute.foods.is_match(true).size.to_f
+    c = @s - @s/10 if c = @s
     k = @s - c
     @tinh_IS = (-(k/c) * Math.log(k / @s,2) - ((c/@s) * Math.log(c/@s, 2)))
   end
