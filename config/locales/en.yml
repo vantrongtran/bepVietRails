@@ -1,4 +1,5 @@
 en:
+  condition_details: "Condition details"
   welcome: "Welcome back %{name}!"
   manager: "%{managed} Management."
   instance: "Instance"
@@ -21,7 +22,7 @@ en:
   name: "Name"
   blank: "%{name} can be blank!!!"
   wrong: "Somthing was worng, please try laster!"
-  confirm_delete: "Are you sure?"
+  confirm_delete: "Are you sure?????"
   tag: "Hashtag"
   views:
     pagination:
@@ -58,7 +59,8 @@ en:
         name: "Name"
         image: "Image"
         calorie: "Calorie"
-        add: "Add"
+        add_c: "Add condition details"
+        add: "Create"
         cooking_method: "Cooking method"
         ingredients: "Ingredients"
         value: "Value"

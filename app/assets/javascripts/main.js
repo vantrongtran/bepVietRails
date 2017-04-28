@@ -174,4 +174,7 @@ $(document).ready(function() {
   $("a:not(.data-confirm)").click(function(e){
     loading();
   });
+  $("form:not([data-remote='true'])").submit(function(e){
+    loading();
+  });
 });

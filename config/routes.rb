@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :hashtags
   resources :foods
   resources :posts
+  resources :condition_details
   root "static_pages#index"
 end

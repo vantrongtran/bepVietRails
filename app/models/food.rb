@@ -15,6 +15,7 @@ class Food < ApplicationRecord
   accepts_nested_attributes_for :food_hashtags, allow_destroy: true
   accepts_nested_attributes_for :hashtags,
     reject_if: ->attributes{attributes[:name].blank?}
+  accepts_nested_attributes_for :food_conditions, allow_destroy: true
 
   mount_uploader :image, PictureUploader
 
@@ -36,9 +37,4 @@ class Food < ApplicationRecord
 
   scope :search_by_name, ->keyword { where "name LIKE %?%", keyword }
   # scope :search_by_name, ->keyword { where "name LIKE ?", "%#{keyword}%" }
-
-  def food_ingredients
-    super.includes(:ingredient)
-  end
->>>>>>> show food
 end
