@@ -159,12 +159,12 @@ ActiveRecord::Schema.define(version: 20170426081524) do
   end
 
   create_table "target_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "target_id",                          null: false
-    t.integer  "condition_detail_id",                null: false
-    t.boolean  "is_match",            default: true
+    t.integer  "target_id",                           null: false
+    t.integer  "condition_detail_id",                 null: false
+    t.boolean  "is_match",            default: false
     t.string   "type"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.index ["condition_detail_id", "target_id", "type"], name: "add_indexarget_condition", unique: true, using: :btree
     t.index ["condition_detail_id"], name: "index_target_conditions_on_condition_detail_id", using: :btree
   end
@@ -180,7 +180,7 @@ ActiveRecord::Schema.define(version: 20170426081524) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                null: false
-    t.integer  "gender",                              null: false
+    t.integer  "gender",                 default: 1,  null: false
     t.string   "avatar"
     t.datetime "birthday",                            null: false
     t.integer  "occupation"

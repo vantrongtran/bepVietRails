@@ -5,6 +5,7 @@ function addConditionDetails(inputName,html) {
 function addCondition(){
   clone = $(".div-condition-detail:first").clone();
   clone.find("select").attr("detailname", clone.find("select").attr("detailname").replace(/\d/, $(".div-condition-detail").length));
+  clone.find("input[type=checkbox]").attr("name", clone.find("input[type=checkbox]").attr("name").replace(/\d/, $(".div-condition-detail").length));
   clone.find(".condition_details").html("");
   $(".div-condition-details").append(clone);
   $('select#condition_details-select').change(function(e){
@@ -31,10 +32,17 @@ function removeCondition(element){
       index = 0;
       collectionGroup= ".div-condition-details";
       asElement = ".div-condition-detail";
-      $(collectionGroup).find(asElement).each(function(index, element){
-        $(element).find("select").each(function(i, input){
+      $(collectionGroup).find(asElement).each(function(index, e){
+        $(e).find("select").each(function(i, input){
           try {
-            selector.attr("detailname", selector.attr("detailname").replace(/\d/, index));
+            $(input).attr("detailname", $(input).attr("detailname").replace(/\d/, index));
+          }
+          catch(err) {
+          }
+        });
+        $(e).find("input[type=checkbox]").each(function(i, input){
+          try {
+            $(input).attr("name", $(input).attr("name").replace(/\d/, index));
           }
           catch(err) {
           }

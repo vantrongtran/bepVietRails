@@ -44,3 +44,19 @@ puts "Create food"
       food.food_ingredients.create! ingredient_id: ingredient, value: Faker::Number.decimal(2, 3)
     end
 end
+puts "---------------------"
+puts "Create User"
+user = User.create!(
+  name: "Tiến đẹp trai hào hoa tiêu sái",
+  email: "manager@gmail.com",
+  birthday: 15.day.ago,
+  password: "12312311",
+)
+30.times do |n|
+  user = User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    birthday: 15.day.ago,
+    password: "12312311",
+  )
+end

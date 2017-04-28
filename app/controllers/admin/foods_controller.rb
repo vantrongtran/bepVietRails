@@ -6,7 +6,7 @@ class Admin::FoodsController < Admin::AdminController
       @ingredients = Ingredient.search_by_name params[:ingredient]
     else
       @food = Food.new
-      @foods = Food.all.page(params[:page])
+      @foods = Food.name_like(params[:keyword]).page(params[:page])
       @json = C45.new(Food.all).to_json
     end
   end
@@ -50,6 +50,6 @@ class Admin::FoodsController < Admin::AdminController
 
   def food_params
     params.require(:food).permit :name, :image, :calorie, :cooking_method, food_ingredients_attributes: [:id, :ingredient_id, :value, :_destroy],
-      food_hashtags_attributes: [:id, :hashtag_id, :_destroy], hashtags_attributes: [:name], food_conditions_attributes: [:id, :condition_detail_id, :_destroy]
+      food_hashtags_attributes: [:id, :hashtag_id, :_destroy], hashtags_attributes: [:name], food_conditions_attributes: [:id, :condition_detail_id, :_destroy, :is_mathch]
   end
 end

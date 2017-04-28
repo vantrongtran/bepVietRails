@@ -3,7 +3,7 @@ class CreateTargetConditions < ActiveRecord::Migration[5.0]
     create_table :target_conditions do |t|
       t.integer :target_id, null: false
       t.references :condition_detail, null: false
-      t.boolean :is_match, default: true
+      t.boolean :is_match, default: false
       t.string :type
       t.timestamps
     end
