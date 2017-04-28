@@ -4,4 +4,5 @@ class FoodIngredient < ApplicationRecord
 
   delegate :name, to: :ingredient
   delegate :image, to: :ingredient
+  delegate :inscription, to: :ingredient
 end

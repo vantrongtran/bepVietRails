@@ -13,8 +13,12 @@
         </div>
       </div>
       <div class=" section col-md-8 content_area">
-        <%= render partial: "food_item", collection: @foods,
-          as: :food %>
+        <div class="foods">
+          <%= render @foods %>
+        </div>
+        <div class="paginate">
+          <%= paginate @foods %>
+        </div>
       </div>
     </div>
   </div>

@@ -19,6 +19,7 @@ class Food < ApplicationRecord
   mount_uploader :image, PictureUploader
 
   scope :in, -> ids { where(id: ids)}
+  ratyrate_rateable
 
   scope :match_condition, -> condition_id do
     joins(:food_conditions)
@@ -32,4 +33,12 @@ class Food < ApplicationRecord
   scope :is_match, -> is_match do
     joins(:food_conditions).where(target_conditions: {is_match: is_match}).distinct
   end
+
+  scope :search_by_name, ->keyword { where "name LIKE %?%", keyword }
+  # scope :search_by_name, ->keyword { where "name LIKE ?", "%#{keyword}%" }
+
+  def food_ingredients
+    super.includes(:ingredient)
+  end
+>>>>>>> show food
 end

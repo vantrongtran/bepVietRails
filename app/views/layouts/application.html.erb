@@ -22,11 +22,9 @@
   <%= csrf_meta_tags %>
 
 </head>
-
-  <body class="index-page">
+  <body class="<%= yield :main_class %>">
     <div class="loading"></div>
     <%= render "layouts/messages" %>
-    <%= render "layouts/header" %>
     <%= render "layouts/login_modal" %>
     <%= render "layouts/edit_profile_modal" %>
     <%= yield %>
