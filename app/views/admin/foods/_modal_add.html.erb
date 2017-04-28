@@ -51,9 +51,33 @@
             </div>
           </div>
           <div class="row">
+            <div class="form-group div-condition-details">
+              <div class="div-condition-detail row form-group">
+                <div class="input-field col-md-5 col-sx-12">
+                  <%= render "shared/select_conditions", name: "food[food_conditions_attributes][0]" %>
+                </div>
+                <div class="col-md-6 col-sx-12">
+                  <div class="condition_details input-field">
+                  </div>
+                </div>
+                <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete" onclick="removeCondition(this)">
+                  <i class="material-icons">close</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="<%= t ".add_c" %>"
+              onclick='addCondition()'>
+              <i class="material-icons">add</i>
+              <div class="ripple-container"></div>
+            </button>
+          </div>
+          <div class="row">
             <div>
               <%= label_tag t(".cooking_method"), nil, class: "control-label" %>
-              <%= cktext_area_tag "food[cooking_method]", nil, rows: 20 %>
+              <%= cktext_area_tag "food[cooking_method]", nil, rows: 40 %>
             </div>
           </div>
         </div>

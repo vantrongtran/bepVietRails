@@ -4,7 +4,7 @@
   <td><%= category.left %></td>
   <td><%= category.right %></td>
   <td class="management-action category">
-  <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="<%= t ".add" %>"
+    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="<%= t ".add" %>"
       onclick='openModalNewCategory(<%= category.id %>,"<%= category.name %>")'>
       <i class="material-icons">add</i>
       <div class="ripple-container"></div>
@@ -14,9 +14,11 @@
       <i class="material-icons">edit</i>
       <div class="ripple-container"></div>
     </button>
-    <%= link_to admin_category_path(category), method: :delete, class: "btn btn-danger btn-simple btn-xs",  "data-original-title": "#{t :remove}" do %>
-      <i class="material-icons">close</i>
-      <div class="ripple-container"></div>
-    <% end %>
+    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete">
+      <%= link_to admin_category_path(category), method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm", confirmcontent: t("confirm_delete") do %>
+        <i class="material-icons">close</i>
+        <div class="ripple-container"></div>
+      <% end %>
+    </button>
   </td>
 </tr>

@@ -11,9 +11,11 @@ $(document).ready(function() {
 function getHastagHTML(name, inputName, value){
   result ="<span class='hashtag' id='hashtag-id-" + name + "'><span>"
          + name
-         + "<input type='hidden' name='" + inputName + "' value='" + value + "'></span>"
+         + "<input type='hidden' name='"
+         + inputName + "' value='" + value + "'></span>"
          + "<i class='remove-tag-icon' onclick="
-         + '"removeParent(this, '+ "'.hashtag'" + ',revertIndexInputHastag)">&times;</i></span>';
+         + '"removeParent(this, '+ "'.hashtag'"
+         + ',revertIndexInputHastag)">&times;</i></span>';
   return result;
 }
 
@@ -26,7 +28,6 @@ function searchHashtag(element, event){
   key = $(element).val().trim();
   parent = $(element).closest(".autocomplete");
   var keyCode = event.which || event.keyCode;
-      console.log(keyCode);
   if (keyCode == 13) {
     if ($(element).closest(".autocomplete").find("#hashtag-span-" + key).length > 0) {
       selectHashtag($(element).closest(".autocomplete").find("#hashtag-span-" + key));
@@ -41,16 +42,13 @@ function searchHashtag(element, event){
     $(".autocomplete-suggestion").hide();
   }
   else if(key.length > 0) {
-    loading();
     $.ajax({
       type: "GET",
       url: "/hashtags?hashtag=" + key,
       dataType: "script",
       success: function(data){
-        loaded();
       },
       error: function(){
-        loaded();
         console.log("error");
       }
     });
