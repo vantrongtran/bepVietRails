@@ -23,6 +23,10 @@ function showNotification(type, message){
     case "info":
       icon = "info_outline";
       break;
+    case "notice":
+      icon = "info_outline";
+      type = "info";
+      break;
     case "success":
       icon = "done";
       break;

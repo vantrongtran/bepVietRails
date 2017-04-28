@@ -23,6 +23,7 @@ gem "carrierwave"
 gem "ckeditor"
 gem "paperclip"
 gem "config"
+gem "ratyrate"
 
 group :development, :test do
   gem "byebug", platform: :mri
