@@ -45,12 +45,15 @@
       <div class="box">
         <div class="content registerBox" style="display:none;">
           <div class="form">
-            <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
-              <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-              <input id="password" class="form-control" type="password" placeholder="Password" name="password">
-              <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
-              <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
-            </form>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.email_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
+              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password", autocomplete: "off" %>
+              <%= f.submit "Sign up", class: "btn btn-default btn-register" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -58,13 +61,13 @@
     <div class="modal-footer">
       <div class="forgot login-footer">
         <span>Looking to
-          <a href="javascript: showRegisterForm();">create an account</a>
+          <a href="javascript: showRegisterForm();" class="click-event">create an account</a>
           ?
         </span>
       </div>
       <div class="forgot register-footer" style="display:none">
        <span>Already have an account?</span>
-       <a href="javascript: showLoginForm();">Login</a>
+       <a href="javascript: showLoginForm();" class="click-event">Login</a>
      </div>
    </div>
  </div>

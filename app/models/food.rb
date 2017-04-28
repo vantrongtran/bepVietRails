@@ -40,5 +40,4 @@ class Food < ApplicationRecord
   def food_ingredients
     super.includes(:ingredient)
   end
->>>>>>> show food
 end

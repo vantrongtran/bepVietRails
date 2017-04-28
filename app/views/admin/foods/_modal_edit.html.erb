@@ -80,7 +80,7 @@
           <div class="row">
             <div>
               <%= label_tag "",t(".cooking_method") %>
-              <%= cktext_area_tag :cooking_method, @food.cooking_method, rows: 20, id: "edit-ingredients" %>
+              <%= cktext_area_tag "food[cooking_method]", @food.cooking_method, rows: 20, id: "edit-ingredients" %>
             </div>
           </div>
         </div>

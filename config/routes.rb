@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :ingredients
   end
+  resources :foods
   resources :hashtags
   resources :foods
   resources :posts
