@@ -172,7 +172,9 @@ $(document).ready(function() {
     return false;
   });
   $("a:not(.data-confirm)").click(function(e){
-    loading();
+    if ($(e.target).attr("href")[0] != "#") {
+      loading();
+    }
   });
   $("form:not([data-remote='true'])").submit(function(e){
     loading();

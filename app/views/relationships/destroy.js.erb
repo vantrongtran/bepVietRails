@@ -1,0 +1,2 @@
+$('#follow-form').html('<%= j render "users/follow" %>');
+$('#followers').html($('#followers').html().replace(/\d/, <%= @user.followers.count %>));

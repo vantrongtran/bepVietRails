@@ -1,4 +1,7 @@
 en:
+  follow: "Follow"
+  unfollow: "Unfollow"
+  follow_details: "Following: %{following}"
   condition_details: "Condition details"
   welcome: "Welcome back %{name}!"
   manager: "%{managed} Management."
@@ -24,6 +27,9 @@ en:
   wrong: "Somthing was worng, please try laster!"
   confirm_delete: "Are you sure?????"
   tag: "Hashtag"
+  foods:
+    show:
+      title: "Food | %{name}"
   views:
     pagination:
       first: "« First"

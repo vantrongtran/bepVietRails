@@ -24,6 +24,7 @@ function revertIndexInputHastag(){
   revertIndexInput(".autocomplete", ".hashtag", "input[type=hidden][name*='[hashtag_id]");
 }
 
+hashtagRegex = /^[A-Za-z].*[0-9a-zA-Z]$/;
 function searchHashtag(element, event){
   key = $(element).val().trim();
   parent = $(element).closest(".autocomplete");
@@ -33,10 +34,12 @@ function searchHashtag(element, event){
       selectHashtag($(element).closest(".autocomplete").find("#hashtag-span-" + key));
       $(element).val("");
     }
-    else if(key.length > 0 && !key.includes(" ")){
+    else if(key.length > 0 && !key.includes(" ") && hashtagRegex.test(key)){
       name = parent.find(".suggestion-name-sub").text()+ "[hashtags_attributes]" + "[" + parent.find("input[type=hidden][name*='[hashtags_attributes]']").length + "][name]";
-      result = getHastagHTML(key, name, key);
-      parent.append(result);
+      if ($("#hashtag-id-" + key).length == 0) {
+        result = getHastagHTML(key, name, key);
+        parent.append(result);
+      }
     }
     parent.find("input[name='hashtag']").val("");
     $(".autocomplete-suggestion").hide();
@@ -57,7 +60,7 @@ function searchHashtag(element, event){
 
 function selectHashtag(spanElement){
   returnValue = false;
-  if ($("#hashtag-id-" + $(spanElement).text().trim()).length == 0) {
+  if ($("#hashtag-id-" + $(spanElement).text().trim()).length == 0 && $(spanElement).text().trim().length > 1 && hashtagRegex.test($(spanElement).text().trim())) {
     parent = $(spanElement).closest(".autocomplete");
     name = parent.find(".suggestion-name").text() + "[" + parent.find("input[type=hidden][name*='[hashtag_id]']").length + "][hashtag_id]";
     result = getHastagHTML($(spanElement).text().trim(), name, $(spanElement).attr("value"));

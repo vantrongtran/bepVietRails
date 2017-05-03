@@ -6,6 +6,8 @@ class Category < ApplicationRecord
 
   default_scope {where.not(id: 1).order(left: :asc)}
 
+  scope :name_like, -> keyword { where("name LIKE ?", "%#{keyword}%") if keyword.present?}
+
   class << self
     def add name, parent_right, parent_level
       return {type: :danger, messages: I18n.t(:blank, name: :name)} unless name.present?

@@ -31,7 +31,16 @@ body { background: #fff; }
   padding-bottom: 20%;
 }
 .Treant > .node {  }
-.Treant > p { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: bold; font-size: 12px; }
+.Treant > p {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+.Treant {
+  min-height: 500px;
+  max-height: 700px;
+  overflow: scroll;
+}
 .node-name {
   /*font-weight: bold;*/
   text-align: center;
@@ -63,7 +72,7 @@ body { background: #fff; }
   -webkit-border-radius: 3px;
   -moz-border-radius: 8px;
   border-radius: 50%;
-  background: linear-gradient(60deg, #66bb6a, #43a047);
+  background: linear-gradient(30deg, #0097A7, #006064);
   box-shadow: 5px 5px 25px #888888;
   font-family: inherit;
   font-size: 12px;
@@ -134,7 +143,7 @@ body { background: #fff; }
   margin: 5px;
   padding: 5px;
   cursor: default;
-  overflow: hidden;
+  overflow: scroll;
   border-radius: 3px;
 }
 .hashtag {
@@ -304,4 +313,9 @@ ul:not(.browser-default) li {
     display: block;
     line-height: 22px;
     padding: 14px 16px;
+}
+
+.div-condition-details-row-class{
+  overflow-y: scroll;
+  max-height: 300px;
 }

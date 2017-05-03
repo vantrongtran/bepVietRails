@@ -15,11 +15,15 @@ class Food < ApplicationRecord
   accepts_nested_attributes_for :food_hashtags, allow_destroy: true
   accepts_nested_attributes_for :hashtags,
     reject_if: ->attributes{attributes[:name].blank?}
-  accepts_nested_attributes_for :food_conditions, allow_destroy: true
+  accepts_nested_attributes_for :food_conditions,
+    reject_if: ->attributes{attributes[:condition_detail_id].blank?}, allow_destroy: true
 
   mount_uploader :image, PictureUploader
 
   scope :in, -> ids { where(id: ids)}
+
+  scope :name_like, -> keyword { where("name LIKE ?", "%#{keyword}%") if keyword.present?}
+
   ratyrate_rateable
 
   scope :match_condition, -> condition_id do

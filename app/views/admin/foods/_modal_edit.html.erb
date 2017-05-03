@@ -36,16 +36,16 @@
                 <span style="display:none;" class="suggestion-name-sub">food</span>
                 <span style="display:none;" class="suggestion-name">food[food_hashtags_attributes]</span>
                 <ul class="autocomplete-suggestion" style="display:none;"></ul>
-                <%= f.fields_for :food_hashtags do |tag| %>
-                  <span class="hashtag" id="hashtag-id-<%= tag.object.name %>">
-                    <span>
-                      <%= tag.object.name %>
+                  <%= f.fields_for :food_hashtags do |tag| %>
+                    <span class="hashtag" id="hashtag-id-<%= tag.object.name %>">
+                      <span>
+                        <%= tag.object.name %>
+                      </span>
+                      <%= tag.hidden_field :id %>
+                      <%= tag.hidden_field :_destroy, value: tag.object.id, disabled: true %>
+                      <i class="remove-tag-icon" onclick="removeServer(this, '.hashtag')">&times;</i>
                     </span>
-                    <%= tag.hidden_field :id %>
-                    <%= tag.hidden_field :_destroy, value: tag.object.id, disabled: true %>
-                    <i class="remove-tag-icon" onclick="removeServer(this, '.hashtag')">&times;</i>
-                  </span>
-                <% end %>
+                  <% end %>
               </div>
             </div>
             <div class="col-md-7">
