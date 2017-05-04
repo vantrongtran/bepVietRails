@@ -1,4 +1,67 @@
 <%= render "layouts/navbar" %>
+<nav class="navbar navbar-primary navbar-transparent navbar-fixed-top navbar-color-on-scroll fixed_navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-primary">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="">Bếp Việt</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="example-navbar-primary">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active">
+          <a href="#pablo">
+            <i class="material-icons">home</i>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#pablo">
+            <i class="material-icons">account_circle</i>
+            Profile
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">settings</i>
+            Settings
+          </a>
+        </li>
+        <% if !current_user %>
+          <li>
+            <a data-toggle="modal" href="javascript:void(1)" onclick="openLoginModal();" class="click-event">
+              <i class="material-icons">account_box</i>
+              Login
+            </a>
+          </li>
+        <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle click-event" data-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons">account_box</i> <%= current_user.name %>
+              <b class="caret"></b>
+            <div class="ripple-container"></div></a>
+            <ul class="dropdown-menu dropdown-with-icons">
+              <li>
+                <a>
+                  <i class="material-icons">account_box</i> Profile
+                </a>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="material-icons">exit_to_app</i> Logout
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="wrapper">
   <div class="header bg">
     <div class="container">
