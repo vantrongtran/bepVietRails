@@ -1,7 +1,7 @@
 <div class="recently-item">
   <%= image_tag food.image, class: "item-image" %>
   <div class="recently-item-info-box">
-    <%= link_to food.name, "#" %>
+    <%= link_to food.name, food %>
     <div class="rating">
       <% n = food.average()&.avg || 0 %>
       <% for i in 1..n %>
