@@ -15,7 +15,7 @@ gem "coffee-rails", "~> 4.2"
 gem "jquery-rails"
 gem "jbuilder", "~> 2.5"
 gem "devise"
-gem 'bootstrap-sass', '~> 3.2.0'
+gem "bootstrap-sass", "~> 3.2.0"
 gem "faker", "1.6.6"
 gem "kaminari"
 gem "mini_magick"
@@ -24,7 +24,12 @@ gem "ckeditor"
 gem "paperclip"
 gem "config"
 gem "ratyrate"
-
+gem "omniauth"
+gem "omniauth-twitter"
+gem "omniauth-facebook"
+gem "twitter"
+gem "omniauth-google-oauth2"
+gem 'google-api-client', '~> 0.7.1'
 group :development, :test do
   gem "byebug", platform: :mri
   gem "pry"

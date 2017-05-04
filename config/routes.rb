@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :users, controllers: {sessions: "sessions", registrations: "registrations"}
-  mount Ckeditor::Engine => '/ckeditor'
+  post "/rate" => "rater#create", :as => "rate"
+  devise_for :users, class_name: "FormUser", :controllers => { omniauth_callbacks: "omniauth_callbacks", sessions: "sessions", registrations: "registrations"}
+  mount Ckeditor::Engine => "/ckeditor"
   namespace :admin do
     root "dashboard#index"
     resources :foods
