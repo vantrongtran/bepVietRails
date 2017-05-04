@@ -3,9 +3,9 @@
     <h1><%= yield :header_title %></h1>
   </div>
   <div class="col-md-6 col-xs-12">
-    <form class="navbar-form navbar-right" role="search" method="get" action="<%= yield(:path_search) %>">
+    <form class="navbar-form navbar-right" role="search" method="get" action="<%= action_path %>" data-remote="true">
       <div class="form-group  is-empty">
-        <input type="text" class="form-control" placeholder="Search" name="keyword">
+        <input type="text" class="form-control keyup-submit" placeholder="Search" name="keyword">
         <span class="material-input"></span>
         <span class="material-input"></span>
       </div>

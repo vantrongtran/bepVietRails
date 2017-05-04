@@ -154,6 +154,13 @@ function confrimMaterial(contentText, okAction, cancelAction = function(){consol
   });
 }
 $(document).ready(function() {
+  var queueWaitingSubmit = [];
+  setInterval(function(){
+    queueWaitingSubmit.forEach(function(e){
+      $(e).closest("form").submit();
+    });
+    queueWaitingSubmit = [];
+  }, 3000);
   $("a").tooltip({
     title: function(){
       return $(this).attr('title');
@@ -179,4 +186,28 @@ $(document).ready(function() {
   $("form:not([data-remote='true'])").submit(function(e){
     loading();
   });
+
+  $("input.keyup-submit").keyup(function(e){
+    if (!queueWaitingSubmit.includes(e.target)){
+      queueWaitingSubmit.push(e.target);
+    }
+  });
+
+  $(".checkbox").each(function(i, e){
+    checkbox = $(e).find("input[type=checkbox]");
+    name = checkbox.attr("name");
+    val = checkbox.val() == 'true';
+    inputHidden = '<input type="hidden" name="' + name + '" value="' + !val + '" disabled>';
+    $(e).append(inputHidden);
+  });
+
+  $(".checkbox").find("label").click(function(e){
+    checkbox = $(e.target).closest(".checkbox").find("input[type=checkbox]");
+    input = $(e.target).closest(".checkbox").find("input[type=hidden]");
+    checked = checkbox.is(':checked');
+    checkbox.prop('checked', !checked);
+    checkbox.attr('checked', !checked);
+    input.prop('disabled', !checked);
+  });
 });
+

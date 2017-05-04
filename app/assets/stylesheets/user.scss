@@ -5,6 +5,21 @@
   width: 100px;
   height: 100px;
 }
-.center{
+.name.center h6{
   text-align: center;
+  font-size: 15px;
+  font-weight: 5px;
+}
+.user-col{
+  margin-bottom: 10px;
+}
+.nav-align-center{
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.profile-page .profile-tabs {
+  margin-top: 60px;
+}
+.nav-pills {
+  background-color: rgba(232, 226, 226, 0.2);
 }

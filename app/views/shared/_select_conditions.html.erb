@@ -1,7 +1,7 @@
-<label for="condition_details-select"><%= t :condition_details %></label>
+<label for="condition_details-select"><%= t :condition %></label>
 <select class="form-control" id="condition_details-select" detailname="<%= name %>">
   <option value=""></option>
   <% Condition.all.each do |condition| %>
-    <option value="<%= condition.id %>"><%= condition.name %></option>
+    <option value="<%= condition.id %>" <%= :selected if condition.id == selected %>><%= condition.name %></option>
   <%  end %>
 </select>

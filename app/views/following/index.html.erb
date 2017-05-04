@@ -1,0 +1,2 @@
+<% provide :title, t(".title", name: @user.name) %>
+<%= render "users/users", users: @users, action_path: user_following_index_path(@user) %>

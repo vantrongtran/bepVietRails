@@ -3,24 +3,33 @@ function addConditionDetails(inputName,html) {
   add.html(html);
 }
 function addCondition(){
-  clone = $(".div-condition-detail:first").clone();
-  clone.find("select").attr("detailname", clone.find("select").attr("detailname").replace(/\d/, $(".div-condition-detail").length));
+  clone = $(".div-condition-detail.template:first").clone();
+  clone.find("button.btn-danger.display-none").removeClass("display-none");
+  clone.find(".condition").find("select").attr("detailname", clone.find(".condition").find("select").attr("detailname").replace(/\d/, $(".div-condition-detail").length));
+  clone.find("select#condition_detail-select").attr("name", clone.find("select#condition_detail-select").attr("name").replace(/\d/, $(".div-condition-detail").length));
+  clone.find("select#condition_detail-select").html("");
   clone.find("input[type=checkbox]").attr("name", clone.find("input[type=checkbox]").attr("name").replace(/\d/, $(".div-condition-detail").length));
-  clone.find(".condition_details").html("");
   $(".div-condition-details").append(clone);
+  $("button").tooltip({
+    title: function(){
+      return $(this).attr('title');
+    }
+  });
   $('select#condition_details-select').change(function(e){
-    loading();
-    $.ajax({
-      type: "GET",
-      url: '/condition_details' + '?condition_id=' + $(e.target).val() + "&params_name=" + $(e.target).attr("detailname"),
-      dataType: "script",
-      success: function(data){
-        loaded();
-      },
-      error: function(){
-        loaded();
-      }
-    });
+    if ($(e.target).val() != "") {
+      loading();
+      $.ajax({
+        type: "GET",
+        url: '/condition_details' + '?condition_id=' + $(e.target).val() + "&params_name=" + $(e.target).attr("detailname"),
+        dataType: "script",
+        success: function(data){
+          loaded();
+        },
+        error: function(){
+          loaded();
+        }
+      });
+    }
   });
 }
 
@@ -50,21 +59,23 @@ function removeCondition(element){
         index++;
       });
     }
-  );
+    );
 }
 $(document).ready(function() {
   $('select#condition_details-select').change(function(e){
-    loading();
-    $.ajax({
-      type: "GET",
-      url: '/condition_details' + '?condition_id=' + $(e.target).val() + "&params_name=" + $(e.target).attr("detailname"),
-      dataType: "script",
-      success: function(data){
-        loaded();
-      },
-      error: function(){
-        loaded();
-      }
-    });
+    if ($(e.target).val() != "") {
+      loading();
+      $.ajax({
+        type: "GET",
+        url: '/condition_details' + '?condition_id=' + $(e.target).val() + "&params_name=" + $(e.target).attr("detailname"),
+        dataType: "script",
+        success: function(data){
+          loaded();
+        },
+        error: function(){
+          loaded();
+        }
+      });
+    }
   });
 });

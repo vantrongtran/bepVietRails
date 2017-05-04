@@ -91,7 +91,7 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     extlib (0.9.16)
-    faker (1.6.6)
+    faker (1.7.3)
       i18n (~> 0.5)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
@@ -162,7 +162,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.5)
+    mysql2 (0.4.6)
     naught (1.1.0)
     nio4r (2.0.0)
     nokogiri (1.7.1)
@@ -312,7 +312,7 @@ DEPENDENCIES
   config
   devise
   dotenv-rails
-  faker (= 1.6.6)
+  faker
   google-api-client (~> 0.7.1)
   jbuilder (~> 2.5)
   jquery-rails

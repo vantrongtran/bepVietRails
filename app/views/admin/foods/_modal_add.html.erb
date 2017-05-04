@@ -52,23 +52,26 @@
           </div>
           <div class="row div-condition-details-row-class">
             <div class="form-group div-condition-details">
-              <div class="div-condition-detail row form-group">
-                <div class="input-field col-md-5 col-sx-12">
-                  <%= render "shared/select_conditions", name: "food[food_conditions_attributes][0]" %>
+              <div class="div-condition-detail template row form-group">
+                <div class="input-field condition col-md-5 col-sx-12">
+                  <%= render "shared/select_conditions", name: "food[food_conditions_attributes][0]", selected: nil %>
                 </div>
                 <div class="col-md-5 col-sx-10">
                   <div class="condition_details input-field">
+                    <label for="condition_detail-select"><%= t :condition_details %></label>
+                    <select class="form-control" id="condition_detail-select" name="<%= "#{@params_name}[condition_detail_id]" %>">
+                    </select>
                   </div>
                 </div>
                 <div class="col-md-1 col-sx-2">
                   <div class="checkbox">
-                    <label for="condition_details-select"><%= t :match %></label>
+                    <label  class="label-label"><%= t :match %></label>
                     <label>
                       <input type="checkbox" name="food[food_conditions_attributes][0][is_match]" checked>
                     </label>
                   </div>
                 </div>
-                <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete" onclick="removeCondition(this)">
+                <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs display-none" data-original-title="Delete" onclick="removeCondition(this)">
                   <i class="material-icons">close</i>
                   <div class="ripple-container"></div>
                 </button>
