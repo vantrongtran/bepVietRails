@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426081524) do
+ActiveRecord::Schema.define(version: 20170503063247) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
@@ -119,12 +119,13 @@ ActiveRecord::Schema.define(version: 20170426081524) do
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "category_id", null: false
-    t.string   "title",       null: false
-    t.string   "content",     null: false
+    t.integer  "category_id",               null: false
+    t.string   "title",                     null: false
+    t.text     "content",     limit: 65535, null: false
     t.string   "type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "image"
     t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
   end
 
@@ -179,10 +180,10 @@ ActiveRecord::Schema.define(version: 20170426081524) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                null: false
+    t.string   "name"
     t.integer  "gender",                 default: 1,  null: false
     t.string   "avatar"
-    t.datetime "birthday",                            null: false
+    t.datetime "birthday"
     t.integer  "occupation"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

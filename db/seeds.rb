@@ -60,3 +60,13 @@ user = User.create!(
     password: "12312311",
   )
 end
+
+puts "---------------------"
+puts "Create user"
+User.create name: "user", email: "user@gmail.com", password: "111111"
+
+puts "---------------------"
+puts "Create post"
+50.times do |n|
+  post = Post.create! title: Faker::Name.name, content: Faker::Lorem.paragraphs, category_id: rand(2..10)
+end

@@ -1,20 +1,28 @@
 <% provide :main_class, "index-page" %>
 <%= render "layouts/header" %>
 <div class="main main-raised">
-  <div class="section section-basic fixed_body">
+  <div class="section section-basic fixed_body container">
     <div class="row">
-      <div class="col-md-3">
-        <div class="lef_navbar">
-          <div class="list-group">
-          <a href="#" class="list-group-item">Cẩm nang sức khỏe</a>
-          <a href="#" class="list-group-item">Cẩm nang dinh dưỡng </a>
-          <a href="#" class="list-group-item">Gợi ý món ăn</a>
-        </div>
-        </div>
+      <div class="headline">
+        <h3>Best rating </h3>
       </div>
-      <div class=" section col-md-8 content_area">
+      <div class="row">
         <%= render partial: "food_item", collection: @foods,
           as: :food %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="headline">
+        <h3>Cẩm nang dinh dưỡng </h3>
+      </div>
+      <div class="row">
+        <%= render partial: "post_item", collection: @posts,
+          as: :post %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="headline">
+        <h3>Cẩm nang sức khỏe </h3>
       </div>
     </div>
   </div>

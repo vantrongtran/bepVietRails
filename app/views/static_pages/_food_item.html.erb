@@ -1,4 +1,15 @@
-<div class="home_item">
-  <%= image_tag food.image, class: "home_item_image" %>
-  <%= link_to food.name, "#" %>
+<div class="recently-item">
+  <%= image_tag food.image, class: "item-image" %>
+  <div class="recently-item-info-box">
+    <%= link_to food.name, "#" %>
+    <div class="rating">
+      <% n = food.average()&.avg || 0 %>
+      <% for i in 1..n %>
+        <img src="/assets/star-on.png">
+      <% end %>
+      <% for i in 1..5-n %>
+        <img src="/assets/star-off.png">
+      <% end %>
+    </div>
+  </div>
 </div>

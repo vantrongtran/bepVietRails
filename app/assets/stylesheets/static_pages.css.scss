@@ -20,22 +20,69 @@
   margin: 50px 0px 0px 50px;
 }
 
-.home_item {
-  text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 0px 40px 50px 50px;
-  width: 300px;
-  height: 200px;
-  float: left;
-  .home_item_image {
-    width: 300px;
-    height: 200px;
-  }
-}
-
 .food_detail{
   background: url('/assets/home-bg.jpg') 50% 0 repeat-y fixed;
 }
- .description {
+
+.description {
   padding-bottom: 50px;
- }
+}
+
+.headline{
+  margin: 10px 0;
+  overflow: hidden;
+  padding-bottom: 15px;
+  text-align: center;
+  border-bottom: 0;
+}
+.headline:after {
+  background-color: #8bc34a;
+  width: 100px;
+  height: 1px;
+  content: "";
+  top: 8px;
+  margin: 0 auto;
+  display: block;
+}
+
+.recently-item {
+  width: 234px;
+  float: left;
+  padding: 15px;
+  position: relative;
+  float: left;
+  .item-image{
+    width: 204px;
+    height: 204px;
+  }
+}
+
+.container{
+  width: 1170px;
+}
+
+.recently-item-info-box {
+  bottom: 0;
+  position: relative;
+  padding: 0;
+  color: black !important;
+  a {
+    color: black;
+    font-weight: bold;
+  }
+}
+
+.post-item {
+  width: 25%;
+  float: left;
+  padding: 9px;
+}
+
+.item-img-effect {
+  overflow: hidden;
+}
+
+.item-content {
+  background-color: #fff;
+  padding: 10px;
+}

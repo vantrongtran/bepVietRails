@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :users, controllers: {sessions: "sessions"}
+  devise_for :users, controllers: {sessions: "sessions", registrations: "registrations"}
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     root "dashboard#index"
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :ingredients
   end
+  resources :foods
   resources :hashtags
   resources :foods
   resources :users

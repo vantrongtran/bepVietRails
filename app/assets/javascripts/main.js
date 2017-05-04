@@ -171,7 +171,7 @@ $(document).ready(function() {
     );
     return false;
   });
-  $("a:not(.data-confirm)").click(function(e){
+  $("a:not(.data-confirm):not(.click-event)").click(function(e){
     if ($(e.target).attr("href")[0] != "#") {
       loading();
     }

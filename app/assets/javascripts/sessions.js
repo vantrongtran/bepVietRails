@@ -11,7 +11,9 @@ $( document ).ready(function() {
 
 function shakeModal(errors){
   $('#loginModal .modal-dialog').addClass('shake');
-  $('.error').addClass('alert alert-danger').html(errors);
+  for (var key in errors){
+    $('.error').addClass('alert alert-danger').html(key.charAt(0).toUpperCase() + key.slice(1) + " " + errors[key]);
+  }
   $('input[type="password"]').val('');
   setTimeout( function(){
     $('#loginModal .modal-dialog').removeClass('shake');
