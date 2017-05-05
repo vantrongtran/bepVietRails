@@ -102,5 +102,31 @@
 }
 
 .comments{
+}
+
+
+.list-comments{
+  margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.comment-user {
+  float: left;
+  padding-top: 0px;
+}
+
+.comment-user-avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.comment-content {
+  width: 550px;
+  margin-left: 55px;
+  padding-top: 0px;
+  word-wrap: break-word;
+}
+
+.user-comment {
+  margin-top: 20px;
 }

@@ -10,14 +10,11 @@ Rails.application.routes.draw do
   end
   resources :foods
   resources :hashtags
-  resources :foods do
-    resources :comments
-  end
+  resources :foods
   resources :users
-  resources :posts do
-    resources :comments
-  end
+  resources :posts
   resources :condition_details
   resources :relationships
+  resources :comments
   root "static_pages#index"
 end
