@@ -72,7 +72,7 @@ class User < ApplicationRecord
   end
 
   def facebook_client
-    @facebook_client ||= Facebook.client( access_token: facebook.accesstoken, :image_size => 'large' )
+    @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
   end
 
   def instagram
