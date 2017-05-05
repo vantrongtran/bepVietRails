@@ -1,37 +1,135 @@
-<% provide :main_class, "profile-page" %>
-<% provide :title, @user.name %>
+<% provide :title, t(".title", name: @user.name) %>
 <%= render "layouts/navbar" %>
-<div class="header header-filter user_detail">
-</div>
-<div class="main main-raised">
-  <div class="profile-content">
-    <div class="container">
-      <div class="row">
-        <div class="profile">
-          <div class="avatar">
-            <%= image_tag @user.avatar, class: "img-circle img-responsive img-raised" %>
-          </div>
-          <div class="name">
-            <h3 class="title"><%= @user.name %></h3>
-            <h6 id="followers">
-              <%= t(:follow_details, following: @user.followers.count) %>
-            </h6>
-          </div>
-          <div class="relationships row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4" id="follow-form">
-              <% if user_signed_in? && current_user != @user %>
-              <%= current_user.following?(@user) ? render("unfollow") : render("follow") %>
-              <% end %>
-            </div>
-            <div class="col-md-4"></div>
-          </div>
+<div class="profile-tabs">
+  <div class="nav-align-center">
+    <ul class="nav nav-pills trans" role="tablist">
+      <li class="active">
+        <a href="#user-activities" role="tab" data-toggle="tab">
+          <i class="material-icons">view_day</i>
+          <%= t :activities %>
+        </a>
+      </li>
+      <% if @user.id == current_user&.id %>
+        <li>
+          <a href="#user-physical-conditions" role="tab" data-toggle="tab">
+            <i class="material-icons">receipt</i>
+            <%= t :conditions %>
+          </a>
+        </li>
+      <% end %>
+      <li>
+        <a href="#shows" role="tab" data-toggle="tab">
+          <i class="material-icons">favorite</i>
+          <%= :favorite %>
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content gallery active">
+      <div class="tab-pane text-center" id="user-activities">
+        <div class="row">
         </div>
       </div>
-      <div class="row">
-        <%= render "users/users", users: @users if @users&.any? %>
+      <% if @user.id == current_user&.id %>
+      <%= form_tag user_conditions_path, method: :post %>
+        <%= hidden_field_tag :"user[id]", @user.id %>
+        <div class="tab-pane" id="user-physical-conditions">
+          <div class="row">
+            <div class="row">
+              <div class="col-md-2 col-sx-12"></div>
+              <div class="form-group div-condition-details col-md-8 col-sx-12">
+                <% @user.user_conditions.each_with_index do |c, i| %>
+                  <%= hidden_field_tag :"user[user_conditions_attributes][#{i}][id]", c.id %>
+                  <%= hidden_field_tag :"user[user_conditions_attributes][#{i}][_destroy]", c.id, disabled: true %>
+                  <div class="div-condition-detail row form-group">
+                    <div class="input-field condition col-md-5 col-sx-12">
+                      <%= render "shared/select_conditions", name: "user[user_conditions_attributes][#{i}]", selected: c.condition.id %>
+                    </div>
+                    <div class="col-md-5 col-sx-10">
+                      <div class="condition_details input-field">
+                        <div class="condition_details input-field">
+                          <label for="condition_detail-select"><%= t :condition_details %></label>
+                          <select class="form-control" id="condition_detail-select" name="<%= "user[user_conditions_attributes][#{i}][condition_detail_id]" %>">
+                            <% c.condition.condition_details.each do |d| %>
+                              <option value="<%= d.id %>" <%= :selected if d.id == c.condition_detail_id %>><%= d.value %></option>
+                            <% end %>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1 col-sx-2">
+                      <div class="checkbox">
+                        <label class="label-label"><%= t :match %></label>
+                        <label>
+                          <%= check_box_tag :"user[user_conditions_attributes][#{i}][is_match]", true, c.is_match %>
+                        </label>
+                      </div>
+                    </div>
+                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete"
+                      onclick="removeServer(this, '.div-condition-detail')">
+                      <i class="material-icons">close</i>
+                      <div class="ripple-container"></div>
+                    </button>
+                  </div>
+                <% end %>
+                <div class="div-condition-detail template row form-group">
+                  <div class="input-field condition col-md-5 col-sx-12">
+                    <%= render "shared/select_conditions", name: "user[user_conditions_attributes][#{@user.user_conditions.size}]", selected: nil %>
+                  </div>
+                  <div class="col-md-5 col-sx-10">
+                    <div class="condition_details input-field">
+                      <div class="condition_details input-field">
+                        <label for="condition_detail-select"><%= t :condition_details %></label>
+                        <select class="form-control" id="condition_detail-select" name="<%= "user[user_conditions_attributes][#{@user.user_conditions.size}][condition_detail_id]" %>">
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1 col-sx-2">
+                    <div class="checkbox">
+                      <label class="label-label"><%= t :match %></label>
+                      <label>
+                        <%= check_box_tag :"user[user_conditions_attributes][#{@user.user_conditions.size}][is_match]", true, true %>
+                      </label>
+                    </div>
+                  </div>
+                  <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs display-none" data-original-title="Delete" onclick="removeCondition(this)">
+                    <i class="material-icons">close</i>
+                    <div class="ripple-container"></div>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-2 col-sx-12"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sx-0"></div>
+              <div class="col-md-6 col-sx-12">
+                <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple pull-left" data-original-title="<%= t ".add_c" %>"
+                  onclick='addCondition()'>
+                  <i class="material-icons">add</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+              <div class="col-md-3 col-sx-0"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sx-0"></div>
+              <div class="col-md-6 col-sx-12">
+                <button type="submit" rel="tooltip" title="" class="btn btn-primary pull-right" data-original-title="<%= t ".update" %>">
+                  <i class="material-icons">done_all</i>
+                  <div class="ripple-container"></div>
+                  <span><%= t :update %></span>
+                </button>
+              </div>
+              <div class="col-md-3 col-sx-0"></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="tab-pane text-center" id="shows">
+        <div class="row">
+        </div>
       </div>
     </div>
   </div>
 </div>
-

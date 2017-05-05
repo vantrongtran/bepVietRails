@@ -1,6 +1,6 @@
 puts "---------------------"
 puts "Create ingredients"
-20.times { |i| Ingredient.create! name: Faker::Name.name, inscription: "g" }
+20.times { |i| Ingredient.create! name: Faker::Food.ingredient, inscription: "g" }
 
 puts "---------------------"
 puts "Create base Category"
@@ -61,12 +61,17 @@ user = User.create!(
   )
 end
 
-puts "---------------------"
-puts "Create user"
 User.create name: "user", email: "user@gmail.com", password: "111111"
 
 puts "---------------------"
 puts "Create post"
 50.times do |n|
-  post = Post.create! title: Faker::Name.name, content: Faker::Lorem.paragraphs, category_id: rand(2..10)
+  post = Post.create! title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs, category_id: rand(2..6)
+end
+
+users = User.first(20)
+users.each do |user|
+  ((user.id + 1)..30).each do |i|
+    user.follow User.find(i)
+  end
 end

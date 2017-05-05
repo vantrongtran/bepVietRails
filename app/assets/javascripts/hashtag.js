@@ -1,8 +1,15 @@
 $(document).ready(function() {
   $(".autocomplete-suggestion").hide();
   $("form input[name='hashtag']").keypress(function (e) {
-    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+    var keyCode = event.which || event.keyCode;
+    if (keyCode == 13 || keyCode == 222) {
       e.preventDefault();
+      return false;
+    }
+  });
+  $("form input[name='hashtag']").keyup(function (e) {
+    var keyCode = event.which || event.keyCode;
+    if (keyCode == 222) {
       return false;
     }
   });
@@ -26,7 +33,7 @@ function revertIndexInputHastag(){
 
 hashtagRegex = /^[A-Za-z].*[0-9a-zA-Z]$/;
 function searchHashtag(element, event){
-  key = $(element).val().trim();
+  key = $(element).val().trim().replace(/[@#.*+?^${}()|[\]\\!"',`~-]/g, "");
   parent = $(element).closest(".autocomplete");
   var keyCode = event.which || event.keyCode;
   if (keyCode == 13) {

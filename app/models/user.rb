@@ -23,7 +23,7 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable
 
   has_many :identities
-  has_many :activites
+  has_many :activities
   has_many :likes
   has_many :pots
   has_many :active_relationships,
@@ -36,8 +36,16 @@ class User < ApplicationRecord
     source: :follower
   has_many :conditions
   has_many :comments
+  has_many :favorite_rates, -> {where stars: 5}, as: :rateable
+  has_many :favorite_foods, through: :favorite_rates, source: :rateable, source_type: Food.name
+  has_many :user_conditions, class_name:Condition::UserCondition.name, foreign_key: :target_id
+
+  accepts_nested_attributes_for :user_conditions,
+    reject_if: ->attributes{attributes[:condition_detail_id].blank?}, allow_destroy: true
 
   mount_uploader :avatar, PictureUploader
+
+  scope :name_like, -> keyword { where("name LIKE ?", "%#{keyword}%") if keyword.present?}
 
   def follow other_user
     active_relationships.create followed_id: other_user.id
@@ -64,7 +72,7 @@ class User < ApplicationRecord
   end
 
   def facebook_client
-    @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
+    @facebook_client ||= Facebook.client( access_token: facebook.accesstoken, :image_size => 'large' )
   end
 
   def instagram
