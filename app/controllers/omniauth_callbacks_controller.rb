@@ -21,7 +21,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = @identity.user || current_user
     if @user.nil?
       @user = User.create( email: @identity.email || "", name: @identity.name )
-      @user.remote_avatar_url = @identity.image
+      @user.remote_avatar_url = "#{@identity.image}?type=large"
       @user.save
       @identity.update_attribute( :user_id, @user.id )
     end
@@ -39,7 +39,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
     else
       session["devise.#{provider}_data"] = env["omniauth.auth"]
-      redirect_to new_user_registration_url
     end
   end
 end

@@ -130,16 +130,16 @@
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:809px;height:150px;overflow:hidden;">
           <% @food.food_ingredients.each do |ingredient| %>
-            <div class="slide-element-ingredient">
-              <img data-u="image" src="<%= ingredient.image %>" />
-              <div class="ingredients-element-detail">
-              </div>
-              <div class="ingredient-item-detail">
-                <%= ingredient.name %>:
-                <%= ingredient.value %>
-                <%= ingredient.inscription %>
-              </div>
+          <div class="slide-element-ingredient">
+            <img data-u="image" src="<%= ingredient.image %>" />
+            <div class="ingredients-element-detail">
             </div>
+            <div class="ingredient-item-detail">
+              <%= ingredient.name %>:
+              <%= ingredient.value %>
+              <%= ingredient.inscription %>
+            </div>
+          </div>
           <% end %>
         </div>
         <!-- Arrow Navigator -->
@@ -149,10 +149,29 @@
       <script type="text/javascript">jssor_1_slider_init();</script>
     </div>
   </div>
-</div>
-<div class="description text-center ">
-  <%= @food.cooking_method.html_safe %>
-</div>
+  <div class="description">
+    <%= @food.cooking_method.html_safe %>
+    <div class="comments">
+      <div class="headline">
+        <h3>Comments</h3>
+      </div>
+      <div class="form-group label-floating is-empty">
+        <%= form_for @comment, remote: true do |f| %>
+        <%= f.hidden_field :target_id, value: @food.id %>
+        <%= f.hidden_field :target_type, value: Food.name %>
+        <label class="control-label"> Add your comment...</label>
+        <%= f.text_area :content, class: "form-control" ,rows: "4" %>
+        <span class="material-input"></span>
+        <%= f.submit "Comment", class: "btn btn-primary pull-right" %>
+        <% end %>
+      </div>
+      <div class="list-comments">
+        <%= render partial: "comments/comment", collection: @food.comments,
+        as: :comment %>
+      </div>
     </div>
   </div>
+</div>
+</div>
+</div>
 </div>
