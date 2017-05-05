@@ -21,6 +21,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = @identity.user || current_user
     if @user.nil?
       @user = User.create( email: @identity.email || "", name: @identity.name )
+      @user.remote_avatar_url = @identity.image
+      @user.save
       @identity.update_attribute( :user_id, @user.id )
     end
 
@@ -32,7 +34,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @identity.update_attribute( :user_id, @user.id )
       # This is because we've created the user manually, and Device expects a
       # FormUser class (with the validations)
-      @user = FormUser.find @user.id
+      @user = User.find @user.id
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
     else

@@ -7,6 +7,7 @@ class Food < ApplicationRecord
   has_many :conditions, through: :condition_details
   has_many :food_hashtags, foreign_key: :target_id, class_name: Hashtag::FoodHashtag.name
   has_many :hashtags, through: :food_hashtags
+  has_many :comments, as: :target
 
   validates :name, :cooking_method, :calorie, presence: true
 
