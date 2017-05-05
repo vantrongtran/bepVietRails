@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     root "dashboard#index"
     resources :foods
     resources :categories
-    resources :ingredients
+    resources :category_trees
+    resources :food_trees, only: :index
+    resources :ingredients, only: :index
   end
   resources :foods
   resources :hashtags

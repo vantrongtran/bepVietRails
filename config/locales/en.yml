@@ -66,6 +66,8 @@ en:
       users: "User Profiles"
       categories: "Categories"
       ingredients: "Ingredients"
+      category_tree: "Categories Tree"
+      food_tree: "Foods Tree"
   admin:
     dashboard:
       index:
@@ -123,3 +125,9 @@ en:
       modal_new_categories:
         title: "Add New Category"
         parent_name: "Parent name"
+    category_trees:
+      index:
+        title: "Category Tree"
+    food_trees:
+      index:
+        title: "Food Tree"
