@@ -16,16 +16,27 @@
 }
 
 .profile-page .profile .avatar .img-circle {
-    max-width: 200px;
-    margin: -80px auto 0;
+  max-width: 200px;
+  margin: -80px auto 0;
 }
 
 .profile-page .profile img {
-    max-width: 250px;
-    margin: 0;
+  max-width: 250px;
+  margin: 0;
+}
+
+.profile-page .description {
+  color: #3C4858;
 }
 
 .avatar {
   width: 234px;
   margin: 0 auto;
+}
+
+.comment-content{
+  color: #3C4858;
+}
+.comment-content small{
+  color: #999999;
 }

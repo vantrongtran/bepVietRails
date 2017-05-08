@@ -14,8 +14,8 @@
       <i class="material-icons">edit</i>
       <div class="ripple-container"></div>
     </button>
-    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete">
-      <%= link_to admin_category_path(category), method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm", confirmcontent: t("confirm_delete") do %>
+    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="<%= t :delete %>">
+      <%= link_to admin_category_path(category), method: :delete, confirmcontent: t("confirm_delete"), class: "btn btn-danger btn-simple btn-xs data-confirm" do %>
         <i class="material-icons">close</i>
         <div class="ripple-container"></div>
       <% end %>

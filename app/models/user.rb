@@ -22,9 +22,9 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable
 
-  has_many :identities
-  has_many :activities
-  has_many :likes
+  has_many :identities, dependent: :destroy
+  has_many :activities, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :pots
   has_many :active_relationships,
     class_name: Relationship.name, foreign_key: :follower_id, dependent: :destroy
@@ -36,7 +36,7 @@ class User < ApplicationRecord
     source: :follower
   has_many :conditions
   has_many :comments
-  has_many :favorite_rates, -> {where stars: 5}, as: :rateable
+  has_many :favorite_rates, -> {where stars: 5}, foreign_key: :rater_id, class_name: Rate.name
   has_many :favorite_foods, through: :favorite_rates, source: :rateable, source_type: Food.name
   has_many :user_conditions, class_name:Condition::UserCondition.name, foreign_key: :target_id
 
