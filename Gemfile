@@ -15,7 +15,7 @@ gem "coffee-rails", "~> 4.2"
 gem "jquery-rails"
 gem "jbuilder", "~> 2.5"
 gem "devise"
-gem 'bootstrap-sass', '~> 3.2.0'
+gem "bootstrap-sass", "~> 3.2.0"
 gem "faker"
 gem "kaminari"
 gem "mini_magick"
@@ -29,7 +29,7 @@ gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "twitter"
 gem "omniauth-google-oauth2"
-gem 'google-api-client', '~> 0.7.1'
+gem "google-api-client", :require => "google/api_client"
 gem "pry"
 
 group :development, :test do

@@ -7,28 +7,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="">Bếp Việt</a>
+      <%= link_to "Bếp Việt", root_path, class: "navbar-brand" %>
     </div>
 
     <div class="collapse navbar-collapse" id="example-navbar-primary">
       <ul class="nav navbar-nav navbar-right">
         <li class="active">
-          <a href="#pablo">
+          <%= link_to root_path do %>
             <i class="material-icons">home</i>
             Home
-          </a>
+          <% end %>
         </li>
         <li>
-          <a href="#pablo">
-            <i class="material-icons">account_circle</i>
-            Profile
-          </a>
+          <%= link_to foods_path do %>
+            <i class="material-icons">room_service</i>
+            Foods
+          <% end %>
         </li>
         <li>
-          <a href="#">
-            <i class="material-icons">settings</i>
-            Settings
-          </a>
+          <%= link_to posts_path do %>
+            <i class="material-icons">book</i>
+            Tips
+          <% end %>
         </li>
         <% if !current_user %>
         <li>
@@ -52,9 +52,9 @@
             <div class="ripple-container"></div></a>
             <ul class="dropdown-menu dropdown-with-icons">
               <li>
-                <a>
+                <%= link_to current_user do %>
                   <i class="material-icons">account_box</i> Profile
-                </a>
+                <% end %>
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
