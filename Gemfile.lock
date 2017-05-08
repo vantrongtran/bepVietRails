@@ -313,7 +313,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
-  google-api-client (~> 0.7.1)
+  google-api-client
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

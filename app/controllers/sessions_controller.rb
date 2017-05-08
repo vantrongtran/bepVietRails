@@ -22,3 +22,4 @@ class SessionsController < Devise::SessionsController
     {:scope => resource_name, :recall => "#{controller_path}#failure"}
   end
 end
+

@@ -16,6 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def generic_callback( provider )
+    binding.pry
     @identity = Identity.find_for_oauth env["omniauth.auth"]
 
     @user = @identity.user || current_user
@@ -41,5 +42,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session["devise.#{provider}_data"] = env["omniauth.auth"]
     end
+  end
+
+  def failure
+    render json: { success: false, errors: ["Invalid username or password!"] }
   end
 end
