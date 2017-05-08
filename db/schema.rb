@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505025429) do
+ActiveRecord::Schema.define(version: 20170508030013) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 20170505025429) do
     t.datetime "updated_at",               null: false
     t.index ["food_id"], name: "index_food_ingredients_on_food_id", using: :btree
     t.index ["ingredient_id"], name: "index_food_ingredients_on_ingredient_id", using: :btree
+  end
+
+  create_table "food_target_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "food_id"
+    t.boolean  "is_match",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_food_target_conditions_on_food_id", using: :btree
   end
 
   create_table "foods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -243,5 +251,6 @@ ActiveRecord::Schema.define(version: 20170505025429) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "food_target_conditions", "foods"
   add_foreign_key "identities", "users"
 end

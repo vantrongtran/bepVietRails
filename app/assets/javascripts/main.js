@@ -201,13 +201,35 @@ $(document).ready(function() {
     $(e).append(inputHidden);
   });
 
-  $(".checkbox").find("label").click(function(e){
-    checkbox = $(e.target).closest(".checkbox").find("input[type=checkbox]");
-    input = $(e.target).closest(".checkbox").find("input[type=hidden]");
-    checked = checkbox.is(':checked');
-    checkbox.prop('checked', !checked);
-    checkbox.attr('checked', !checked);
-    input.prop('disabled', !checked);
-  });
+  // $(".checkbox").find("label").click(function(e){
+  //   checkbox = $(e.target).closest(".checkbox").find("input[type=checkbox]");
+  //   input = $(e.target).closest(".checkbox").find("input[type=hidden]");
+  //   checked = checkbox.is(':checked');
+  //   checkbox.prop('checked', !checked);
+  //   checkbox.attr('checked', !checked);
+  //   input.prop('disabled', !checked);
+  // });
+  // $(".tab-pane").hide();
+  // $(".tab-pane.active").show();
+  // $("a[role='tab'][data-toggle='tab'][href='#" + $(".tab-pane.active").attr('id') + "']").each(function(i, e){
+  //   $(e).show();
+  //   showActive(e);
+  // })
+  // $("a[role='tab'][data-toggle='tab']").click(function(e){
+  //   showActive(e.target);
+  // });
+  $(".sidebar-wrapper").find("ul.nav").find("li.active").removeClass("active");
+  $(".sidebar-wrapper").find("ul.nav").find("a[href='" + window.location.pathname + "']").closest("li").addClass("active");;
 });
 
+function showActive(target) {
+  $(target).closest("ul[role='tablist']").find("li.active").removeClass('active');
+  $(target).closest("li").addClass('active');
+  console.log($(target).attr('href').trim());
+  s = $(target).attr('href')
+  pane = $(".tab-pane" + s);
+  pane.closest("tab-content").find(".tab-pane").removeClass('active');
+  pane.closest("tab-content").find(".tab-pane").hide();
+  pane.show();
+  pane.addClass('active');
+}
