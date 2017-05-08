@@ -4,4 +4,8 @@ class ConditionDetail < ApplicationRecord
   has_many :food_target_conditions, through: :food_conditions, class_name: FoodTargetCondition.name
 
   belongs_to :condition
+
+  def name
+    return self.value
+  end
 end

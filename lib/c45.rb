@@ -1,15 +1,15 @@
 class C45
   attr_accessor :data, :root, :arr_gain_ratios, :attributes
 
-  def initialize data
+  def initialize data, conditions
     @data = data
     if @data.size > 0
       @s = @data.size.to_f
       @arr_gain_ratios = Array.new
-      @attributes = Condition.all.includes(:condition_details)
+      @attributes = conditions
       gain_ratio
       attribute= arr_gain_ratios[0].attribute
-      @root = Node.new attribute.name, @data, @arr_gain_ratios[0].value, "True/Flase"
+      @root = Node.new attribute, @data, @arr_gain_ratios[0].value, "True/Flase"
       @root = recursive_tree @root, 0
     end
   end
@@ -83,18 +83,18 @@ class C45
     if level == 0
       new_root = node
     else
-      new_root = Node.new attribute.name, node.food_target_conditions, gain_ratio.value, "True/Flase"
+      new_root = Node.new attribute, node.food_target_conditions, gain_ratio.value, "True/Flase"
     end
     attribute.condition_details.each do |value|
       match_foods = FoodTargetCondition.in(node.food_target_conditions.map(&:id)).match_condition value.id
       if match_foods.any?
-        m = Node.new( value.value, match_foods, 0, true)
+        m = Node.new( value, match_foods, 0, true)
         recursive_tree m, level + 1
         new_root.add_children m if m
       end
       not_match_foods = FoodTargetCondition.in(node.food_target_conditions.map(&:id)).not_match_condition value.id
       if not_match_foods.any?
-        nm = Node.new(value.value, not_match_foods, 0, false)
+        nm = Node.new(value, not_match_foods, 0, false)
         recursive_tree nm, level + 1
         new_root.add_children nm if nm
       end

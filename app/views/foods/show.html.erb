@@ -13,8 +13,8 @@
             </div>
             <div class="name">
               <h3 class="title"><%= @food.name %></h3>
-              <%= rating_for @food %>
-              <h7>( <%= @food.rates.count %> )</h7>
+              <%= rating_for @food, nil, cancel: false %>
+              <h7 id="rate-result"><%= "(#{@food.average&.avg || 0.0}/#{@food.rates.count})" %></h7>
               <h6>Calorie: <%= @food.calorie %></h6>
             </div>
             <div class="ingredients">

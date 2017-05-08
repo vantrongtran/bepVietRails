@@ -1,4 +1,6 @@
 en:
+  ago: "%{time} ago."
+  home: "Food Suggeter"
   follow: "Follow"
   unfollow: "Unfollow"
   following_details: "Following: %{following}"
@@ -20,6 +22,7 @@ en:
   deleted_fail: "Deleted failed!!!"
   updated_fail: "Updated failed!!!"
   updated: "Updated!!!"
+  delete: "Delete"
   update: "Update"
   Create: "Create"
   created: "Created!!!"
@@ -27,7 +30,7 @@ en:
   name: "Name"
   blank: "%{name} can be blank!!!"
   wrong: "Somthing was worng, please try laster!"
-  confirm_delete: "Are you sure?????"
+  confirm_delete: "Are you sure to continue????"
   tag: "Hashtag"
   users:
     show:
