@@ -32,17 +32,19 @@ puts "Create food"
 50.times do |n|
   food = Food.create! name: Faker::Name.name, cooking_method: Faker::Lorem.paragraphs,
     calorie: Faker::Number.decimal(2, 3)
-    conditions = []
-    9.times do |i|
-      condition = ([*ConditionDetail.first.id..ConditionDetail.last.id] - conditions).sample
-      conditions.push condition
-      Condition::FoodCondition.create! target_id: food.id,condition_detail_id: condition, is_match: rand(0..1)
+  rand(2..7).times do |t|
+    food_target_condition = food.food_target_conditions.create is_match: rand(0..1)
+      conditions = []
+    Condition.all.each do |condition|
+      Condition::FoodCondition.create! target_id: food_target_condition.id,  is_match: rand(0..1),
+        condition_detail_id: condition.condition_details.sample.id
     end
-    used = []
-    10.times do |i|
+  end
+  used = []
+  rand(6..10).times do |i|
       used.push *(ingredient = ([*1..20] - used).sample)
       food.food_ingredients.create! ingredient_id: ingredient, value: Faker::Number.decimal(2, 3)
-    end
+  end
 end
 puts "---------------------"
 puts "Create User"

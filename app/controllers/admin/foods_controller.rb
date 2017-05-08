@@ -7,7 +7,6 @@ class Admin::FoodsController < Admin::AdminController
     else
       @food = Food.new
       @foods = Food.name_like(params[:keyword]).page(params[:page])
-      @json = C45.new(Food.all).to_json
     end
   end
 

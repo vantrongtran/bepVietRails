@@ -35,40 +35,5 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header" data-background-color="purple">
-          <h4 class="title">
-            <%= t :manager, managed: "Food Tree" %>
-          </h4>
-          <p class="category"><%= t ".category_tree"%></p>
-        </div>
-        <div class="card-content table-responsive">
-           <div class="chart" id="custom-colored-tree"> --@-- </div>
-              <script>
-
-              var chart_config = {
-                  chart: {
-                      container: "#custom-colored-tree",
-
-                      nodeAlign: "BOTTOM",
-
-                      connectors: {
-                          type: 'step'
-                      },
-                      node: {
-                          HTMLclass: 'nodeExample1'
-                      }
-                  },
-                  nodeStructure: <%= @json.to_json.html_safe %>
-              };
-
-          new Treant( chart_config );
-        </script>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <% provide :modal, render("admin/foods/modal_add") %>

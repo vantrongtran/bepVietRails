@@ -1,5 +1,6 @@
 class Condition < ApplicationRecord
   has_many :condition_details
-  has_many :target_conditon, through: :condition_details
-  has_many :foods, ->{distinct}, through: :condition_details
+  has_many :target_conditions, through: :condition_details
+  has_many :food_conditions, through: :condition_details
+  has_many :food_target_conditions, ->{distinct}, through: :food_conditions
 end

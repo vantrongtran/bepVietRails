@@ -12,5 +12,7 @@ module BepVietRails
     config.autoload_paths += %W(#{config.root}/lib/**)
     config.eager_load_paths += %W(#{config.root}/lib)
     config.eager_load_paths += %W(#{config.root}/lib/**)
+
+    config.i18n.default_locale = :en
   end
 end
