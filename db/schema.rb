@@ -90,9 +90,9 @@ ActiveRecord::Schema.define(version: 20170508030013) do
 
   create_table "food_target_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "food_id"
-    t.boolean  "is_match",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "is_match",   default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["food_id"], name: "index_food_target_conditions_on_food_id", using: :btree
   end
 

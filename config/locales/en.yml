@@ -1,4 +1,5 @@
 en:
+  effective: "Effective"
   admin_title: "Admin managent"
   home: "Home"
   post: "Tip"
@@ -106,10 +107,16 @@ en:
         update: "Update"
         category: "Category"
     foods:
+      food:
+        add_conditions: "Add food conditions"
       index:
         foods: "Foods"
         title: "Foods Management"
       modal_add:
+        add_record_food_conditions: "Add food condition record"
+        food_conditions: "Food conditions"
+        add_food_conditions: "Add food conditions"
+        add_food: "Add Food"
         name: "Name"
         image: "Image"
         calorie: "Calorie"

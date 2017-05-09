@@ -38,7 +38,7 @@
               <div class="row">
                 <div class="col-md-2 col-sx-12">
                 </div>
-                <div class="form-group div-condition-details col-md-8 col-sx-12">
+                <div class="form-group div-condition-details col-md-8 col-sx-12" id="div-condition-details-0">
                   <% @user.user_conditions.each_with_index do |c, i| %>
                     <%= hidden_field_tag :"user[user_conditions_attributes][#{i}][id]", c.id %>
                     <%= hidden_field_tag :"user[user_conditions_attributes][#{i}][_destroy]", c.id, disabled: true %>
@@ -50,7 +50,8 @@
                         <div class="condition_details input-field">
                           <div class="condition_details input-field">
                             <label for="condition_detail-select"><%= t :condition_details %></label>
-                            <select class="form-control" id="condition_detail-select" name="<%= "user[user_conditions_attributes][#{i}][condition_detail_id]" %>">
+                            <select class="form-control" id="condition_detail-select"
+                              name="<%= "user[user_conditions_attributes][#{i}][condition_detail_id]" %>">
                               <% c.condition.condition_details.each do |d| %>
                                 <option value="<%= d.id %>" <%= :selected if d.id == c.condition_detail_id %>><%= d.value %></option>
                               <% end %>
@@ -105,8 +106,8 @@
               <div class="row">
                 <div class="col-md-3 col-sx-0"></div>
                 <div class="col-md-6 col-sx-12">
-                  <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple pull-left" data-original-title="<%= t ".add_c" %>"
-                    onclick='addCondition()'>
+                  <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple pull-left btn-addCondition" data-original-title="<%= t ".add_c" %>"
+                    onclick='addCondition("#div-condition-details-0")'>
                     <i class="material-icons">add</i>
                     <div class="ripple-container"></div>
                   </button>

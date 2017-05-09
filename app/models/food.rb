@@ -18,8 +18,6 @@ class Food < ApplicationRecord
   accepts_nested_attributes_for :hashtags,
     reject_if: ->attributes{attributes[:name].blank?}
   accepts_nested_attributes_for :food_target_conditions, allow_destroy: true
-  accepts_nested_attributes_for :food_conditions,
-    reject_if: ->attributes{attributes[:condition_detail_id].blank?}, allow_destroy: true
 
   mount_uploader :image, PictureUploader
 

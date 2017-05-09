@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index"
     resources :foods
+    resources :food_target_conditions, only: [:new, :create]
     resources :categories
     resources :category_trees, only: :index
     resources :food_trees, only: :index

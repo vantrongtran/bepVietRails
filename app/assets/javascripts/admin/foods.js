@@ -1,3 +1,18 @@
+function openFormAddCondition(food_id) {
+  $("#modal-conditions").modal({
+    ready: function(modal, trigger) {
+    },
+    complete: function() {
+    }
+  });
+  $("#modal-conditions").find(".conditions-group:not(.template:first)").remove();
+  $("#modal-conditions").find(".conditions-group").find(".div-condition-detail:not(:first)").remove();
+  $("#modal-conditions").find(".conditions-group").find(".div-condition-detail.template:first")
+    .find("select#condition_detail-select").html("");
+  $("#modal-conditions").find("input[type=hidden][name*='food_id']").val(food_id);
+  $("#modal-conditions").modal("open");
+}
+
 function search_ingredient(selector, url){
   key = $(selector).val();
   if(key) {
@@ -33,6 +48,9 @@ function addIngredient(selector, id){
     var element = document.getElementById(id);
     var img_src = selector.getElementsByTagName('img')[0].src;
     var name = selector.getElementsByTagName('a')[0].innerHTML;
+    if (name.length > 20) {
+      name = name.substring(0, 17) + "...";
+    }
     var index = $(selector).closest(".col-md-7").find("#ingredient_added").find(".result_ingredient").length;
     var html = "<div class='result_ingredient' id=ingredient_add_" + index + ">"
                 + "<input type='hidden' name='food[food_ingredients_attributes][" + index + "][ingredient_id]' value='" + id + "'>"
@@ -74,6 +92,7 @@ function show_form_edit_food(){
   $("#modal-edit-food" ).on('hidden.bs.modal', function(e){
      $("#edit_form").last().html("");
   });
+  checkboxReady();
   $("#modal-edit-food").modal("open");
 }
 
