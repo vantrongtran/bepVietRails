@@ -15,19 +15,19 @@
         <li class="active">
           <%= link_to root_path do %>
             <i class="material-icons">home</i>
-            Home
+            <%= t :home %>
           <% end %>
         </li>
         <li>
           <%= link_to foods_path do %>
             <i class="material-icons">room_service</i>
-            Foods
+            <%= t :foods_header %>
           <% end %>
         </li>
         <li>
           <%= link_to posts_path do %>
             <i class="material-icons">book</i>
-            Tips
+            <%= t :tips %>
           <% end %>
         </li>
         <% if !current_user %>

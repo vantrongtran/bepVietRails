@@ -105,10 +105,7 @@ $(document).ready(function() {
   });
   $("a.data-confirm").click(function(e){
     e.preventDefault();
-    text = $(e.target).attr("confirmcontent");
-    if (typeof text === "undefined") {
-      text = $(e.target).closest("a").attr("confirmcontent");
-    }
+    text = $(this).attr("confirmcontent");
     confrimMaterial(
       text,
       function(){
@@ -141,24 +138,6 @@ $(document).ready(function() {
     inputHidden = '<input type="hidden" name="' + name + '" value="' + !val + '" disabled>';
     $(e).append(inputHidden);
   });
-
-  // $(".checkbox").find("label").click(function(e){
-  //   checkbox = $(e.target).closest(".checkbox").find("input[type=checkbox]");
-  //   input = $(e.target).closest(".checkbox").find("input[type=hidden]");
-  //   checked = checkbox.is(':checked');
-  //   checkbox.prop('checked', !checked);
-  //   checkbox.attr('checked', !checked);
-  //   input.prop('disabled', !checked);
-  // });
-  // $(".tab-pane").hide();
-  // $(".tab-pane.active").show();
-  // $("a[role='tab'][data-toggle='tab'][href='#" + $(".tab-pane.active").attr('id') + "']").each(function(i, e){
-  //   $(e).show();
-  //   showActive(e);
-  // })
-  // $("a[role='tab'][data-toggle='tab']").click(function(e){
-  //   showActive(e.target);
-  // });
   $("ul.nav").find("li.active").removeClass("active");
   $("ul.nav").find("a[href='" + window.location.pathname + "']").closest("li").addClass("active");
 });

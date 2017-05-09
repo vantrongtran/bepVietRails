@@ -1,4 +1,6 @@
 class UserConditionsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     if current_user.update_attributes user_condition_params
       add_message_flash :success, t(:updated)

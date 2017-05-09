@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   end
   resources :condition_details
   resources :user_conditions, only: :create
+  resources :likes, only: [:create, :destroy]
   root "static_pages#index"
 end

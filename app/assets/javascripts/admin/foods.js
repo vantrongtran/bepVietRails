@@ -71,7 +71,7 @@ function show_form_edit_food(){
     }
   });
   $("#modal-edit-food").find(".ingredient_items_result").hide();
-  $( "#modal-edit-food" ).on('hidden.bs.modal', function(e){
+  $("#modal-edit-food" ).on('hidden.bs.modal', function(e){
      $("#edit_form").last().html("");
   });
   $("#modal-edit-food").modal("open");

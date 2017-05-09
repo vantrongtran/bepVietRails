@@ -1,0 +1,7 @@
+<%= form_for current_user.like_of(object), method: :delete, remote: true do |f| %>
+  <button type="submit" class="btn btn-simple btn-just-icon btn-unlike" rel="tooltip"
+    data-original-title="<%= t :unlike_object, like: t(object.class.name.downcase) %>">
+    <i class="fa fa-heart fa-lg"></i>
+    <div class="ripple-container"></div>
+  </button>
+<% end %>
