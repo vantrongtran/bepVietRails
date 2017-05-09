@@ -48,7 +48,7 @@ class C45
     @attributes.each do |attribute|
         @arr_gain_ratios.push GainRatio.new(gain_ration(attribute), attribute)
     end
-    @arr_gain_ratios = @arr_gain_ratios.sort_by! {|gain| gain.value}
+    @arr_gain_ratios = @arr_gain_ratios.sort_by {|gain| gain.value}.reverse
   end
 
   def to_node_food node

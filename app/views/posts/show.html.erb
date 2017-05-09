@@ -16,6 +16,9 @@
       </div>
       <div class="description">
         <%= @post.content.html_safe %>
+        <div class="row">
+          <%= render "likes/like_form", object: @post %>
+        </div>
         <div class="comments">
           <div class="headline">
           <h3>Comments</h3>
@@ -31,8 +34,11 @@
             <% end %>
           </div>
           <div class="list-comments">
-            <%= render partial: "comments/comment", collection: @post.comments,
+            <%= render partial: "comments/comment", collection: @comments,
               as: :comment %>
+            <div class="row paginate">
+             <%= paginate @comments %>
+            </div>
           </div>
         </div>
       </div>

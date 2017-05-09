@@ -39,6 +39,10 @@ class User < ApplicationRecord
   has_many :favorite_rates, -> {where stars: 5}, foreign_key: :rater_id, class_name: Rate.name
   has_many :favorite_foods, through: :favorite_rates, source: :rateable, source_type: Food.name
   has_many :user_conditions, class_name:Condition::UserCondition.name, foreign_key: :target_id
+  has_many :likes
+  has_many :liked_posts, through: :likes, source_type: Post.name, source: :target
+  has_many :liked_activities, through: :likes, source_type: Activity.name, source: :target
+  has_many :liked_comments, through: :likes, source_type: Comment.name, source: :target
 
   accepts_nested_attributes_for :user_conditions,
     reject_if: ->attributes{attributes[:condition_detail_id].blank?}, allow_destroy: true
@@ -85,5 +89,22 @@ class User < ApplicationRecord
 
   def google_oauth2
     identities.where( :provider => "google_oauth2" ).first
+  end
+
+  def liked? obj
+    case obj.class.name
+    when Post.name
+      self.liked_posts.include? obj
+    when Activity.name
+      self.liked_activities.include? obj
+    when Comment.name
+      self.liked_comments.include? obj
+    else
+      false
+    end
+  end
+
+  def like_of obj
+    self.likes.find_by target_id: obj.id, target_type: obj.class.name
   end
 end

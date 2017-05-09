@@ -1,0 +1,17 @@
+<% flash.each do |message_type, messages| %>
+  <% if messages.class == String %>
+    showNotification("<%= message_type %>", "<%= messages %>");
+  <% else %>
+    <% messages.each do |message| %>
+      showNotification("<%= message_type %>", "<%= message %>");
+    <% end %>
+  <% end %>
+<% end %>
+<% if @result %>
+  $('#<%= "like-#{@like.target.class.name.downcase}-#{@like.target.id}" %>').html(
+    '<%= j render "likes/unlike", object: @like.target %>'
+    );
+  readyButtonLikeAction();
+<% else %>
+  likeFaid('#<%= "like-#{@like.target.class.name.downcase}-#{@like.target.id}" %>');
+<% end %>

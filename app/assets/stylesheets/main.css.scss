@@ -1,3 +1,6 @@
+.raty-cancel{
+  display: none;
+}
 .flash-messages-content{
   position: fixed;
   right: 0;
@@ -359,4 +362,15 @@ ul.trans {
 
 .inline a{
   display: inline-block;
+}
+
+.comment-actions div{
+  display: inline-block;
+}
+.comment-actions {
+  max-height: 100px;
+}
+.comment-content-text{
+  max-height: 100px;
+  overflow-y: auto;
 }

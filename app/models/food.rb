@@ -24,6 +24,15 @@ class Food < ApplicationRecord
   mount_uploader :image, PictureUploader
 
   scope :name_like, -> keyword {where("name LIKE ?", "%#{keyword}%") if keyword.present?}
+  scope :most_rate, -> total do
+    join_sql = <<-SQL
+      LEFT JOIN rates ON foods.id = rates.rateable_id AND rates.rateable_type = 'Food'
+    SQL
+    select("foods.*, AVG(rates.id) AS avg_rate")
+      .joins(join_sql)
+      .order("avg_rate DESC")
+      .group("foods.id").first(total)
+  end
 
   ratyrate_rateable
 
