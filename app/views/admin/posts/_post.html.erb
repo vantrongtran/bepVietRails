@@ -1,0 +1,17 @@
+<tr>
+  <td><%= post.id %></td>
+  <td><%= image_tag post.image, class: "image" %></div></td>
+  <td><%= post.title %></td>
+  <td>
+    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="Edit"
+      onclick="call_form_edit('<%= edit_admin_post_path post %>')">
+      <i class="material-icons">edit</i>
+      <div class="ripple-container"></div></button>
+      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete">
+        <%= link_to [:admin, post], method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm",
+          confirmcontent: t("confirm_delete") do %>
+          <i class="material-icons">close</i>
+        <% end %>
+    </button>
+  </td>
+</tr>

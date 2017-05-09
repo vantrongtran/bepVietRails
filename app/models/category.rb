@@ -8,6 +8,8 @@ class Category < ApplicationRecord
 
   scope :name_like, -> keyword { where("name LIKE ?", "%#{keyword}%") if keyword.present?}
 
+  scope :leafs, -> { where("categories.right - categories.left = 1") }
+
   class << self
     def add name, parent_right, parent_level
       return {type: :danger, messages: I18n.t(:blank, name: :name)} unless name.present?
@@ -28,6 +30,10 @@ class Category < ApplicationRecord
         Category.unscoped.where("`categories`.`left` > ?", parent_right).update_all "`categories`.`left` = `categories`.`left` + 2"
         category = Category.create! name: name, left: parent_right,right: parent_right + 1, level: parent_level + 1
       end
+    end
+
+    def base_category
+      Category.unscoped.first
     end
   end
 
