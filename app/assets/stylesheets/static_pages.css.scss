@@ -46,26 +46,12 @@
 }
 
 .recently-item {
-  width: 234px;
-  float: left;
-  padding: 15px;
-  position: relative;
-  float: left;
   .item-image{
-    width: 204px;
-    height: 204px;
     border-radius: 5px;
   }
 }
 
-.container{
-  width: 1170px;
-}
-
 .recently-item-info-box {
-  bottom: 0;
-  position: relative;
-  padding: 0;
   color: black !important;
   a {
     color: black;
@@ -74,13 +60,13 @@
 }
 
 .post-item {
-  width: 25%;
-  float: left;
-  padding: 9px;
+  overflow-x: hidden;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.item-img-effect {
-  overflow: hidden;
+.item-img-effect{
+  overflow: hidden !important;
   border-radius: 5px;
 }
 
@@ -124,7 +110,6 @@
 }
 
 .comment-content {
-  width: 550px;
   margin-left: 55px;
   padding-top: 0px;
   word-wrap: break-word;
@@ -132,4 +117,14 @@
 
 .user-comment {
   margin-top: 20px;
+}
+
+.fixed_body{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.container-custom{
+  max-width: 94%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
