@@ -29,7 +29,6 @@ gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "twitter"
 gem "omniauth-google-oauth2"
-gem "google-api-client", :require => "google/api_client"
 gem "pry"
 
 group :development, :test do

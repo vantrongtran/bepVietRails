@@ -1,0 +1,40 @@
+<% provide :title, t(".title") %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header" data-background-color="purple">
+          <h4 class="title"><%= t ".posts" %></h4>
+          <p class="category">Created using Roboto Font Family</p>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-primary btn-round btn-just-icon pull-right" data-toggle="modal" data-target="#modal-add-post">
+            <i class="material-icons">add</i>
+          </button>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+              <th>ID</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <%= render @posts %>
+            </tbody>
+          </table>
+        </div>
+        <div class="row paginate">
+          <%= paginate @posts %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+      </div>
+    </div>
+  </div>
+</div>
+<% provide :modal, render("admin/posts/modal_add") %>

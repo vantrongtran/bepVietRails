@@ -14,6 +14,7 @@ en:
   unliked: "Unliked"
   liked_faild: "Liked faild!!!"
   unliked_faild: "Unliked faild!!!"
+  posts: "Posts"
   ago: "%{time} ago."
   host: "Food Suggeter"
   follow: "Follow"
@@ -90,6 +91,20 @@ en:
     dashboard:
       index:
         dashboard: "Dashboard"
+    posts:
+      index:
+        title: "Posts"
+        posts: "Posts"
+      modal_add:
+        title: "Title"
+        content: "Content"
+        add: "Add"
+        category: "Category"
+      modal_edit:
+        title: "Title"
+        content: "Content"
+        update: "Update"
+        category: "Category"
     foods:
       index:
         foods: "Foods"
