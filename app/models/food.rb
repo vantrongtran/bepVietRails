@@ -32,12 +32,17 @@ class Food < ApplicationRecord
 
   class << self
     def sugget target_conditions
-     conditions = target_conditions.inject([]){|result, tc| result << c = tc.condition unless result.include? c}
-     c45 = C45.new FoodTargetCondition.all, conditions
-     root = c45.root
-     while conditions.count > 0
-
+      conditions = target_conditions.inject([]){|result, tc| result << c = tc.condition unless result.include? c}
+      c45 = C45.new FoodTargetCondition.all, conditions
+      root = c45.root
+      maps = target_conditions.map {|node| {condition_id: node.condition.id, condition_detail_id: node.condition_detail.id}}
+      while maps.count > 0
+        ins = maps.select{|node| node[:condition_id] == root.condition.id}.first
+        root = root.children.select{|c| c&.condition.id == ins[:condition_detail_id]}.first
+        root = root.children.first if root.children&.first
+        maps.delete ins
       end
+      Food.where(id: root.food_target_conditions.map(&:food_id))
     end
 
     def get_node root, conditions
