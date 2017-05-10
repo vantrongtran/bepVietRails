@@ -1,11 +1,13 @@
-<div class="food-item col-md-3 co-xs-10">
-  <%= image_tag food.image, class: "item-image" %>
+<div class="food-item col-md-3 co-xs-12">
+  <div class="item-img-effect">
+    <%= image_tag food.image, class: "item-image" %>
+  </div>
   <div class="food-element-detail">
   </div>
   <div class="food-item-detail">
     <%= link_to food.name, food %>
     <div class="rating">
-      <% n = food.average()&.avg || 0 %>
+      <% n = food.avg_rate || 0 %>
       <% for i in 1..n %>
         <img src="/assets/star-on.png">
       <% end %>

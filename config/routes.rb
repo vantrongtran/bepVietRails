@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sugget_food/index'
+
   post "/rate" => "rater#create", :as => "rate"
   devise_for :users, class_name: User.name, :controllers => { omniauth_callbacks: "omniauth_callbacks", sessions: "sessions", registrations: "registrations"}
   mount Ckeditor::Engine => "/ckeditor"

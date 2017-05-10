@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   mount_uploader :image, PictureUploader
 
   has_many :comments, as: :target
+  has_many :likes, as: :target
+
 end

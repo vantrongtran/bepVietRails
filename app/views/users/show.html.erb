@@ -9,7 +9,7 @@
           <%= :profile %>
         </a>
       </li>
-      <li class="<%= :activities unless @user.id == current_user&.id %>">
+      <li class="<%= :active unless current_user && @user.id == current_user.id %>">
         <a href="#activities" role="tab" data-toggle="tab" class="click-event">
           <i class="material-icons">view_day</i>
           <%= t :activities %>
@@ -32,12 +32,25 @@
     </ul>
 
     <div class="tab-content gallery">
-      <div class="tab-pane fade in <%= :activities unless @user.id == current_user&.id %> text-center active" id="activities">
+      <div class="tab-pane <%= :active unless current_user && @user.id == current_user.id %> text-center" id="activities">
         <div class="row">
+          <div class="col-md-3 col-xs-0"></div>
+          <div class="col-md-6 co;-xs-12">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="orange">
+                  <%= image_tag @user.avatar %>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                </div>
+              </div>
+          </div>
+          <div class="col-md-3 col-xs-0"></div>
         </div>
       </div>
       <% if @user.id == current_user&.id %>
-        <div class="tab-pane active" id="physical">
+        <div class="tab-pane fade in active" id="physical">
           <%= form_tag user_conditions_path, method: :post do %>
             <%= hidden_field_tag :"user[id]", @user.id %>
             <div class="row">
