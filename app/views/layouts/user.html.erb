@@ -35,9 +35,16 @@
         <div class="container">
           <div class="row">
             <div class="profile">
+            <%= form_for @user, method: :put, html: { multipart: true, id: "update-avatar" } do |f| %>
               <div class="avatar">
-                <%= link_to image_tag(@user.avatar, class: "img-circle img-responsive img-raised"), @user %>
+                <%= link_to image_tag(@user.avatar, class: "img-circle img-responsive img-raised", id: "user-avatar-image",), @user %>
+                <% if @user.id == current_user&.id %>
+                  <div id="edit-avatar">
+                    <%= f.file_field :avatar, accept: Settings.accepted_files, id: "btn-user-avatar" %>
+                  </div>
+                <% end %>
               </div>
+            <% end %>
               <div class="name">
                 <h3 class="title"><%= link_to @user.name, @user %></h3>
                 <div class="inline">

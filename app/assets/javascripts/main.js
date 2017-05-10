@@ -17,30 +17,30 @@ function showNotification(type, message){
   icon = "notifications";
   switch(type) {
     case "info":
-      icon = "info_outline";
-      break;
+    icon = "info_outline";
+    break;
     case "notice":
-      icon = "info_outline";
-      type = "info";
-      break;
+    icon = "info_outline";
+    type = "info";
+    break;
     case "success":
-      icon = "done";
-      break;
+    icon = "done";
+    break;
     case "warning":
-      icon = "warning";
-      break;
+    icon = "warning";
+    break;
     case "danger":
-      icon = "error_outline";
-      break;
+    icon = "error_outline";
+    break;
     case "error":
-      icon = "error_outline";
-      type = "danger";
-      break;
+    icon = "error_outline";
+    type = "danger";
+    break;
     case "primary":
-      icon = "notifications";
-      break;
+    icon = "notifications";
+    break;
     default:
-      icon = "notifications";
+    icon = "notifications";
   }
   $.notify({
     icon: icon,
@@ -173,7 +173,7 @@ $(document).ready(function() {
         $(e.target).click();
         loading();
       }
-    );
+      );
     return false;
   });
   $("a:not(.data-confirm):not(.click-event)").click(function(e){
@@ -191,28 +191,32 @@ $(document).ready(function() {
     }
   });
   checkboxReady();
-  $(".tab-pane").hide();
-  $(".tab-pane.active").show();
-  $("a[role='tab'][data-toggle='tab'][href='#" + $(".tab-pane.active").attr('id') + "']").each(function(i, e){
-    $(e).show();
-    showActive(e);
-  })
-  $("ul.nav").find("li.active").removeClass("active");
-  $("ul.nav").find("a[href='" + window.location.pathname + "']").closest("li").addClass("active");
+  // $(".tab-pane").hide();
+  // $(".tab-pane.active").show();
+  // $("a[role='tab'][data-toggle='tab'][href='#" + $(".tab-pane.active").attr('id') + "']").each(function(i, e){
+  //   $(e).show();
+  //   showActive(e);
+  // })
+  // $("ul.nav").find("li.active").removeClass("active");
+  // $("ul.nav").find("a[href='" + window.location.pathname + "']").closest("li").addClass("active");
 
+  $("#btn-user-avatar").change(function (e) {
+    readURL(this);
+    $("#update-avatar").submit();
+  });
 });
 
-function showActive(target) {
-  $(target).closest("ul[role='tablist']").find("li.active").removeClass('active');
-  $(target).closest("li").addClass('active');
-  console.log($(target).attr('href').trim());
-  s = $(target).attr('href')
-  pane = $(".tab-pane" + s);
-  pane.closest("tab-content").find(".tab-pane").removeClass('active');
-  pane.closest("tab-content").find(".tab-pane").hide();
-  pane.show();
-  pane.addClass('active');
-}
+// function showActive(target) {
+//   $(target).closest("ul[role='tablist']").find("li.active").removeClass('active');
+//   $(target).closest("li").addClass('active');
+//   console.log($(target).attr('href').trim());
+//   s = $(target).attr('href')
+//   pane = $(".tab-pane" + s);
+//   pane.closest("tab-content").find(".tab-pane").removeClass('active');
+//   pane.closest("tab-content").find(".tab-pane").hide();
+//   pane.show();
+//   pane.addClass('active');
+// }
 function checkboxReady(){
   $(".checkbox").each(function(i, e){
     checkbox = $(e).find("input[type=checkbox]");
@@ -235,4 +239,27 @@ function checkboxReady(){
       input.prop('disabled', !checked)
       input.prop('disabled', !checked);
   });
+}
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#user-avatar-image')
+      .attr('src', e.target.result)
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function disable_input() {
+  console.log("ahihi");
+  var inputs = document.getElementsByTagName("INPUT");
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].disabled = true;
+    if (inputs[i].type === 'submit') {
+      inputs[i].remove();
+    }
+  }
 }
