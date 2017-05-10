@@ -1,5 +1,6 @@
 en:
   effective: "Effective"
+  profile: "Profile"
   admin_title: "Admin managent"
   home: "Home"
   post: "Tip"
@@ -51,6 +52,10 @@ en:
   tag: "Hashtag"
   users:
     show:
+      name: "Name"
+      email: "Email"
+      gender: "Gender"
+      birthday: "Birthday"
       title: "%{name} | Users"
       add_c: "Add condition details"
       update: "Update your physical conditions"

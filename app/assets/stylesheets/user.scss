@@ -23,3 +23,16 @@
 .nav-pills {
   background-color: rgba(232, 226, 226, 0.2);
 }
+
+#edit-avatar{
+  cursor: pointer;
+}
+
+#user-avatar-image{
+  width: 200px;
+  height: 200px;
+}
+
+.radio-gender {
+  display: inline-block !important;
+}
