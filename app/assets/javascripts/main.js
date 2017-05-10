@@ -90,6 +90,66 @@ function confrimMaterial(contentText, okAction, cancelAction = function(){consol
     },
   });
 }
+
+function configCKEditor(){
+  CKEDITOR.editorConfig = function(config){
+    config.toolbar = [
+      {name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFormWord', '-', 'Undo', 'Redo']},
+      {name: 'editing', items: ['Scayt']},
+      {name: 'links', items: ['Link', 'Unlink', 'Anchor']},
+      {name: 'insert', items: ['Image', 'Table', 'HorizontaRule', 'SpecialChar']},
+      {name: 'tool', items: ['Maximize']},
+      {name: 'document', items: ['Source']}
+    ];
+  };
+  if ($('textarea').length > 0) {
+    var data = $('.ckeditor');
+    $.each(data, function(i) {
+      CKEDITOR.replace(data[i].id)
+    });
+  }
+}
+
+function removeParent(element, parent, callback = function(){console.log("None callback!!!");}){
+  $(element).closest(parent).remove();
+  callback();
+}
+function removeServer(element, parent, callback = function(){console.log("None callback!!!");}){
+  $(element).closest(parent).hide();
+  $(element).closest(parent).find("input[type=hidden][name*='[_destroy]']").prop('disabled', false);;
+  callback();
+}
+
+
+function revertIndexInput(collectionGroup, asElement){
+  index = 0;
+  $(collectionGroup).find(asElement).each(function(index, element){
+    $(element).find("input").each(function(i, input){
+      try {
+        selector.attr("id", selector.attr("id").replace(/\d/, index));
+        selector.attr("name", selector.attr("name").replace(/\d/, index));
+      }
+      catch(err) {
+      }
+    });
+    index++;
+  });
+}
+function revertIndexInput(collectionGroup, asElement, groupBy){
+  index = 0;
+  $(collectionGroup).find(asElement).each(function(index, element){
+    $(element).find("groupBy").each(function(i, input){
+      try {
+        selector.attr("id", selector.attr("id").replace(/\d/, index));
+        selector.attr("name", selector.attr("name").replace(/\d/, index));
+      }
+      catch(err) {
+      }
+    });
+    index++;
+  });
+}
+
 $(document).ready(function() {
   var queueWaitingSubmit = [];
   setInterval(function(){
@@ -130,16 +190,16 @@ $(document).ready(function() {
       queueWaitingSubmit.push(e.target);
     }
   });
-
-  $(".checkbox").each(function(i, e){
-    checkbox = $(e).find("input[type=checkbox]");
-    name = checkbox.attr("name");
-    val = checkbox.val() == 'true';
-    inputHidden = '<input type="hidden" name="' + name + '" value="' + !val + '" disabled>';
-    $(e).append(inputHidden);
-  });
+  checkboxReady();
+  $(".tab-pane").hide();
+  $(".tab-pane.active").show();
+  $("a[role='tab'][data-toggle='tab'][href='#" + $(".tab-pane.active").attr('id') + "']").each(function(i, e){
+    $(e).show();
+    showActive(e);
+  })
   $("ul.nav").find("li.active").removeClass("active");
   $("ul.nav").find("a[href='" + window.location.pathname + "']").closest("li").addClass("active");
+
 });
 
 function showActive(target) {
@@ -152,4 +212,27 @@ function showActive(target) {
   pane.closest("tab-content").find(".tab-pane").hide();
   pane.show();
   pane.addClass('active');
+}
+function checkboxReady(){
+  $(".checkbox").each(function(i, e){
+    checkbox = $(e).find("input[type=checkbox]");
+    name = checkbox.attr("name");
+    val = checkbox.val() == 'true';
+    inputHidden = '<input type="hidden" name="' + name + '" value="' + !val + '" disabled>';
+    $(e).append(inputHidden);
+  });
+   $(".checkbox").find("label").click(function(e){
+      checkbox = $(e.target).closest(".checkbox").find("input[type=checkbox]")
+      checkbox = $(e.target).closest(".checkbox").find("input[type=checkbox]");
+      input = $(e.target).closest(".checkbox").find("input[type=hidden]")
+      input = $(e.target).closest(".checkbox").find("input[type=hidden]");
+      checked = checkbox.is(':checked')
+      checked = checkbox.is(':checked');
+      checkbox.prop('checked', !checked)
+      checkbox.prop('checked', !checked);
+      checkbox.attr('checked', !checked)
+      checkbox.attr('checked', !checked);
+      input.prop('disabled', !checked)
+      input.prop('disabled', !checked);
+  });
 }

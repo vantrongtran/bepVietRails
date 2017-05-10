@@ -5,6 +5,10 @@ class FoodTargetCondition < ApplicationRecord
   has_many :condition_details, through: :food_conditions
   has_many :condition, ->{distinct}, through: :condition_details
 
+  accepts_nested_attributes_for :food_conditions,
+    reject_if: ->attributes{attributes[:condition_detail_id].blank?}, allow_destroy: true
+
+
   scope :in, -> ids { where(id: ids)}
 
   scope :match_condition, -> condition_id do

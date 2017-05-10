@@ -19,4 +19,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def trumcate_name name
+    name.length > 20 ? name.truncate(17) : name
+  end
 end

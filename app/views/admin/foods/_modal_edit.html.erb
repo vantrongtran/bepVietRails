@@ -66,7 +66,7 @@
                       <%= image_tag ingredient.object.image, class: "ingredient_image" %>
                     </div>
                     <div class="ingredient_detail">
-                      <a><%= ingredient.object.name %></a>
+                      <a><%= trumcate_name ingredient.object.name %></a>
                       <div class="form-group is-empty">
                         <%= ingredient.number_field :value, class: "form-control", step: "0.001", required: true  %>
                         <span class="material-input"></span>

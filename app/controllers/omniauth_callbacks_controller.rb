@@ -16,13 +16,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def generic_callback( provider )
-    binding.pry
     @identity = Identity.find_for_oauth env["omniauth.auth"]
 
     @user = @identity.user || current_user
     if @user.nil?
       @user = User.create( email: @identity.email || "", name: @identity.name )
-      binding.pry
       @user.remote_avatar_url = "#{@identity.image}?type=large".gsub! "http:", "https:"
       @user.save
       @identity.update_attribute( :user_id, @user.id )

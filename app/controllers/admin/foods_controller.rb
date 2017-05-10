@@ -49,6 +49,7 @@ class Admin::FoodsController < Admin::AdminController
 
   def food_params
     params.require(:food).permit :name, :image, :calorie, :cooking_method, food_ingredients_attributes: [:id, :ingredient_id, :value, :_destroy],
-      food_hashtags_attributes: [:id, :hashtag_id, :_destroy], hashtags_attributes: [:name], food_conditions_attributes: [:id, :condition_detail_id, :_destroy, :is_mathch]
+      food_hashtags_attributes: [:id, :hashtag_id, :_destroy], hashtags_attributes: [:name]
   end
 end
+

@@ -6,7 +6,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             <i class="material-icons">clear</i>
           </button>
-          <h4 class="modal-title">Add food</h4>
+          <h4 class="modal-title"><%= t ".add_food" %></h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -50,7 +50,7 @@
               </div>
             </div>
           </div>
-          <div class="row div-condition-details-row-class">
+          <!-- <div class="row div-condition-details-row-class">
             <div class="form-group div-condition-details">
               <div class="div-condition-detail template row form-group">
                 <div class="input-field condition col-md-5 col-sx-12">
@@ -84,12 +84,93 @@
               <i class="material-icons">add</i>
               <div class="ripple-container"></div>
             </button>
-          </div>
+          </div> -->
           <div class="row">
             <div>
               <%= label_tag t(".cooking_method"), nil, class: "control-label" %>
               <%= cktext_area_tag "food[cooking_method]", nil, rows: 40 %>
             </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= button_tag t(".add"), class: "btn btn-default btn-simple" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="modal fade in" id="modal-conditions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= form_tag admin_food_target_conditions_path, method: :post, authenticity_token: true, multipart: true do %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="material-icons">clear</i>
+          </button>
+          <h4 class="modal-title"><%= t ".add_food_conditions" %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="conditions-groups">
+            <%= hidden_field_tag "food_id", nil %>
+            <div class="row card conditions-group template">
+              <div class="card-header" data-background-color="purple">
+                <h4 class="title">1. <%= t ".food_conditions" %></h4>
+              </div>
+              <div class="card-content">
+                <div class="row div-condition-details" id="div-condition-details-0">
+                  <div class="div-condition-detail template row form-group">
+                    <div class="input-field condition col-md-5 col-sx-12">
+                      <%= render "shared/select_conditions", name: "ftc[food_target_conditions][0][food_conditions_attributes][0]", selected: nil %>
+                    </div>
+                    <div class="col-md-5 col-sx-10">
+                      <div class="condition_details input-field">
+                        <div class="condition_details input-field">
+                          <label for="condition_detail-select"><%= t :condition_details %></label>
+                          <select class="form-control" id="condition_detail-select"
+                            name="<%= "ftc[food_target_conditions][0][food_conditions_attributes][0][condition_detail_id]" %>">
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1 col-sx-2">
+                      <div class="checkbox">
+                        <label class="label-label"><%= t :match %></label>
+                        <label>
+                          <%= check_box_tag :"ftc[food_target_conditions][0][food_conditions_attributes][0][is_match]", true, true %>
+                        </label>
+                      </div>
+                    </div>
+                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs display-none" data-original-title="Delete" onclick="removeCondition(this)">
+                      <i class="material-icons">close</i>
+                      <div class="ripple-container"></div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="checkbox">
+                  <label class="label-label"><%= t :effective %></label>
+                  <label>
+                    <%= check_box_tag :"ftc[food_target_conditions][0][is_match]", true, true %>
+                  </label>
+                </div>
+              </div>
+              <div class="button-add-content">
+                <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-addCondition" data-original-title="<%= t ".add_c" %>"
+                  onclick='addCondition("#div-condition-details-0")'>
+                  <i class="material-icons">add</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple pull-right"
+              data-original-title="<%= t ".add_record_food_conditions" %>"
+              onclick='addConditionGroup()'>
+              <i class="material-icons">playlist_add</i>
+              <div class="ripple-container"></div>
+            </button>
           </div>
         </div>
         <div class="modal-footer">
