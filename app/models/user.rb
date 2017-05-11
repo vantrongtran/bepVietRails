@@ -24,7 +24,6 @@ class User < ApplicationRecord
 
   has_many :identities, dependent: :destroy
   has_many :activities, dependent: :destroy
-  has_many :likes, dependent: :destroy
   has_many :pots
   has_many :active_relationships,
     class_name: Relationship.name, foreign_key: :follower_id, dependent: :destroy
@@ -39,7 +38,7 @@ class User < ApplicationRecord
   has_many :favorite_rates, -> {where stars: 5}, foreign_key: :rater_id, class_name: Rate.name
   has_many :favorite_foods, through: :favorite_rates, source: :rateable, source_type: Food.name
   has_many :user_conditions, class_name:Condition::UserCondition.name, foreign_key: :target_id
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source_type: Post.name, source: :target
   has_many :liked_activities, through: :likes, source_type: Activity.name, source: :target
   has_many :liked_comments, through: :likes, source_type: Comment.name, source: :target

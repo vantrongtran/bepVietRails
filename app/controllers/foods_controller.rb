@@ -3,6 +3,10 @@ class FoodsController < ApplicationController
 
   def index
     @foods = params[:name] ? (Food.search_by_name( params[:name] ).page(params[:page]).per Settings.per_page.food): (Food.all.page(params[:page]).per Settings.per_page.food)
+    respond_to do |format|
+      format.html
+      format.json {render json: @foods.to_json}
+    end
   end
 
   def show

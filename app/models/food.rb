@@ -6,7 +6,7 @@ class Food < ApplicationRecord
   has_many :food_conditions, through: :food_target_conditions, dependent: :destroy
   has_many :condition_details, through: :food_conditions
   has_many :conditions, through: :condition_details
-  has_many :food_hashtags, foreign_key: :target_id, class_name: Hashtag::FoodHashtag.name
+  has_many :food_hashtags, as: :target, class_name: TargetHashtag.name
   has_many :hashtags, through: :food_hashtags
   has_many :comments, as: :target
 
@@ -39,6 +39,7 @@ class Food < ApplicationRecord
 
   class << self
     def suggest target_conditions
+      return unless target_conditions && target_conditions.any?
       conditions = target_conditions.inject([]){|result, tc| result << c = tc.condition unless result.include? c}
       c45 = C45.new FoodTargetCondition.all, conditions
       root = c45.root

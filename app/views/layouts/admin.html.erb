@@ -5,8 +5,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
   <%= favicon_link_tag "home-icon.png" %>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title><%= t :admin_title %></title>
-  <title><%= yield :title %></title>
+  <title><%= admin_title(yield(:title)) %></title>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag 'application' %>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />

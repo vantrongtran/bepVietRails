@@ -23,4 +23,12 @@ module ApplicationHelper
   def trumcate_name name
     name.length > 20 ? name.truncate(17) : name
   end
+
+  def title str
+    str.present? ? str : t(:host)
+  end
+
+  def admin_title str
+    str.present? ? str : t(:admin_title)
+  end
 end

@@ -1,0 +1,46 @@
+<% provide :title, "##{@tag.name } | #{t :tag}" %>
+<% provide :main_class, "index-page" %>
+<%= render "layouts/header" %>
+<div class="main main-raised">
+  <div class="profile-content fixed_body fix">
+    <div class="container">
+      <div class="row">
+      <div class="headline">
+        <h3>#<%= @tag.name %></h3>
+      </div>
+      <% if  @foods.any? %>
+        <div class="row">
+          <div class="headline">
+            <h2><%= t :food %></h2>
+          </div>
+          <%= render @foods %>
+          <div class="paginate">
+            <%= paginate @foods, params: {tab: :foods_page} %>
+          </div>
+        </div>
+      <% end %>
+      <% if  @posts.any? %>
+        <div class="row">
+          <div class="headline">
+            <h2><%= t :tips %></h2>
+          </div>
+          <%= render @posts %>
+          <div class="paginate">
+            <%= paginate @posts, params: {tab: :posts_page} %>
+          </div>
+        </div>
+      <% end %>
+      <% if  @ingredients.any? %>
+        <div class="row">
+          <div class="headline">
+            <h2><%= t :ingredients %></h2>
+          </div>
+          <%= render @ingredients %>
+          <div class="paginate">
+            <%= paginate @ingredients, params: {tab: :ingredient_page} %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
