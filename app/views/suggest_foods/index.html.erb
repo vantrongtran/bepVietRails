@@ -70,14 +70,16 @@
               </div>
             <% end %>
         </div>
-        <div row>
-          <div class="headline">
-            <h3><%= t ".foods" %></h3>
+        <% if @foods&.any? %>
+          <div row>
+            <div class="headline">
+              <h3><%= t ".foods" %></h3>
+            </div>
           </div>
-        </div>
-        <div class="row">
-        <%= render @foods if @foods&.any? %>
-        </div>
+          <div class="row">
+          <%= render @foods %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
