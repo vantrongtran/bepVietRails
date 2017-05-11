@@ -17,7 +17,7 @@
       <div class="description">
         <%= @post.content.html_safe %>
         <div class="row">
-          <%= render "likes/like_form", object: @post %>
+          <%= render "likes/like_form", object: @post, liked:  @post.likes.size %>
         </div>
         <div class="comments">
           <div class="headline">

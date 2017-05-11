@@ -1,4 +1,5 @@
 en:
+  liked_number: "%{number} like."
   effective: "Effective"
   profile: "Profile"
   admin_title: "Admin managent"
