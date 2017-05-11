@@ -1,0 +1,22 @@
+<div class="card card-stats">
+  <div class="card-header" data-background-color="orange">
+    <%= image_tag post.user.avatar %>
+  </div>
+  <div class="user-post-title">
+    <% if current_user&.id = @user.id %>
+      <div class="user-post-action">
+      <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs pull-right" data-original-title="Edit" onclick="call_form_edit('<%= edit_post_path post %>')">
+        <i class="material-icons">edit</i>
+        <div class="ripple-container"></div>
+      </button>
+      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs pull-right" data-original-title="Delete">
+        <%= link_to post_path(post), method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm",
+          confirmcontent: t("confirm_delete") do %>
+          <i class="material-icons">close</i>
+        <% end %>
+      </button>
+    </div>
+    <% end %>
+    <%= link_to post.title, post %>
+  </div>
+</div>

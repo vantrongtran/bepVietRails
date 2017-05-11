@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :category_trees, only: :index
     resources :food_trees, only: :index
     resources :ingredients
-    resources :posts
+    resources :tips, controller: 'tips', type: 'tip'
   end
   resources :foods
   resources :hashtags

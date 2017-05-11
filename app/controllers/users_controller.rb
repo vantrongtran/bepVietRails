@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :load_relationship
 
   def show
+    @post = Post.new
   end
 
   def update

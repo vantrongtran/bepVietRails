@@ -5,5 +5,6 @@ function show_form_edit_post(){
     complete: function() {
     }
   });
+  hashtagReady();
   $("#modal-edit-post").modal("open");
 }

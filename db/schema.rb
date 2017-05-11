@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508030013) do
+ActiveRecord::Schema.define(version: 20170511032502) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
@@ -158,15 +158,24 @@ ActiveRecord::Schema.define(version: 20170508030013) do
     t.datetime "updated_at"
   end
 
+  create_table "post_tips", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_user_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "category_id",               null: false
-    t.string   "title",                     null: false
-    t.text     "content",     limit: 65535, null: false
+    t.integer  "target_id",                null: false
+    t.string   "title",                    null: false
+    t.text     "content",    limit: 65535, null: false
     t.string   "type"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "image"
-    t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
   end
 
   create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -4,6 +4,8 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
+  has_many :tips, foreign_key: :target_id, dependent: :destroy
+
   default_scope {where.not(id: 1).order(left: :asc)}
 
   scope :name_like, -> keyword { where("name LIKE ?", "%#{keyword}%") if keyword.present?}
