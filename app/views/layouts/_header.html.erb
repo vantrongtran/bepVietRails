@@ -1,5 +1,5 @@
 <%= render "layouts/navbar" %>
-<div class="wrapper">
+<!-- <div class="wrapper">
   <div class="header bg ">
     <div class="container">
       <div class="row">
@@ -8,6 +8,23 @@
             <h1>Bếp Việt</h1>
             <h3>Món ăn của người Việt</h3>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+ <div class="wrapper">
+   <div class="header header-static">
+    <div class="container">
+      <div class="row static-page-title">
+        <div class="col-md-6 content">
+          <h1 class="title"><%= t :page_title %></h1>
+          <h4><%= t :page_info %></h4>
+          <br>
+          <%= link_to suggest_foods_path, class: "btn btn-danger btn-raised btn-lg" do %>
+            <i class="fa fa-angle-double-right"></i> <%= t :suggest_food %>
+          <% end %>
         </div>
       </div>
     </div>
