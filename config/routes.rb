@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   get 'sugget_food/index'
 
@@ -29,5 +30,6 @@ Rails.application.routes.draw do
   resources :condition_details
   resources :user_conditions, only: :create
   resources :likes, only: [:create, :destroy]
+  resources :suggest_foods, only: :index
   root "static_pages#index"
 end

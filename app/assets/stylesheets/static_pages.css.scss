@@ -208,3 +208,31 @@
     color: white;
   }
 }
+
+.header-static{
+  background-image: asset-url('home-bg.jpg');
+   position: relative;
+   width: 100%;
+}
+.static-page-title{
+  position: absolute;
+  top: 20%;
+  .content {
+    width: 100%;
+    .title, h1, h2, h3, h4 {
+      position: relative;
+      color: #FFFFFF;
+     }
+    h1 {
+      font-weight: 600;
+    }
+  }
+}
+
+.image-home{
+  width: 40px;
+  height: 40px;
+}
+.hear-home-title{
+  font-size: 22;
+}

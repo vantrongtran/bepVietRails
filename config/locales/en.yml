@@ -1,4 +1,7 @@
 en:
+  host: "Eating Well"
+  page_info: "Healthy Food, Healthy Cooking & Healthy Eating Services "
+  suggest_food: "What should i eat today?"
   liked_number: "%{number} like."
   effective: "Effective"
   profile: "Profile"
@@ -19,7 +22,7 @@ en:
   unliked_faild: "Unliked faild!!!"
   posts: "Posts"
   ago: "%{time} ago."
-  host: "Food Suggeter"
+  page_title: "Healthy Food Guide"
   follow: "Follow"
   unfollow: "Unfollow"
   following_details: "Following: %{following}"
@@ -51,6 +54,12 @@ en:
   wrong: "Somthing was worng, please try laster!"
   confirm_delete: "Are you sure to continue????"
   tag: "Hashtag"
+  suggest_foods:
+    index:
+      title: "What should you eat today?"
+      add_c: "Add condition details"
+      suggest_title: "What should i eat today?"
+      foods: "Healthy foods for you:"
   users:
     show:
       name: "Name"
