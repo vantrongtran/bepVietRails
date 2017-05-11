@@ -1,22 +1,23 @@
-class Admin::PostsController < Admin::AdminController
-  before_action :load_post, only: [:edit, :update, :destroy]
+class Admin::TipsController < Admin::AdminController
+  before_action :load_tip, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.page(params[:page]).per(10)
-    @post = Post.new
+    @posts = Post::Tip.all.page(params[:page]).per(10)
+    @tip = Post::Tip.new
   end
 
   def new
   end
 
   def create
-    @post = Post.new post_params
+    binding.pry
+    @post = Post::Tip.new post_params
     if @post.save
       add_message_flash :success, t(:created)
     else
       add_message_flash_now :error, t(:failed)
     end
-    redirect_to admin_posts_path
+    redirect_to admin_tips_path
   end
 
   def edit
@@ -28,7 +29,7 @@ class Admin::PostsController < Admin::AdminController
     else
       add_message_flash :error, t(:failed)
     end
-    redirect_to admin_posts_path
+    redirect_to admin_tips_path
   end
 
   def destroy
@@ -37,15 +38,15 @@ class Admin::PostsController < Admin::AdminController
     else
       add_message_flash_now :error, t(:failed)
     end
-    redirect_to admin_posts_paths
+    redirect_to admin_tips_paths
   end
 
   private
-  def load_post
-    @post = Post.find params[:id]
+  def load_tip
+    @post = Post::Tip.find params[:id]
   end
 
   def post_params
-    params.require(:post).permit :title, :content, :image, :category_id
+    params.require(:post).permit :title, :content, :image, :target_id, post_hashtags_attributes: [:id, :hashtag_id, :_destroy], hashtags_attributes: [:name]
   end
 end

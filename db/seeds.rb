@@ -68,7 +68,7 @@ User.create name: "user", email: "user@gmail.com", password: "111111"
 puts "---------------------"
 puts "Create post"
 50.times do |n|
-  post = Post.create! title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs, category_id: rand(2..6)
+  post = Post.create! title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs, target_id: rand(2..6), type: Post::Tip.name
 end
 
 users = User.first(20)

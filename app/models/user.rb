@@ -42,6 +42,7 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source_type: Post.name, source: :target
   has_many :liked_activities, through: :likes, source_type: Activity.name, source: :target
   has_many :liked_comments, through: :likes, source_type: Comment.name, source: :target
+  has_many :user_posts, class_name: Post::UserPost.name, foreign_key: :target_id
 
   accepts_nested_attributes_for :user_conditions,
     reject_if: ->attributes{attributes[:condition_detail_id].blank?}, allow_destroy: true

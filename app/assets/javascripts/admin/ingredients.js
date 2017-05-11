@@ -21,3 +21,12 @@ function show_form_edit_ingredient(){
   });
   $("#modal-edit-ingredient").modal("open");
 }
+
+function hashtagReady(){
+  $("form input[name='hashtag']").keypress(function (e) {
+    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      e.preventDefault();
+      return false;
+    }
+  });
+}

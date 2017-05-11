@@ -20,7 +20,6 @@ en:
   unliked: "Unliked"
   liked_faild: "Liked faild!!!"
   unliked_faild: "Unliked faild!!!"
-  posts: "Posts"
   ago: "%{time} ago."
   page_title: "Healthy Food Guide"
   follow: "Follow"
@@ -60,8 +59,23 @@ en:
       add_c: "Add condition details"
       suggest_title: "What should i eat today?"
       foods: "Healthy foods for you:"
-  users:
+  posts:
     show:
+      author: "Author: %{name}"
+    modal_edit:
+      edit: "Edit post"
+      update: "Update"
+      title: "Title"
+      content: "Content"
+  users:
+    modal_add_post:
+      add: "Create"
+      create: "Create new post"
+      title: "Title"
+      content: "Content"
+      category: "Category"
+    show:
+      add_post: "Create new post"
       name: "Name"
       email: "Email"
       gender: "Gender"
@@ -107,10 +121,10 @@ en:
     dashboard:
       index:
         dashboard: "Dashboard"
-    posts:
+    tips:
       index:
-        title: "Posts"
-        posts: "Posts"
+        title: "Tips"
+        posts: "Tips"
       modal_add:
         title: "Title"
         content: "Content"

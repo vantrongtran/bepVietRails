@@ -1,4 +1,5 @@
 <% provide :title, t(".title", name: @user.name) %>
+<% provide :modal_post, render("modal_add_post") %>
 <%= render "layouts/navbar" %>
 <div class="profile-tabs">
   <div class="nav-align-center">
@@ -36,15 +37,9 @@
         <div class="row">
           <div class="col-md-3 col-xs-0"></div>
           <div class="col-md-6 co;-xs-12">
-            <div class="card card-stats">
-                <div class="card-header" data-background-color="orange">
-                  <%= image_tag @user.avatar %>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                </div>
-              </div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add-post"><%= t ".add_post" %></button>
+            <%= render partial: "user_post", collection: @user.user_posts,
+              as: :post %>
           </div>
           <div class="col-md-3 col-xs-0"></div>
         </div>
@@ -150,6 +145,8 @@
       <% end %>
       <div class="tab-pane text-center" id="favorite">
         <div class="row">
+          <%= render partial: "favorite_food", collection: @user.favorite_foods,
+            as: :food %>
         </div>
       </div>
       <div class="tab-pane" id="profile">
