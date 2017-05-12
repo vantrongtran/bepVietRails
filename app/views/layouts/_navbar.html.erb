@@ -14,7 +14,7 @@
 
     <div class="collapse navbar-collapse" id="example-navbar-primary">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active">
+        <li>
           <%= link_to root_path do %>
             <i class="material-icons">home</i>
             <%= t :home %>
@@ -30,6 +30,12 @@
           <%= link_to posts_path do %>
             <i class="material-icons">book</i>
             <%= t :tips %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to search_index_path do %>
+            <i class="material-icons">search</i>
+            <%= t :search %>
           <% end %>
         </li>
         <% if !current_user %>

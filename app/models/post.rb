@@ -13,4 +13,9 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :post_hashtags, allow_destroy: true
   accepts_nested_attributes_for :hashtags,
     reject_if: ->attributes{attributes[:name].blank?}
+
+  scope :of_hashtag, ->tag{joins(:hashtags).where(hashtags: {name: tag})}
+  scope :name_like, ->keyword do
+    (where("posts.title LIKE ?", "%#{keyword}%") | of_hashtag(keyword)) if keyword.present?
+  end
 end

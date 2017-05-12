@@ -1,4 +1,12 @@
 en:
+  search:
+    index:
+      search: "Search"
+      result: "Result"
+      food: "Foods"
+      post: "Posts"
+      ingredient: "Ingredients"
+  search: "Search"
   host: "Eating Well"
   page_info: "Healthy Food, Healthy Cooking & Healthy Eating Services "
   page_info_1: "Healthy Foods Everyone Should Know How To Cook"

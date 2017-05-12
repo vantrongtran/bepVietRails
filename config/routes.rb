@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :following, only: :index
     resources :followers, only: :index
   end
+  resources :search
   resources :users
   resources :condition_details
   resources :user_conditions, only: :create

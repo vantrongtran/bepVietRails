@@ -145,7 +145,7 @@
       <% end %>
       <div class="tab-pane text-center" id="favorite">
         <div class="row">
-          <%= render partial: "favorite_food", collection: @user.favorite_foods,
+          <%= render partial: "foods/food", collection: @user.favorite_foods,
             as: :food %>
         </div>
       </div>
