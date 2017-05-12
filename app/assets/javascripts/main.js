@@ -254,12 +254,5 @@ function readURL(input) {
 }
 
 function disable_input() {
-  console.log("ahihi");
-  var inputs = document.getElementsByTagName("INPUT");
-  for (var i = 0; i < inputs.length; i++) {
-    inputs[i].disabled = true;
-    if (inputs[i].type === 'submit') {
-      inputs[i].remove();
-    }
-  }
+  $("#edit_user :input").prop("disabled", true);
 }
