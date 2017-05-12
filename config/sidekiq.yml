@@ -1,0 +1,9 @@
+---
+:concurrency: 25
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:verbose: true
+:concurrency: 25
+:queues:
+  - [mailers, 7]
+  - [default, 5]

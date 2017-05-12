@@ -63,7 +63,7 @@ user = User.create!(
   )
 end
 
-User.create name: "user", email: "user@gmail.com", password: "111111"
+User.create name: "user", email: "user@gmail.com", password: "12312311"
 
 puts "---------------------"
 puts "Create post"

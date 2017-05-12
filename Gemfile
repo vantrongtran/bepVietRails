@@ -30,6 +30,9 @@ gem "omniauth-facebook"
 gem "twitter"
 gem "omniauth-google-oauth2"
 gem "pry"
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem "figaro"
 
 group :development, :test do
   gem "byebug", platform: :mri

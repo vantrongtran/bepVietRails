@@ -10,6 +10,7 @@ class SuggestFoodsController < ApplicationController
     end
     if @foods&.any?
       respond_to do |format|
+        format.html
         format.json {render json: @foods.to_json}
       end
     end

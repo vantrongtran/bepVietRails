@@ -46,7 +46,13 @@ class Food < ApplicationRecord
       maps = target_conditions.map {|node| {condition_id: node.condition.id, condition_detail_id: node.condition_detail.id}}
       while maps.count > 0
         ins = maps.select{|node| node[:condition_id] == root.condition.id}.first
-        root = root.children.select{|c| c&.condition.id == ins[:condition_detail_id] && c&.is_match == true}.first
+        temple = root.children.select{|c| c&.condition.id == ins[:condition_detail_id] && c&.is_match == true}.first
+        if temple
+          root = temple
+        else
+          root.children.first if root.children&.first
+          break
+        end
         root = root.children.first if root.children&.first
         maps.delete ins
       end
