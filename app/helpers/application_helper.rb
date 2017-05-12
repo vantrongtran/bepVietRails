@@ -31,4 +31,8 @@ module ApplicationHelper
   def admin_title str
     str.present? ? str : t(:admin_title)
   end
+
+  def trumcate_text text, length
+    text.truncate length
+  end
 end

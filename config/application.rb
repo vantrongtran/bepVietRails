@@ -14,5 +14,7 @@ module BepVietRails
     config.eager_load_paths += %W(#{config.root}/lib/**)
 
     config.i18n.default_locale = :en
+    config.active_job.queue_adapter = :sidekiq
+    Rails.application.routes.default_url_options[:host] = ENV["HOST"]
   end
 end

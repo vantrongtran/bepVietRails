@@ -1,7 +1,9 @@
 en:
   host: "Eating Well"
   page_info: "Healthy Food, Healthy Cooking & Healthy Eating Services "
+  page_info_1: "Healthy Foods Everyone Should Know How To Cook"
   suggest_food: "What should i eat today?"
+  show_more: "Show more"
   liked_number: "%{number} like."
   effective: "Effective"
   profile: "Profile"
@@ -53,6 +55,11 @@ en:
   wrong: "Somthing was worng, please try laster!"
   confirm_delete: "Are you sure to continue????"
   tag: "Hashtag"
+  mailer:
+    comment:
+      subject: "Notification comment"
+      message: "%{user} has make a new comment for the posts: \"%{post}.\""
+      new: "New Comment"
   suggest_foods:
     index:
       title: "What should you eat today?"
