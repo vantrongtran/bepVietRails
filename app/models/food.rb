@@ -21,7 +21,10 @@ class Food < ApplicationRecord
 
   mount_uploader :image, PictureUploader
 
-  scope :name_like, -> keyword {where("name LIKE ?", "%#{keyword}%") if keyword.present?}
+  scope :of_hashtag, ->tag{joins(:hashtags).where(hashtags: {name: tag})}
+  scope :name_like, ->keyword do
+    (where("foods.name LIKE ?", "%#{keyword}%") | of_hashtag(keyword)) if keyword.present?
+  end
   scope :most_rate, -> total do
     join_sql = <<-SQL
       LEFT JOIN rates ON foods.id = rates.rateable_id AND rates.rateable_type = 'Food'

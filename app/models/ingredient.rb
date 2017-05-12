@@ -6,5 +6,5 @@ class Ingredient < ApplicationRecord
   has_many :foods, through: :food_ingredients
 
   mount_uploader :image, PictureUploader
-  scope :search_by_name, ->keyword { where "name LIKE ?", "%#{keyword}%" }
+  scope :name_like, ->keyword { where "name LIKE ?", "%#{keyword}%" }
 end
