@@ -4,8 +4,11 @@ en:
       search: "Search"
       result: "Result"
       food: "Foods"
-      post: "Posts"
+      posttip: "Tips"
       ingredient: "Ingredients"
+  static_pages:
+    index:
+      best_rating: "Best Rating"
   search: "Search"
   host: "Eating Well"
   page_info: "Healthy Food, Healthy Cooking & Healthy Eating Services "

@@ -2,7 +2,7 @@ class Admin::IngredientsController < Admin::AdminController
   before_action :load_ingredient, only: [:edit, :update, :destroy]
 
   def index
-    @ingredients = Ingredient.search_by_name(params[:keyword]).page(params[:page]).per(10)
+    @ingredients = Ingredient.name_like(params[:keyword]).page(params[:page]).per(10)
     @ingredient = Ingredient.new
   end
 

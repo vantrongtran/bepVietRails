@@ -23,7 +23,12 @@ class Food < ApplicationRecord
 
   scope :of_hashtag, ->tag{joins(:hashtags).where(hashtags: {name: tag})}
   scope :name_like, ->keyword do
-    (where("foods.name LIKE ?", "%#{keyword}%") | of_hashtag(keyword)) if keyword.present?
+    join_sql = <<-SQL
+      LEFT JOIN target_hashtags ON target_hashtags.target_id = foods.id AND target_hashtags.target_type = 'Food'
+      LEFT JOIN hashtags ON hashtags.id = target_hashtags.hashtag_id
+    SQL
+    joins(join_sql)
+      .where("foods.name LIKE ? OR hashtags.name = ?", "%#{keyword}%", keyword) if keyword.present?
   end
   scope :most_rate, -> total do
     join_sql = <<-SQL

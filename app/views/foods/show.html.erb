@@ -130,16 +130,16 @@
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:809px;height:150px;overflow:hidden;">
           <% @food.food_ingredients.each do |ingredient| %>
-          <div class="slide-element-ingredient">
-            <img data-u="image" src="<%= ingredient.image %>" />
-            <div class="ingredients-element-detail">
+            <div class="slide-element-ingredient">
+              <img data-u="image" src="<%= ingredient.image %>" />
+              <div class="ingredients-element-detail">
+              </div>
+              <div class="ingredient-item-detail">
+                <%= ingredient.name %>:
+                <%= ingredient.value %>
+                <%= ingredient.inscription %>
+              </div>
             </div>
-            <div class="ingredient-item-detail">
-              <%= ingredient.name %>:
-              <%= ingredient.value %>
-              <%= ingredient.inscription %>
-            </div>
-          </div>
           <% end %>
         </div>
         <!-- Arrow Navigator -->
