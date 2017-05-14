@@ -1,23 +1,16 @@
 class SearchController < ApplicationController
   def index
-    if params[:keyword] && params[:type]
-      @posts = []
-      @foods = []
-      @ingredients = []
+    types = []
+    if params[:keyword].present? && params[:type]
       types = params[:type].values
-      @results = Search.new.search params[:keyword], types
-      @results.each do |r|
-        if Food === r.first
-          @foods << r.first
-        elsif Post === r.first
-          @posts << r.first
-        else
-          @ingredients << r.first
-        end
-      end
+      
+    elsif params[:keyword].present?
+      types = [Food.name, Post::Tip.name, Ingredient.name]
     end
-    @foods
-    @posts
-    @ingredients
+    @results = []
+    types.each do |type|
+      result = Object.const_get(type).name_like(params[:keyword]).page(params[:"#{type.downcase}_page"])
+      @results << result if result.any?
+    end
   end
 end
