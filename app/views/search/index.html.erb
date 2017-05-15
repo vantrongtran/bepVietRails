@@ -62,6 +62,8 @@
                     <h3><%= t(".#{result.first.class.name.downcase.tr(":", "")}") %></h3>
                   </div>
                   <%= render result %>
+                </div>
+                <div class="row">
                   <div class="paginate">
                     <%= paginate result, param_name: :"#{result.first.class.name.downcase.tr(":", "")}_page" %>
                   </div>

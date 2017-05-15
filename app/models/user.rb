@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  paginates_per 12
+
   attr_accessor :current_password
 
   validates_presence_of   :email, if: :email_required?
