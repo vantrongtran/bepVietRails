@@ -15,7 +15,7 @@
           </div>
           <%= render @foods %>
           <div class="paginate">
-            <%= paginate @foods, params: {tab: :foods_page} %>
+            <%= paginate @foods, param_name: :foods_page %>
           </div>
         </div>
       <% end %>
@@ -26,7 +26,7 @@
           </div>
           <%= render @posts %>
           <div class="paginate">
-            <%= paginate @posts, params: {tab: :posts_page} %>
+            <%= paginate @posts, param_name: :posts_page %>
           </div>
         </div>
       <% end %>
@@ -37,7 +37,7 @@
           </div>
           <%= render @ingredients %>
           <div class="paginate">
-            <%= paginate @ingredients, params: {tab: :ingredient_page} %>
+            <%= paginate @ingredients, param_name: :ingredient_page %>
           </div>
         </div>
       <% end %>

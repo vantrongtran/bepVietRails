@@ -63,7 +63,7 @@
                   </div>
                   <%= render result %>
                   <div class="paginate">
-                    <%= paginate result, params: {tab: :"#{result.first.class.name.downcase}_page"} %>
+                    <%= paginate result, param_name: :"#{result.first.class.name.downcase.tr(":", "")}_page" %>
                   </div>
                 </div>
               <% end %>

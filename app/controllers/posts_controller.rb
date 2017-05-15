@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :load_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = params[:name] ? (Post.search_by_name( params[:name] ).page(params[:page]).per Settings.per_page.food): (Post.all.page(params[:page]).per Settings.per_page.food)
+    @posts = Post::Tip.name_like(params[:name]).page(params[:page]).per Settings.per_page.tip
   end
 
   def show
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post::UserPost.new post_params
+    @post = Post::UserPost::Tip.new post_params
     if @post.save
       add_message_flash :success, t(:created)
     else
