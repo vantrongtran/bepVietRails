@@ -7,7 +7,7 @@ puts "Create base Category"
 c = Category.create! name: "BASE CATEGORY", left: 1, right: 2, level: 0
   5.times do |n|
     s = Category.add! Faker::Name.name, c.right, c.level
-      5.times do
+      rand(1..5).times do
         Category.add! Faker::Name.name, s.right, s.level
         s.reload
       end

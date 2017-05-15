@@ -216,7 +216,7 @@
                 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:15px; padding-bottom:10px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:42px; v-text-anchor:middle; width:146px;" arcsize="60%" strokecolor="#975FAA" fillcolor="#975FAA"><w:anchorlock/><center style="color:#ffffff; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:16px;"><![endif]-->
                 <div style="color: #ffffff; background-color: #975FAA; border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px; max-width: 126px; width: 86px; width: 25%; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; text-align: center; mso-border-alt: none;">
                   <span style="font-size:16px;line-height:32px;"><span style="font-size: 14px; line-height: 28px;" data-mce-style="font-size: 14px;">
-                    <%= link_to t(:show_more), root_url %></span></span>
+                    <%= link_to t(:show_more), root_url, style: "color: #FFF"  %></span></span>
                 </div>
                 <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
               </div>
@@ -307,7 +307,7 @@
 
           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 20px; padding-top: 0px; padding-bottom: 10px;"><![endif]-->
           <div style="padding-right: 10px; padding-left: 20px; padding-top: 0px; padding-bottom: 10px;">
-            <div style="font-size:14px;line-height:17px;color:#C7702E;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><strong><a style="color:#C7702E" href="http://beefree.io/" target="_blank"><span style="text-decoration: underline; font-size: 14px; line-height: 16px;"><%= link_to t(:show_more), @post %></span> </a>→</strong></p></div>
+            <div style="font-size:14px;line-height:17px;color:#C7702E;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><strong><a style="color:#C7702E" href="http://beefree.io/" target="_blank"><span style="text-decoration: underline; font-size: 14px; line-height: 16px;"><%= link_to t(:show_more), post_url(@post) %></span> </a>→</strong></p></div>
           </div>
           <!--[if mso]></td></tr></table><![endif]-->
 
@@ -357,7 +357,7 @@
         <div align="center" class="button-container center" style="padding-right: 10px; padding-left: 10px; padding-top:15px; padding-bottom:20px;">
           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:15px; padding-bottom:20px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:42px; v-text-anchor:middle; width:146px;" arcsize="60%" strokecolor="#C7702E" fillcolor="#C7702E"><w:anchorlock/><center style="color:#ffffff; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:16px;"><![endif]-->
           <div style="color: #ffffff; background-color: #C7702E; border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px; max-width: 126px; width: 86px; width: 25%; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; text-align: center; mso-border-alt: none;">
-            <span style="font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 14px; line-height: 28px;" data-mce-style="font-size: 14px;">Show more</span></span>
+            <span style="font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;line-height:32px;"><span style="font-size: 14px; line-height: 28px;" data-mce-style="font-size: 14px;"><%= link_to t(:show_more), post_url(@post), style: "color: #FFF" %></span></span>
           </div>
           <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
         </div>
