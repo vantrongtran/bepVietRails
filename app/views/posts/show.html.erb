@@ -15,12 +15,20 @@
         </div>
       </div>
       <div class="description">
-        <%= @post.content.html_safe %>
-        <% if @post.class == Post::UserPost %>
-          <div class="row author">
-            <%= link_to t(".author", name: @post.user.name), @post.user %>
-          </div>
-        <% end %>
+        <div class="row">
+          <%= @post.content.html_safe %>
+        </div>
+        <div class="row">
+          <%= render partial: "shared/hashtag", collection: @post.hashtags,
+            as: :hashtag %>
+        </div>
+        <div class="row">
+          <% if @post.class == Post::UserPost %>
+            <div class="row author">
+              <%= link_to t(".author", name: @post.user.name), @post.user %>
+            </div>
+          <% end %>
+        </div>
         <div class="row">
           <%= render "likes/like_form", object: @post, liked:  @post.likes.size %>
         </div>

@@ -9,11 +9,12 @@ class SearchController < ApplicationController
     end
     @results = []
     types.each do |type|
+      result = []
       begin
-        result = Object.const_get(type).name_like(params[:keyword]).page(params[:"#{type.downcase}_page"])
-        @results << result if result.any?
+        result = Object.const_get(type).name_like(params[:keyword]).page(params[:"#{type.downcase.tr(":", "")}_page"] || 1)
       rescue
       end
+      @results << result if result.any?
     end
   end
 end
