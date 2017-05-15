@@ -1,3 +1,19 @@
 .author {
   text-align: right;
 }
+.container-custom{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.panel-custom:after {
+  background-color: #8bc34a;
+}
+
+.panel-custom{
+  background-color: #fffafa !important;
+  border-top: 1px solid #fffafa !important;
+
+  a{
+    color: #3C4858;
+  }
+}

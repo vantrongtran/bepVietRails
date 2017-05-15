@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :load_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post::Tip.name_like(params[:name]).page(params[:page]).per Settings.per_page.tip
+    @posts = Post::Tip.name_like(params[:name]).of_categor(params[:category_id]).page(params[:page]).per Settings.per_page.tip
+    @categories = Category.base_category.instance_children
   end
 
   def show
