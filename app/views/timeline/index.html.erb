@@ -1,0 +1,19 @@
+<% provide :title, t(".title") %>
+<%= render "layouts/navbar" %>
+<div class="row">
+  <div class="col-md-2 col-xs-0"></div>
+  <div class="col-md-8 col-xs-12">
+    <div class="headline">
+    <h3><%= t ".posts" %></h3>
+    </div>
+    <%= render partial: "users/user_post", collection: @posts, as: :post %>
+  </div>
+  <div class="col-md-2 col-xs-0"></div>
+</div>
+<div class="row">
+  <div class="col-md-2 col-xs-0"></div>
+  <div class="col-md-8 col-xs-12 paginate">
+    <%= paginate @posts %>
+  </div>
+  <div class="col-md-2 col-xs-0"></div>
+</div>

@@ -8,10 +8,10 @@
   <% end %>
 <% end %>
 <% if @result %>
-  $('#<%= "like-#{@like.target.class.name.downcase}-#{@like.target.id}" %>').html(
+  $('#<%= "like-#{@like.target.class.name.downcase.downcase.tr(":", "")}-#{@like.target.id}" %>').html(
     '<%= j render "likes/unlike", object: @like.target %>'
     );
   readyButtonLikeAction();
 <% else %>
-  likeFaid('#<%= "like-#{@like.target.class.name.downcase}-#{@like.target.id}" %>');
+  likeFaid('#<%= "like-#{@like.target.class.name.downcase.downcase.tr(":", "")}-#{@like.target.id}" %>');
 <% end %>
