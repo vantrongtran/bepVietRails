@@ -1,7 +1,7 @@
 class C45
   attr_accessor :data, :root, :arr_gain_ratios, :attributes
 
-  def initialize data, conditions
+  def initialize data = FoodTargetCondition.all, conditions = Condition.all
     @data = data
     if @data.size > 0
       @s = @data.size.to_f
@@ -105,7 +105,10 @@ class C45
     return node
   end
 
-  def make_node name, value, foods
+  def save
+    File.open("public/tree/c45_#{DateTime.now.strftime('%Q')}.json","w") do |f|
+      f.write(self.to_json)
+    end
   end
 
   private

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if status
       add_message_flash :success, t(:updated)
     else
-      add_message_flash :error, t(:failed)
+      add_message_flash :error, @user.errors.full_messages
     end
     redirect_to @user
   end

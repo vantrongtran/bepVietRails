@@ -10,7 +10,6 @@ class Admin::TipsController < Admin::AdminController
   end
 
   def create
-    binding.pry
     @post = Post::Tip.new post_params
     if @post.save
       add_message_flash :success, t(:created)

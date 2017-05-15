@@ -30,6 +30,12 @@
                   <%= t ".ingredient" %>
                 </label>
               </div>
+              <div class="checkbox">
+                <label>
+                  <%= check_box_tag "type[4]", User.name, true %>
+                  <%= t ".users" %>
+                </label>
+              </div>
             </div>
             <div class="form-group is-empty inline">
               <%= text_field_tag "keyword", nil , placeholder: "Search", class: "form-control", size: "40" %>

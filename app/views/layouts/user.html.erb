@@ -60,7 +60,9 @@
                       <%= t(:follower_details, follower: @user.followers.count) %>
                     </h6>
                   <% end %>
-                  |
+                  <a href="" style="margin-left: 5px; margin-right: 5px;">
+                    <h6>|</h6>
+                  </a>
                   <%= link_to user_following_index_path(@user) do %>
                     <h6>
                       <%= t(:following_details, following: @user.following.count) %>

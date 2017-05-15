@@ -49,7 +49,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, PictureUploader
 
-  scope :name_like, -> keyword { where("name LIKE ?", "%#{keyword}%") if keyword.present?}
+  scope :name_like, -> keyword { where("name LIKE ?", "%#{keyword}%").or(where email: keyword) if keyword.present?}
 
   def follow other_user
     active_relationships.create followed_id: other_user.id
