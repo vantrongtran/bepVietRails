@@ -65,13 +65,21 @@ end
 
 User.create name: "user", email: "user@gmail.com", password: "12312311"
 
+users = User.first(20)
 puts "---------------------"
 puts "Create post"
 50.times do |n|
-  post = Post.create! title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs, target_id: rand(2..6), type: Post::Tip.name
+  post = Post::Tip.create! title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs, target_id: rand(2..6)
+end
+users.each do |user|
+  rand(1..5).times do
+    user.user_posts.create!(
+      title: Faker::Lorem.sentence, content: Faker::Lorem.paragraphs
+    )
+  end
 end
 
-users = User.first(20)
+puts "Fake Follow"
 users.each do |user|
   ((user.id + 1)..30).each do |i|
     user.follow User.find(i)

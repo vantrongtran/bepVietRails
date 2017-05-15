@@ -66,9 +66,5 @@ class Food < ApplicationRecord
       end
       Food.where(id: root.food_target_conditions.map(&:food_id))
     end
-
-    def get_node root, conditions
-
-    end
   end
 end

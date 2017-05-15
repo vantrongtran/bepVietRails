@@ -4,7 +4,11 @@ class HashtagsController < ApplicationController
   end
 
   def show
-    @tag = Hashtag.find params[:id]
+    begin
+      @tag = Hashtag.find params[:id]
+    rescue
+      @tag = Hashtag.find_by name: params[:id]
+    end
     @foods = @tag.foods.page(params[:foods_page]).per 8
     @posts = @tag.posts.page(params[:posts_page]).per 8
     @ingredients = @tag.ingredients.page(params[:ingredient_page]).per 8

@@ -15,7 +15,7 @@
           </div>
           <div class="form-group label-floating is-empty autocomplete input">
             <%= label_tag t(:tag), nil, class: "control-label" %>
-            <%= text_field_tag "hashtag",  nil, class: "form-control suggestion", onkeyup: "searchHashtag(this, event);" %>
+            <%= text_field_tag "hashtag",  nil, class: "form-control suggestion", onkeyup: "searchHashtag(this, event);", autocomplete: :off %>
             <span style="display:none;" class="suggestion-name-sub">post</span>
             <span style="display:none;" class="suggestion-name">post[post_hashtags_attributes]</span>
             <ul class="autocomplete-suggestion" style="display:none;"></ul>

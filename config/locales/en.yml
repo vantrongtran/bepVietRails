@@ -6,6 +6,7 @@ en:
       food: "Foods"
       posttip: "Tips"
       ingredient: "Ingredients"
+      users: "Users"
   static_pages:
     index:
       best_rating: "Best Rating"
@@ -80,6 +81,7 @@ en:
   posts:
     show:
       author: "Author: %{name}"
+      comments: "Comments"
     modal_edit:
       edit: "Edit post"
       update: "Update"
@@ -110,6 +112,7 @@ en:
   foods:
     show:
       title: "Food | %{name}"
+      comments: "Commnets"
   views:
     pagination:
       first: "« First"
