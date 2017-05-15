@@ -37,7 +37,9 @@
         <div class="row">
           <div class="col-md-3 col-xs-0"></div>
           <div class="col-md-6 co;-xs-12">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add-post"><%= t ".add_post" %></button>
+            <% if @user.id == current_user&.id %>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add-post"><%= t ".add_post" %></button>
+            <% end %>
             <%= render partial: "user_post", collection: @user.user_posts,
               as: :post %>
           </div>

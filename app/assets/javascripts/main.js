@@ -204,6 +204,11 @@ $(document).ready(function() {
     readURL(this);
     $("#update-avatar").submit();
   });
+
+  $("#user-avatar-edit").click(function(){
+    $("#btn-user-avatar").click();
+  });
+
 });
 
 // function showActive(target) {
@@ -256,3 +261,4 @@ function readURL(input) {
 function disable_input() {
   $("#edit_user :input").prop("disabled", true);
 }
+
