@@ -1,5 +1,7 @@
 class Food < ApplicationRecord
 
+  paginates_per 12
+
   has_many :food_ingredients, dependent: :destroy
   has_many :ingredients, through: :food_ingredients
   has_many :food_target_conditions
