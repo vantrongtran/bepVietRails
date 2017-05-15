@@ -151,7 +151,7 @@
       </div>
       <div class="tab-pane" id="profile">
         <div class="row">
-          <%= form_for @user, method: :put do |f| %>
+          <%= form_for @user, method: :put, html: {id: "edit_user"} do |f| %>
             <div class="col-md-2"></div>
             <div class="row">
               <div class="form-group col-md-4 col-sx-6">
@@ -192,7 +192,7 @@
                   <div class="form-group col-md-4 col-sx-6">
                     <div class="form-group label-floating">
                       <%= f.label t (".birthday"), class: "control-label" %>
-                      <%= f.text_field :birthday, class: "datepicker form-control", required: true %>
+                      <%= f.text_field :birthday, class: "datepicker form-control" %>
                       <span class="material-input"></span></div>
                     </div>
                   </div>
