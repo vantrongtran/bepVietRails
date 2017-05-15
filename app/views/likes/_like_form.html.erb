@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<div class="like-content" id="<%= "like-#{object.class.name.downcase}-#{object.id}" %>">
+<div class="like-content" id="<%= "like-#{object.class.name.downcase.downcase.tr(":", "")}-#{object.id}" %>">
   <% if current_user.liked? object %>
     <%= render "likes/unlike", object: object %>
   <% else %>

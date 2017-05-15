@@ -38,39 +38,45 @@
             <%= t :search %>
           <% end %>
         </li>
-        <% if !current_user %>
-        <li>
-          <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();" class="click-event">
-            <i class="material-icons">account_box</i>
-            Login
-          </a>
-        </li>
-        <% else %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <i class="material-icons">
-              <div class="user-avatar">
-                <%= image_tag current_user.avatar, class: "user-avatar" %>
-              </div>
-            </i>
-            <div class="user-name">
-              <%= current_user.name %>
-              <b class="caret"></b>
-            </div>
-            <div class="ripple-container"></div></a>
-            <ul class="dropdown-menu dropdown-with-icons">
-              <li>
-                <%= link_to current_user do %>
-                  <i class="material-icons">account_box</i> Profile
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="material-icons">exit_to_app</i> Logout
-                <% end %>
-              </li>
-            </ul>
+        <% unless user_signed_in? %>
+          <li>
+            <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();" class="click-event">
+              <i class="material-icons">account_box</i>
+              Login
+            </a>
           </li>
+        <% else %>
+          <li>
+            <%= link_to timeline_index_path do %>
+              <i class="material-icons">line_weight</i>
+              <%= t :timelines %>
+            <% end %>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons">
+                <div class="user-avatar">
+                  <%= image_tag current_user.avatar, class: "user-avatar" %>
+                </div>
+              </i>
+              <div class="user-name">
+                <%= current_user.name %>
+                <b class="caret"></b>
+              </div>
+              <div class="ripple-container"></div></a>
+              <ul class="dropdown-menu dropdown-with-icons">
+                <li>
+                  <%= link_to current_user do %>
+                    <i class="material-icons">account_box</i> Profile
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="material-icons">exit_to_app</i> Logout
+                  <% end %>
+                </li>
+              </ul>
+            </li>
           <% end %>
         </ul>
       </div>

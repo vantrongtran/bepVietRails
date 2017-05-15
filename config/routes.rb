@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
   resources :search
   resources :users
+  resources :timeline, only: :index
   resources :condition_details
   resources :user_conditions, only: :create
   resources :likes, only: [:create, :destroy]

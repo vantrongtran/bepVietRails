@@ -1,4 +1,5 @@
 class RaterController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :edit]
 
   def create
     if user_signed_in? || params[:score].to_f < 5.0

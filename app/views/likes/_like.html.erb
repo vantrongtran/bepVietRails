@@ -2,7 +2,7 @@
   <%= hidden_field_tag "like[target_id]", object.id %>
   <%= hidden_field_tag "like[target_type]", object.class.name %>
   <button type="submit" class="btn btn-simple btn-just-icon btn-like" rel="tooltip"
-    data-original-title="<%= t :like_object, like: t(object.class.name.downcase) %>">
+    data-original-title="<%= t :like_object, like: t(object.class.name.downcase.tr(":", "")) %>">
     <i class="fa fa-heart-o fa-lg"></i>
     <div class="ripple-container"></div>
   </button>

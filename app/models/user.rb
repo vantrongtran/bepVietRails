@@ -39,7 +39,8 @@ class User < ApplicationRecord
   has_many :favorite_foods, through: :favorite_rates, source: :rateable, source_type: Food.name
   has_many :user_conditions, class_name:Condition::UserCondition.name, foreign_key: :target_id
   has_many :likes, dependent: :destroy
-  has_many :liked_posts, through: :likes, source_type: Post.name, source: :target
+  has_many :liked_tips, through: :likes, source_type: Post::Tip.name, source: :target
+  has_many :liked_posts, through: :likes, source_type: Post::UserPost.name, source: :target
   has_many :liked_activities, through: :likes, source_type: Activity.name, source: :target
   has_many :liked_comments, through: :likes, source_type: Comment.name, source: :target
   has_many :user_posts, class_name: Post::UserPost.name, foreign_key: :target_id
@@ -93,12 +94,14 @@ class User < ApplicationRecord
 
   def liked? obj
     case obj.class.name
-    when Post.name
+    when Post::UserPost.name
       self.liked_posts.include? obj
     when Activity.name
       self.liked_activities.include? obj
     when Comment.name
       self.liked_comments.include? obj
+    when Post::Tip.name
+      self.liked_tips.include? obj
     else
       false
     end

@@ -11,8 +11,14 @@ en:
   static_pages:
     index:
       best_rating: "Best Rating"
+  timelines: "Timeline"
+  timeline:
+    index:
+      posts: "Following posts"
+      title: "Timeline"
   search: "Search"
   host: "Eating Well"
+  posttip: "Tips"
   page_info: "Healthy Food, Healthy Cooking & Healthy Eating Services "
   page_info_1: "Healthy Foods Everyone Should Know How To Cook"
   suggest_food: "What should i eat today?"
@@ -132,6 +138,7 @@ en:
         display_entries: "Displaying %{entry_name} <b>%{first} - %{last}</b> of <b>%{total}</b> in total"
   layouts:
     admin:
+      management: "Management"
       application_name: "Bếp Việt"
       dashboard: "Dashboard"
       users: "User Profiles"
@@ -145,7 +152,7 @@ en:
         dashboard: "Dashboard"
     tips:
       index:
-        title: "Tips"
+        title: "Tips management"
         posts: "Tips"
       modal_add:
         title: "Title"
