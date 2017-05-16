@@ -60,7 +60,7 @@
                 </div>
               </i>
               <div class="user-name">
-                <%= current_user.name %>
+                <%= current_user.name.truncate 27 %>
                 <b class="caret"></b>
               </div>
               <div class="ripple-container"></div></a>
