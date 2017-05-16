@@ -10,15 +10,15 @@ class Post < ApplicationRecord
   has_many :likes, as: :target
   has_many :post_hashtags, as: :target, class_name:TargetHashtag.name
   has_many :hashtags, through: :post_hashtags
+  has_many :foods,-> {distinct}, through: :hashtags
+  has_many :posts, through: :hashtags
 
   accepts_nested_attributes_for :post_hashtags, allow_destroy: true
   accepts_nested_attributes_for :hashtags,
     reject_if: ->attributes{attributes[:name].blank?}
 
   scope :of_hashtag, ->tag{joins(:hashtags).where(hashtags: {name: tag})}
-  # scope :name_like, ->keyword do
-  #   (where("posts.title LIKE ?", "%#{keyword}%") | of_hashtag(keyword)) if keyword.present?
-  # end
+
   scope :name_like, ->keyword do
     join_sql = <<-SQL
       LEFT JOIN target_hashtags ON target_hashtags.target_id = posts.id AND target_hashtags.target_type = 'Post'

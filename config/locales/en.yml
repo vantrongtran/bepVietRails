@@ -20,6 +20,7 @@ en:
       posts: "Following posts"
       title: "Timeline"
   user_invalid: "Invalid username or password!"
+  login: "Login"
   categories_title: "Categories"
   calorie: "Calorie: %{calorie}"
   search_p: "Search"

@@ -11,6 +11,8 @@ class Food < ApplicationRecord
   has_many :food_hashtags, as: :target, class_name: TargetHashtag.name
   has_many :hashtags, through: :food_hashtags
   has_many :comments, as: :target, dependent: :destroy
+  has_many :foods,-> {distinct}, through: :hashtags
+  has_many :posts, through: :hashtags
 
   validates :name, :cooking_method, :calorie, presence: true
 
