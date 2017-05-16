@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       add_message_flash :success, t(:deleted)
     else
-      add_message_flash :error, t(:delete_fail)
+      add_message_flash :error, @comment.errors.full_messages
     end
   end
 

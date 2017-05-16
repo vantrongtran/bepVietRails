@@ -1,0 +1,14 @@
+<tr>
+  <td><%= user.id %></td>
+  <td><%= image_tag user.avatar, class: "image" %></div></td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td>
+    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete">
+        <%= link_to admin_user_path(user), method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm",
+          confirmcontent: t("confirm_delete") do %>
+          <i class="material-icons">close</i>
+        <% end %>
+    </button>
+  </td>
+</tr>

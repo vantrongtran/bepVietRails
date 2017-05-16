@@ -172,6 +172,9 @@ en:
       category_tree: "Categories Tree"
       food_tree: "Foods Tree"
   admin:
+    users:
+      index:
+        title: "Users management"
     dashboard:
       index:
         dashboard: "Dashboard"

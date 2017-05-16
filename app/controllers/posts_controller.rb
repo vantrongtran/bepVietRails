@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     if @post.save
       add_message_flash :success, t(:created)
     else
-      add_message_flash_now :error, t(:failed)
+      add_message_flash_now :error, @post.errors.full_messages
     end
     redirect_to current_user
   end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     if @post.update_attributes post_params
       add_message_flash :success, t(:updated)
     else
-      add_message_flash :error, t(:failed)
+      add_message_flash :error, @post.errors.full_messages
     end
     redirect_to current_user
   end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     if @post.destroy
       add_message_flash :success, t(:deleted)
     else
-      add_message_flash_now :error, t(:failed)
+      add_message_flash_now :error, @post.errors.full_messages
     end
     redirect_to current_user
   end

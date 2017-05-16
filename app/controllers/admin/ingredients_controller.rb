@@ -11,7 +11,7 @@ class Admin::IngredientsController < Admin::AdminController
     if @ingredient.save
       add_message_flash :success, t(:created)
     else
-      add_message_flash_now :error, t(:failed)
+      add_message_flash_now :error,@ingredient.errors.full_messages
     end
   end
 
@@ -19,7 +19,7 @@ class Admin::IngredientsController < Admin::AdminController
     if @ingredient.update_attributes ingredient_params
       add_message_flash :success, t(:updated)
     else
-      add_message_flash :error, t(:failed)
+      add_message_flash :error, @ingredient.errors.full_messages
     end
     redirect_to admin_ingredients_path
   end
@@ -28,7 +28,7 @@ class Admin::IngredientsController < Admin::AdminController
     if @ingredient.destroy
       add_message_flash :success, t(:deleted)
     else
-      add_message_flash_now :error, t(:failed)
+      add_message_flash_now :error, @ingredient.errors.full_messages
     end
     redirect_to admin_ingredients_path
   end
