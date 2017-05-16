@@ -4,7 +4,8 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
-  has_many :tips, foreign_key: :target_id, dependent: :destroy
+  has_many :tips, foreign_key: :target_id, dependent: :destroy, class_name: Post::Tip.name
+
 
   default_scope {where.not(id: 1).order(left: :asc)}
 

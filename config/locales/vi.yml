@@ -1,35 +1,340 @@
 vi:
-  follow: "Follow"
-  unfollow: "Unfollow"
-  follow_details: "Following: %{following}"
-  condition_details: "Chi tiết trạng thái"
-  welcome: "Xin chào %{name}!"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Có các lỗi sau: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Không thể xóa do tồn tại đối tượng phụ thuộc %{record}
+          has_many: Không thể xóa do tồn tại một số đối tượng phụ thuộc %{record}
+  date:
+    abbr_day_names:
+    - Chủ nhật
+    - Thứ hai
+    - Thứ ba
+    - Thứ tư
+    - Thứ năm
+    - Thứ sáu
+    - Thứ bảy
+    abbr_month_names:
+    -
+    - Tháng một
+    - Tháng hai
+    - Tháng ba
+    - Tháng tư
+    - Tháng năm
+    - Tháng sáu
+    - Tháng bảy
+    - Tháng tám
+    - Tháng chín
+    - Tháng mười
+    - Tháng mười một
+    - Tháng mười hai
+    day_names:
+    - Chủ nhật
+    - Thứ hai
+    - Thứ ba
+    - Thứ tư
+    - Thứ năm
+    - Thứ sáu
+    - Thứ bảy
+    formats:
+      default: "%d-%m-%Y"
+      long: "%d %B, %Y"
+      short: "%d %b"
+    month_names:
+    -
+    - Tháng một
+    - Tháng hai
+    - Tháng ba
+    - Tháng tư
+    - Tháng năm
+    - Tháng sáu
+    - Tháng bảy
+    - Tháng tám
+    - Tháng chín
+    - Tháng mười
+    - Tháng mười một
+    - Tháng mười hai
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: khoảng 1 giờ
+        other: khoảng %{count} giờ
+      about_x_months:
+        one: khoảng 1 tháng
+        other: khoảng %{count} tháng
+      about_x_years:
+        one: khoảng 1 năm
+        other: khoảng %{count} năm
+      almost_x_years:
+        one: gần 1 năm
+        other: gần %{count} năm
+      half_a_minute: 30 giây
+      less_than_x_minutes:
+        one: chưa tới 1 phút
+        other: chưa tới %{count} phút
+      less_than_x_seconds:
+        one: chưa tới 1 giây
+        other: chưa tới %{count} giây
+      over_x_years:
+        one: hơn 1 năm
+        other: hơn %{count} năm
+      x_days:
+        one: 1 ngày
+        other: "%{count} ngày"
+      x_minutes:
+        one: 1 phút
+        other: "%{count} phút"
+      x_months:
+        one: 1 tháng
+        other: "%{count} tháng"
+      x_seconds:
+        one: 1 giây
+        other: "%{count} giây"
+    prompts:
+      day: Ngày
+      hour: Giờ
+      minute: Phút
+      month: Tháng
+      second: Giây
+      year: Năm
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: phải được đồng ý
+      blank: không thể để trắng
+      present: cần phải để trắng
+      confirmation: không khớp với xác nhận
+      empty: không thể rỗng
+      equal_to: phải bằng %{count}
+      even: phải là số chẵn
+      exclusion: đã được giành trước
+      greater_than: phải lớn hơn %{count}
+      greater_than_or_equal_to: phải lớn hơn hoặc bằng %{count}
+      inclusion: không có trong danh sách
+      invalid: không hợp lệ
+      less_than: phải nhỏ hơn %{count}
+      less_than_or_equal_to: phải nhỏ hơn hoặc bằng %{count}
+      not_a_number: không phải là số
+      not_an_integer: phải là một số nguyên
+      odd: phải là số lẻ
+      taken: đã có
+      too_long: quá dài (tối đa %{count} ký tự)
+      too_short: quá ngắn (tối thiểu %{count} ký tự)
+      wrong_length: độ dài không đúng (phải là %{count} ký tự)
+      other_than: cần phải khác %{count}
+    template:
+      body: 'Có lỗi với các mục sau:'
+      header:
+        one: 1 lỗi ngăn không cho lưu %{model} này
+        other: "%{count} lỗi ngăn không cho lưu %{model} này"
+  helpers:
+    select:
+      prompt: Vui lòng chọn
+    submit:
+      create: Tạo %{model}
+      submit: Lưu %{model}
+      update: Cập nhật %{model}
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: đồng
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ''
+          billion: Tỷ
+          million: Triệu
+          quadrillion: Triệu tỷ
+          thousand: Nghìn
+          trillion: Nghìn tỷ
+      format:
+        delimiter: ''
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Byte
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ", và "
+      two_words_connector: " và "
+      words_connector: ", "
+  time:
+    am: sáng
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%d %B, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: chiều
+  language_update: "Đã chọn Tiếng Việt"
+  language: "Ngôn ngữ: "
+  registration_success: "Đăng ký thành công!!!"
+  search:
+    index:
+      search: "Tìm kiếm"
+      result: "Kết quả tìm kiếm"
+      food: "Món ăn"
+      posttip: "Cẩm nang"
+      ingredient: "Nguyên liệu"
+      user: "Người dùng"
+  static_pages:
+    index:
+      best_rating: "Yêu thích"
+      tip: "Cẩm nang"
+  timelines: "Dòng thời gian"
+  timeline:
+    index:
+      posts: "Bài viết đang theo dõi"
+      title: "Dòng thời gian"
+  user_invalid: "Tài khoản khoặc mật khẩu không chính xác!"
+  categories_title: "Danh mục"
+  conditions: "Tình trạng"
+  favorite: "Yêu thích"
+  condition: "Tình trạng"
+  search_p: "Tìm kiếm"
+  calorie: "Năng lượng: %{calorie}"
+  host: "Bếp Việt"
+  posttip: "Cẩm nang"
+  page_info: "Nấu ăn ngon, thức ăn bổ dưỡng - ăn uống lành mạnh."
+  page_info_1: "Các món ăn tốt cho sức khỏe cho mọi người và cách chế biến."
+  suggest_food: "Nên ăn gì hôm nay?"
+  show_more: "Đọc thêm"
+  liked_number: "%{number} Thích"
+  effective: "Có hiệu quả."
+  profile: "Profile"
+  admin_title: "Admin managent"
+  home: "Trang Chủ"
+  post: "Cẩm Nang"
+  food: "Món Ăn"
+  tips: "Cẩm Nang"
+  tip: "Cẩm Nang"
+  post::tip: "Cẩm Nang"
+  foods_header: "Món Ăn"
+  comment: "Bình luận"
+  activity: "Hành động"
+  like_object: Thích %{like} này."
+  unlike_object: "Bỏ thích %{like} này."
+  like: "Thích"
+  liked: "Đã thích"
+  unliked: "Bỏ thích"
+  liked_faild: "Chưa thích!!!"
+  unliked_faild: "Chưa bỏ thích!!!"
+  ago: "%{time} trước."
+  page_title: "Healthy Food Guide"
+  follow: "Theo dõi"
+  unfollow: "Bỏ theo dõi"
+  following_details: "Đang theo dõi: %{following}"
+  follower_details: "Người theo dõi: %{follower}"
+  condition_details: "Chi tiết thể trạng"
+  wrong_condition: "Thể trạng cung cấp sai!!"
+  welcome: "Chào mừng trở lại, %{name}!"
   manager: "Quản lý %{managed}."
-  instance: "Đang có..."
+  instance: "Đang có"
   remove: "Xóa"
-  info: "THÔNG BÁO"
-  success: "THÀNH CÔNG"
-  warning: "CẢNH BÁO"
-  danger: "CHÚ Ý"
+  info: "INFO"
+  success: "SUCCESS"
+  warning: "WARNING"
+  danger: "DANGER"
   primary: "PRIMARY"
   edit: "Chỉnh sửa"
   created_fail: "Tạo mới thất bại!!!"
-  deleted: "Đã xóa!!!"
+  deleted: "Xóa thành công!!!"
   deleted_fail: "Xóa thất bại!!!"
   updated_fail: "Cập nhật thất bại!!!"
   updated: "Đã cập nhật!!!"
+  delete: "Xóa"
   update: "Cập nhật"
   Create: "Tạo mới"
   created: "Tạo mới thành công!!!"
   id: "ID"
-  name: "Tên"
+  name: "Name"
   blank: "%{name} không được phép trống!!!"
-  wrong: "Có một điều gì đó không đúng, vui lòng thử lại sau!"
-  confirm_delete: "Xác nhận xóa???"
+  wrong: "Đã có 1 số lỗi sẩy ra, xin thử lại sau!"
+  confirm_delete: "Bạn thực sự muốn xóa????"
   tag: "Hashtag"
+  mailer:
+    comment:
+      subject: "Bình luận mới!!!"
+      message: "%{user} đã bình luận về: \"%{post}.\""
+      new: "Bình luận mới."
+  suggest_foods:
+    index:
+      title: "Bạn nên ăn gì hôm nay?"
+      add_c: "Thêm thông tin thể trạng"
+      suggest_title: "Hôm nay nên ăn gì?"
+      foods: "Món ăn bỗ dưỡng cho bạn:"
+  posts:
+    show:
+      author: "Người đăng: %{name}"
+      comments: "Bình luận"
+    modal_edit:
+      edit: "Chỉnh sửa bài viết"
+      update: "Cập nhật"
+      title: "Tiêu đề"
+      content: "Nội dung"
+  users:
+    modal_add_post:
+      add: "Đăng bài"
+      create: "Tạo bài viết mới"
+      title: "Tiêu đề"
+      content: "Content"
+      category: "Category"
+    show:
+      posts: "Posts"
+      add_post: "Create new post"
+      name: "Name"
+      email: "Email"
+      gender: "Gender"
+      birthday: "Birthday"
+      title: "%{name} | Users"
+      add_c: "Add condition details"
+      update: "Update your physical conditions"
+  followers:
+    index:
+      title: "Followers | %{name}"
+  following:
+    index:
+      title: "Following | %{name}"
   foods:
     show:
-      title: "Món ăn | %{name}"
+      title: "Food | %{name}"
+      comments: "Commnets"
+      ingredients: "Nguyên liệu"
+      comments: "Bình luận"
+      add: "Viết một bình luận"
   views:
     pagination:
       first: "« First"
@@ -47,21 +352,57 @@ vi:
       more_pages:
         display_entries: "Displaying %{entry_name} <b>%{first} - %{last}</b> of <b>%{total}</b> in total"
   layouts:
+    login_modal:
+      or: "Hoặc"
+      login_with: "Đăng nhập bằng"
+      password: "Mật khẩu"
+      r_password: "Xác nhận mật khẩu"
+      sign_in: "Đăng nhập"
+      sign_up: "Đăng ký"
+      new_account: "Tạo tài khoản mới"
+      looking: "Bạn muốn "
     admin:
-      application_name: "Bếp Việt"
+      management: "Management"
+      application_name: "Eating Well"
       dashboard: "Dashboard"
       users: "User Profiles"
       categories: "Categories"
       ingredients: "Ingredients"
+      category_tree: "Categories Tree"
+      food_tree: "Foods Tree"
   admin:
     dashboard:
       index:
         dashboard: "Dashboard"
+        foods: "Foods"
+        tips: "Tips"
+        user_posts: "Posts from user"
+        hashtag: "Hashtag"
+    tips:
+      index:
+        title: "Tips management"
+        posts: "Tips"
+      modal_add:
+        title: "Title"
+        content: "Content"
+        add: "Add"
+        category: "Category"
+      modal_edit:
+        title: "Title"
+        content: "Content"
+        update: "Update"
+        category: "Category"
     foods:
+      food:
+        add_conditions: "Add food conditions"
       index:
         foods: "Foods"
         title: "Foods Management"
       modal_add:
+        add_record_food_conditions: "Add food condition record"
+        food_conditions: "Food conditions"
+        add_food_conditions: "Add food conditions"
+        add_food: "Add Food"
         name: "Name"
         image: "Image"
         calorie: "Calorie"
@@ -80,33 +421,39 @@ vi:
         value: "Value"
     ingredients:
       index:
-        ingredient: "Nguyên Liệu"
-        title: "Quản lý nguyên liệu"
+        ingredient: "Ingredient"
+        title: "Ingredient Management"
       modal_add:
-        name: "Tên"
-        image: "Hình ảnh"
-        inscription: "Đơn vị"
-        add: "Thêm mới"
+        name: "Name"
+        image: "Image"
+        inscription: "Inscription"
+        add: "Add"
       modal_edit:
-        name: "Tên"
-        image: "Hình ảnh"
-        inscription: "Nguyên liệu"
-        update: "Cập nhật"
+        name: "Name"
+        image: "Image"
+        inscription: "Inscription"
+        update: "Update"
     categories:
       index:
-        title: "Danh mục"
+        title: "Categories"
         left: "Left"
         right: "Right"
-        name: "Tên"
+        name: "Name"
         children: "Children"
-        category_tree: "Sơ đồ cây của các Danh mục"
+        category_tree: "Table Tree of category"
         base_category: "Base Category"
       category:
-        edit_category: "Chỉnh sửa tên danh mục"
-        add: "Thêm vào danh mục"
+        edit_category: "Edit category name"
+        add: "Add new children category"
       modal_edit_categories:
-        title: "Chỉnh sửa danh mục"
-        old_name: "Tên cũ"
+        title: "Edit Category Name"
+        old_name: "Old Name"
       modal_new_categories:
-        title: "Thêm mới danh mục"
-        parent_name: "Danh mục cha"
+        title: "Add New Category"
+        parent_name: "Parent name"
+    category_trees:
+      index:
+        title: "Category Tree"
+    food_trees:
+      index:
+        title: "Food Tree"

@@ -4,7 +4,7 @@
       <div class="modal-content">
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Login with</h4>
+        <h4 class="modal-title"><%= t ".login_with" %></h4>
       </div>
       <div class="modal-body">
         <div class="box">
@@ -24,7 +24,7 @@
             <div class="line l">
 
             </div>
-            <span>or</span>
+            <span><%= t ".or" %></span>
             <div class="line r">
             </div>
           </div>
@@ -35,8 +35,8 @@
             <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),
               :html => {:id => "login-box"},:format => :json, :remote => true ) do |f| %>
               <%= f.email_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
-              <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
-              <%= f.submit "Sign In", class: "btn btn-default btn-login" %>
+              <%= f.password_field :password, class: "form-control", placeholder: t(".password"), autocomplete: "off" %>
+              <%= f.submit t(".sign_in"), class: "btn btn-default btn-login" %>
             <% end %>
           </div>
         </div>
@@ -50,9 +50,9 @@
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %>
-              <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
-              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password", autocomplete: "off" %>
-              <%= f.submit "Sign up", class: "btn btn-default btn-register" %>
+              <%= f.password_field :password, class: "form-control", placeholder: t(".password"), autocomplete: "off" %>
+              <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".r_password"), autocomplete: "off" %>
+              <%= f.submit t(".sign_up"), class: "btn btn-default btn-register" %>
             <% end %>
           </div>
         </div>
@@ -60,8 +60,8 @@
     </div>
     <div class="modal-footer">
       <div class="forgot login-footer">
-        <span>Looking to
-          <a href="javascript: showRegisterForm();" class="click-event">create an account</a>
+        <span><%= t ".looking"%>
+          <a href="javascript: showRegisterForm();" class="click-event"><%= t ".new_account" %></a>
           ?
         </span>
       </div>

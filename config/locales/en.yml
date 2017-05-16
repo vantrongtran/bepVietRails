@@ -1,4 +1,6 @@
 en:
+  language_update: "Change locale language setting to English"
+  language: "Language: "
   registration_success: "Registration successfully!"
   search:
     index:
@@ -7,16 +9,20 @@ en:
       food: "Foods"
       posttip: "Tips"
       ingredient: "Ingredients"
-      users: "Users"
+      user: "Users"
   static_pages:
     index:
       best_rating: "Best Rating"
+      tip: "Tips"
   timelines: "Timeline"
   timeline:
     index:
       posts: "Following posts"
       title: "Timeline"
-  search: "Search"
+  user_invalid: "Invalid username or password!"
+  categories_title: "Categories"
+  calorie: "Calorie: %{calorie}"
+  search_p: "Search"
   host: "Eating Well"
   posttip: "Tips"
   page_info: "Healthy Food, Healthy Cooking & Healthy Eating Services "
@@ -28,9 +34,11 @@ en:
   profile: "Profile"
   admin_title: "Admin managent"
   home: "Home"
-  post: "Tip"
+  post: "Tips"
   food: "Food"
-  tips: "Tip"
+  tips: "Tips"
+  tip: "Tips"
+  post::tip: "Tip"
   foods_header: "Foods"
   comment: "Comment"
   activity: "Activity"
@@ -74,6 +82,9 @@ en:
   wrong: "Somthing was worng, please try laster!"
   confirm_delete: "Are you sure to continue????"
   tag: "Hashtag"
+  conditions: "Conditions"
+  condition: "Condition"
+  favorite: "Favorite"
   mailer:
     comment:
       subject: "Notification comment"
@@ -121,6 +132,9 @@ en:
     show:
       title: "Food | %{name}"
       comments: "Commnets"
+      ingredients: "Ingredients"
+      comments: "Comments"
+      add: "Add your comment..."
   views:
     pagination:
       first: "« First"
@@ -138,9 +152,18 @@ en:
       more_pages:
         display_entries: "Displaying %{entry_name} <b>%{first} - %{last}</b> of <b>%{total}</b> in total"
   layouts:
+    login_modal:
+      login_with: "Login with"
+      or: "or"
+      password: "Password"
+      r_password: "Repeat Password"
+      sign_in: "Sign In"
+      sign_up: "Sign Up"
+      new_account: "create an account"
+      looking: "Looking to"
     admin:
       management: "Management"
-      application_name: "Bếp Việt"
+      application_name: "Eating Well"
       dashboard: "Dashboard"
       users: "User Profiles"
       categories: "Categories"
@@ -151,6 +174,10 @@ en:
     dashboard:
       index:
         dashboard: "Dashboard"
+        foods: "Foods"
+        tips: "Tips"
+        user_posts: "Posts from user"
+        hashtag: "Hashtag"
     tips:
       index:
         title: "Tips management"
