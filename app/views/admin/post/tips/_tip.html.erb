@@ -8,7 +8,7 @@
       <i class="material-icons">edit</i>
       <div class="ripple-container"></div></button>
       <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Delete">
-        <%= link_to admin_tips_path(tip), method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm",
+        <%= link_to admin_tip_path(tip), method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm",
           confirmcontent: t("confirm_delete") do %>
           <i class="material-icons">close</i>
         <% end %>
