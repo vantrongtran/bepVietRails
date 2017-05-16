@@ -37,7 +37,7 @@ class Admin::TipsController < Admin::AdminController
     else
       add_message_flash_now :error, t(:failed)
     end
-    redirect_to admin_tips_paths
+    redirect_to admin_tips_path
   end
 
   private
