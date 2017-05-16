@@ -5,7 +5,7 @@ class SearchController < ApplicationController
       types = params[:type].values
 
     elsif params[:keyword].present?
-      types = [Food.name, Post::Tip.name, Ingredient.name]
+      types = [Food.name, Post::Tip.name, User.name, Ingredient.name]
     end
     @results = []
     types.each do |type|
@@ -16,5 +16,6 @@ class SearchController < ApplicationController
       end
       @results << result if result.any?
     end
+    binding.pry
   end
 end

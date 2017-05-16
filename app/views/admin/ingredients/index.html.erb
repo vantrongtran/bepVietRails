@@ -1,4 +1,5 @@
 <% provide :title, t(".title") %>
+<% provide :search_url, admin_ingredients_path %>
 
 <div class="container-fluid">
   <div class="row">
@@ -6,7 +7,7 @@
       <div class="card">
         <div class="card-header" data-background-color="purple">
           <h4 class="title"><%= t ".ingredient" %></h4>
-          <p class="category">Created using Roboto Font Family</p>
+          <p class="category"><%= t ".title" %></p>
         </div>
         <div class="col-md-12">
           <button class="btn btn-primary btn-round btn-just-icon pull-right" data-toggle="modal" data-target="#modal-add-ingredient">

@@ -5,7 +5,7 @@ class UserConditionsController < ApplicationController
     if current_user.update_attributes user_condition_params
       add_message_flash :success, t(:updated)
     else
-      add_message_flash :danger, t(:updated_fail)
+      add_message_flash :danger, current_user.errors.full_messages
     end
     redirect_to current_user
   end

@@ -1,16 +1,16 @@
 <% provide :title, t(".title") %>
-<% provide :search_url, admin_foods_path %>
+<% provide :search_url, admin_users_path %>
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header" data-background-color="purple">
-          <h4 class="title"><%= t ".posts" %></h4>
-          <p class="category"><%= t(".title") %></p>
+          <h4 class="title"><%= t ".ingredient" %></h4>
+          <p class="category"><%= t ".title" %></p>
         </div>
         <div class="col-md-12">
-          <button class="btn btn-primary btn-round btn-just-icon pull-right" data-toggle="modal" data-target="#modal-add-post">
+          <button class="btn btn-primary btn-round btn-just-icon pull-right" data-toggle="modal" data-target="#modal-add-ingredient">
             <i class="material-icons">add</i>
           </button>
         </div>
@@ -18,17 +18,18 @@
           <table class="table table-hover">
             <thead class="text-warning">
               <th>ID</th>
-              <th>Image</th>
-              <th>Title</th>
+              <th>Avatar</th>
+              <th>Name</th>
+              <th>email</th>
               <th></th>
             </thead>
             <tbody>
-              <%= render @posts %>
+              <%= render @users %>
             </tbody>
           </table>
         </div>
         <div class="">
-          <%= paginate @posts %>
+          <%= paginate @users %>
         </div>
       </div>
     </div>
@@ -38,4 +39,3 @@
     </div>
   </div>
 </div>
-<% provide :modal, render("admin/tips/modal_add") %>

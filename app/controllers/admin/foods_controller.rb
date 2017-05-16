@@ -28,7 +28,7 @@ class Admin::FoodsController < Admin::AdminController
     if @food.update_attributes food_params
       add_message_flash :success, t(:updated)
     else
-      add_message_flash :error, t(:updated_fail)
+      add_message_flash :error, @food.errors.full_messages
     end
     redirect_to admin_foods_path
   end
@@ -37,7 +37,7 @@ class Admin::FoodsController < Admin::AdminController
     if @food.destroy
       add_message_flash :success, t(:deleted)
     else
-      add_message_flash_now :error, t(:failed)
+      add_message_flash_now :error, @food.errors.full_messages
     end
     redirect_to admin_foods_path
   end
