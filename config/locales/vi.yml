@@ -222,6 +222,7 @@ vi:
   user_invalid: "Tài khoản khoặc mật khẩu không chính xác!"
   categories_title: "Danh mục"
   conditions: "Tình trạng"
+  login: "Đăng nhập"
   favorite: "Yêu thích"
   condition: "Tình trạng"
   search_p: "Tìm kiếm"
