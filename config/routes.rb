@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   resources :user_conditions, only: :create
   resources :likes, only: [:create, :destroy]
   resources :suggest_foods, only: :index
+  resources :language, only: :index
   root "static_pages#index"
 end

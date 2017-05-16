@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="form-group is-empty inline label-floating ">
-              <label for="search_box" class="control-label"><%= t :search %></label>
+              <label for="search_box" class="control-label"><%= t :search_p %></label>
               <%= text_field_tag "keyword", nil,id: "search_box", class: "form-control", size: "40" %>
               <span class="material-input"></span>
               <span class="material-input"></span></div>
@@ -42,7 +42,7 @@
       </div>
       <div class="row">
         <div class="headline">
-          <h3><%= t "best_rating" %></h3>
+          <h3><%= t ".best_rating" %></h3>
         </div>
         <div class="row">
           <%= render partial: "food_item", collection: @foods,
@@ -51,7 +51,7 @@
       </div>
       <div class="row">
         <div class="headline">
-          <h3><%= t :tip %></h3>
+          <h3><%= t ".tip" %></h3>
         </div>
         <div class="row">
           <%= render partial: "tip_item", collection: @tips,

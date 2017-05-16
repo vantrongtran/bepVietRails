@@ -3,19 +3,18 @@
     <nav class="pull-left">
       <ul>
         <li>
-          <a href="http://www.facebook.com/phanTien13">
-            Quang Tiến
-          </a>
+          <%= t :language %>
         </li>
         <li>
-          <a href="#">
-           Văn Trọng
-         </a>
+          <%= link_to "English", language_index_path(locale: :en) %>
        </li>
-     </ul>
-   </nav>
-   <div class="copyright pull-right">
-   © 2017, made with <i class="fa fa-heart heart"></i> for DATN
+       <li>
+          <%= link_to "Tiếng Việt", language_index_path(locale: :vi) %>
+       </li>
+      </ul>
+    </nav>
+    <div class="copyright pull-right">
+      © 2017, made with <i class="fa fa-heart heart"></i> for DATN
+    </div>
   </div>
-</div>
 </footer>

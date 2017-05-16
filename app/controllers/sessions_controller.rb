@@ -17,6 +17,14 @@ class SessionsController < Devise::SessionsController
     render json: { success: false, errors: ["Invalid username or password!"] }
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    session[:forwarding_url] || root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    session[:forwarding_url] || root_path
+  end
+
   protected
   def auth_options
     {:scope => resource_name, :recall => "#{controller_path}#failure"}

@@ -15,10 +15,10 @@
               <h3 class="title"><%= @food.name %></h3>
               <%= rating_for @food, nil, cancel: false %>
               <h7 id="rate-result"><%= "(#{@food.average&.avg || 0.0}/#{@food.rates.count})" %></h7>
-              <h6>Calorie: <%= @food.calorie %></h6>
+              <h6><%= t :calorie, calorie: @food.calorie %></h6>
             </div>
             <div class="ingredients">
-              <h5>Ingredients</h5>
+              <h5><%= t ".ingredients"%></h5>
               <script src="js/jssor.slider-23.1.5.min.js" type="text/javascript"></script>
               <script type="text/javascript">
                 jssor_1_slider_init = function() {
@@ -159,16 +159,16 @@
     </div>
     <div class="comments row">
       <div class="headline">
-        <h3><%= t :comments %></h3>
+        <h3><%= t ".comments" %></h3>
       </div>
       <div class="form-group label-floating is-empty">
         <%= form_for @comment, remote: true do |f| %>
-        <%= f.hidden_field :target_id, value: @food.id %>
-        <%= f.hidden_field :target_type, value: Food.name %>
-        <label class="control-label"> Add your comment...</label>
-        <%= f.text_area :content, class: "form-control" ,rows: "4" %>
-        <span class="material-input"></span>
-        <%= f.submit "Comment", class: "btn btn-primary pull-right" %>
+          <%= f.hidden_field :target_id, value: @food.id %>
+          <%= f.hidden_field :target_type, value: Food.name %>
+          <label class="control-label"><%= t ".add" %></label>
+          <%= f.text_area :content, class: "form-control" ,rows: "4" %>
+          <span class="material-input"></span>
+          <%= f.submit "Comment", class: "btn btn-primary pull-right" %>
         <% end %>
       </div>
       <div class="list-comments">

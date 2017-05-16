@@ -4,13 +4,13 @@ class Food < ApplicationRecord
 
   has_many :food_ingredients, dependent: :destroy
   has_many :ingredients, through: :food_ingredients
-  has_many :food_target_conditions
+  has_many :food_target_conditions, dependent: :destroy
   has_many :food_conditions, through: :food_target_conditions, dependent: :destroy
-  has_many :condition_details, through: :food_conditions
-  has_many :conditions, through: :condition_details
+  has_many :condition_details, through: :food_conditions, dependent: :destroy
+  has_many :conditions, through: :condition_details, dependent: :destroy
   has_many :food_hashtags, as: :target, class_name: TargetHashtag.name
   has_many :hashtags, through: :food_hashtags
-  has_many :comments, as: :target
+  has_many :comments, as: :target, dependent: :destroy
 
   validates :name, :cooking_method, :calorie, presence: true
 
@@ -45,7 +45,6 @@ class Food < ApplicationRecord
   ratyrate_rateable
 
   scope :search_by_name, ->keyword { where "name LIKE %?%", keyword }
-  # scope :search_by_name, ->keyword { where "name LIKE ?", "%#{keyword}%" }
 
   class << self
     def suggest target_conditions
