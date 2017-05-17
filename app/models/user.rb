@@ -36,7 +36,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships,
     source: :follower
   has_many :conditions
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :favorite_rates, -> {where stars: 5}, foreign_key: :rater_id, class_name: Rate.name
   has_many :favorite_foods, through: :favorite_rates, source: :rateable, source_type: Food.name
   has_many :user_conditions, class_name:Condition::UserCondition.name, foreign_key: :target_id
@@ -45,7 +45,7 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source_type: Post::UserPost.name, source: :target
   has_many :liked_activities, through: :likes, source_type: Activity.name, source: :target
   has_many :liked_comments, through: :likes, source_type: Comment.name, source: :target
-  has_many :user_posts, class_name: Post::UserPost.name, foreign_key: :target_id
+  has_many :user_posts, class_name: Post::UserPost.name, foreign_key: :target_id, dependent: :destroy
 
   accepts_nested_attributes_for :user_conditions,
     reject_if: ->attributes{attributes[:condition_detail_id].blank?}, allow_destroy: true

@@ -166,7 +166,8 @@ en:
       management: "Management"
       application_name: "Eating Well"
       dashboard: "Dashboard"
-      users: "User Profiles"
+      users: "Users"
+      foods: "Foods"
       categories: "Categories"
       ingredients: "Ingredients"
       category_tree: "Categories Tree"
@@ -174,6 +175,7 @@ en:
   admin:
     users:
       index:
+        users: "Users"
         title: "Users management"
     dashboard:
       index:
