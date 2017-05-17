@@ -17,3 +17,32 @@
     color: #3C4858;
   }
 }
+
+.related {
+  margin-bottom: 50px;
+}
+
+.realated-item-detail {
+  left: auto;
+  bottom: 0;
+  opacity: 1;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.related-element-detail {
+  height: 50px;
+  width: 100%;
+  opacity: 0.5;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+}
+
+a {
+  color: white !important;
+}
