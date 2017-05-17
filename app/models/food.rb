@@ -6,9 +6,9 @@ class Food < ApplicationRecord
   has_many :ingredients, through: :food_ingredients
   has_many :food_target_conditions, dependent: :destroy
   has_many :food_conditions, through: :food_target_conditions, dependent: :destroy
-  has_many :condition_details, through: :food_conditions, dependent: :destroy
+  has_many :condition_details, through: :food_conditions
   has_many :conditions, through: :condition_details, dependent: :destroy
-  has_many :food_hashtags, as: :target, class_name: TargetHashtag.name
+  has_many :food_hashtags, as: :target, class_name: TargetHashtag.name, dependent: :destroy
   has_many :hashtags, through: :food_hashtags
   has_many :comments, as: :target, dependent: :destroy
   has_many :foods,-> {distinct}, through: :hashtags
@@ -38,7 +38,7 @@ class Food < ApplicationRecord
     join_sql = <<-SQL
       LEFT JOIN rates ON foods.id = rates.rateable_id AND rates.rateable_type = 'Food'
     SQL
-    select("foods.*, AVG(rates.id) AS avg_rate")
+    select("foods.*, AVG(rates.stars) AS avg_rate")
       .joins(join_sql)
       .order("avg_rate DESC")
       .group("foods.id").first(total)

@@ -1,9 +1,11 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :target, polymorphic: true
-  has_many :likes, as: :target
+  has_many :likes, as: :target, dependent: :destroy
 
   after_create :send_notification
+
+  validates :content, presence: true
 
   private
   def send_notification
