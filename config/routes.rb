@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
   resources :search
   resources :users
+  resources :activities, only: :destroy
   resources :timeline, only: :index
   resources :condition_details
   resources :user_conditions, only: :create

@@ -146,7 +146,7 @@ body { background: #fff; }
   background: linear-gradient(60deg, #7874d2, #929c93);
 }
 .card-stats {
-  color: #9c27b0 !important;
+  color: #9c27b0;
 }
 
 .hashtag-group{
@@ -489,3 +489,7 @@ a.hashtag{
     padding-right: 5px;
 }
 
+.rating img{
+  width: initial !important;
+  margin-bottom: 0 !important;
+}

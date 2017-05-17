@@ -11,7 +11,7 @@
         </a>
       </li>
       <li class="active">
-        <a href="#activities" role="tab" data-toggle="tab" class="click-event">
+        <a href="#user-posts" role="tab" data-toggle="tab" class="click-event">
           <i class="material-icons">view_day</i>
           <%= t ".posts" %>
         </a>
@@ -27,19 +27,27 @@
       <li>
         <a href="#favorite" role="tab" data-toggle="tab" class="click-event">
           <i class="material-icons">favorite</i>
-          <%= :favorite %>
+          <%= t :".favorite" %>
+        </a>
+      </li>
+      <li>
+        <a href="#activities" role="tab" data-toggle="tab" class="click-event">
+          <i class="material-icons">reorder</i>
+          <%= t ".activities" %>
         </a>
       </li>
     </ul>
 
     <div class="tab-content gallery">
-      <div class="tab-pane active text-center" id="activities">
+      <div class="tab-pane active text-center" id="user-posts">
         <div class="row">
           <div class="col-md-3 col-xs-0"></div>
           <div class="col-md-6 co;-xs-12">
-            <% if @user.id == current_user&.id %>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add-post"><%= t ".add_post" %></button>
-            <% end %>
+            <div class="row">
+              <% if @user.id == current_user&.id %>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add-post"><%= t ".add_post" %></button>
+              <% end %>
+            </div>
             <%= render partial: "user_post", collection: @user.user_posts,
               as: :post %>
           </div>
@@ -147,8 +155,20 @@
       <% end %>
       <div class="tab-pane text-center" id="favorite">
         <div class="row">
-          <%= render partial: "foods/food", collection: @user.favorite_foods,
+          <%= render partial: "foods/food", collection: @favorite_foods,
             as: :food %>
+        </div>
+        <div>
+          <%= paginate @favorite_foods, param_name: :page_food, params: {tab: "favorite"} %>
+        </div>
+      </div>
+      <div class="tab-pane text-center" id="activities">
+        <div class="row">
+          <%= render partial: "activity", collection: @activities,
+            as: :activity %>
+        </div>
+        <div>
+          <%= paginate @activities, params: {tab: "activities"} %>
         </div>
       </div>
       <div class="tab-pane" id="profile">
@@ -175,18 +195,18 @@
             <div class="row">
               <div class="form-group col-md-4 col-sx-6">
                 <div class="form-group label-floating">
-                  <label class="control-label">Gender</label>
+                  <label class="control-label"><%= t :gender %></label>
                   <div class="radio radio-gender">
                     <label>
                       <%= f.radio_button :gender, "1" %>
                       <input type="radio" name="optionsRadios"><span class="circle"></span><span class="check"></span>
-                      Male
+                      <%= t :male%>
                     </label>
                   </div>
                   <div class="radio radio-gender">
                     <label>
                       <%= f.radio_button :gender, "0" %>
-                      Female
+                      <%= t :female%>
                     </label>
                     </div
                     <span class="material-input"></span></div>
@@ -194,7 +214,7 @@
                   <div class="form-group col-md-4 col-sx-6">
                     <div class="form-group label-floating">
                       <%= f.label t (".birthday"), class: "control-label" %>
-                      <%= f.text_field :birthday, class: "datepicker form-control" %>
+                      <%= f.text_field :birthday,value: @user.birthday&.strftime("%m/%d/%Y"), class: "datepicker form-control" %>
                       <span class="material-input"></span></div>
                     </div>
                   </div>

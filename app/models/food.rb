@@ -13,6 +13,7 @@ class Food < ApplicationRecord
   has_many :comments, as: :target, dependent: :destroy
   has_many :foods,-> {distinct}, through: :hashtags
   has_many :posts, through: :hashtags
+  has_many :activities, as: :target, dependent: :destroy
 
   validates :name, :cooking_method, :calorie, presence: true
 
@@ -47,6 +48,10 @@ class Food < ApplicationRecord
   ratyrate_rateable
 
   scope :search_by_name, ->keyword { where "name LIKE %?%", keyword }
+
+  def title
+    self.name
+  end
 
   class << self
     def suggest target_conditions

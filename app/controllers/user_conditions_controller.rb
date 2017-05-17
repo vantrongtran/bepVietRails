@@ -7,7 +7,7 @@ class UserConditionsController < ApplicationController
     else
       add_message_flash :danger, current_user.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to user_path(current_user, tab: "physical")
   end
 
   private

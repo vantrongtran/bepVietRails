@@ -16,6 +16,5 @@ class SearchController < ApplicationController
       end
       @results << result if result.any?
     end
-    binding.pry
   end
 end

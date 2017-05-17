@@ -1,0 +1,19 @@
+<div class="card card-stats">
+  <div class="card-header" data-background-color="orange">
+    <%= image_tag activity.user.avatar %>
+  </div>
+  <div class="user-activity-title" style="text-align: left;">
+    <div class="user-activity-action" style="color: #3C4858 !important;">
+      <% if current_user&.id == activity.user.id %>
+        <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs pull-right" data-original-title="Delete">
+          <%= link_to activity_path(activity), method: :delete, class: "btn btn-danger btn-simple btn-xs data-confirm",
+            confirmcontent: t("confirm_delete") do %>
+            <i class="material-icons">close</i>
+          <% end %>
+        </button>
+      <% end %>
+    </div>
+    <%= activity_link(activity).html_safe %>
+    <%= t :ago, time: time_ago_in_words(activity.updated_at) %>
+  </div>
+</div>

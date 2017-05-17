@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     else
       add_message_flash_now :error, @post.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to user_path(current_user, tab: "user-posts")
   end
 
   def edit
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     else
       add_message_flash :error, @post.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to user_path(current_user, tab: "user-posts")
   end
 
   def destroy
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     else
       add_message_flash_now :error, @post.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to user_path(current_user, tab: "user-posts")
   end
 
   private

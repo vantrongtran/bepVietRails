@@ -5,13 +5,14 @@ class Post < ApplicationRecord
 
   mount_uploader :image, PictureUploader
 
-  has_many :comments, as: :target
+  has_many :comments, as: :target, dependent: :destroy
   has_many :commentors,-> {distinct}, through: :comments, class_name: User.name, source: :user
-  has_many :likes, as: :target
+  has_many :likes, as: :target, dependent: :destroy
   has_many :post_hashtags, as: :target, class_name:TargetHashtag.name
   has_many :hashtags, through: :post_hashtags
   has_many :foods,-> {distinct}, through: :hashtags
   has_many :posts, through: :hashtags
+  has_many :activities, as: :target, dependent: :destroy
 
   accepts_nested_attributes_for :post_hashtags, allow_destroy: true
   accepts_nested_attributes_for :hashtags,
