@@ -1,4 +1,5 @@
 vi:
+  birthday: "không thể lớn hơn hoặc bằng ngày hiện tại"
   activerecord:
     errors:
       messages:

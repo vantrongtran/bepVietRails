@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates_presence_of   :email, if: :email_required?
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?
   validates_format_of     :email, with: Devise.email_regexp, allow_blank: true, if: :email_changed?
-
+  validate :validate_birthday, on: [:create, :update], unless: :valid_birthday?
   validates_length_of       :password, within: Devise.password_length, allow_blank: true
 
   def password_required?
@@ -111,5 +111,13 @@ class User < ApplicationRecord
 
   def like_of obj
     self.likes.find_by target_id: obj.id, target_type: obj.class.name
+  end
+
+  def validate_birthday
+    errors.add :birthday, I18n.t(".birthday")
+  end
+
+  def valid_birthday?
+    birthday.nil? || birthday <= Time.zone.now
   end
 end

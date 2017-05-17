@@ -1,4 +1,5 @@
 en:
+  birthday: "cannot equal or greater than now"
   language_update: "Change locale language setting to English"
   language: "Language: "
   registration_success: "Registration successfully!"
