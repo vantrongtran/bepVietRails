@@ -99,6 +99,7 @@ en:
       foods: "Healthy foods for you:"
   posts:
     show:
+      related: "Related"
       author: "Author: %{name}"
       comments: "Comments"
     modal_edit:

@@ -7,12 +7,12 @@
   <div class="food-item-detail">
     <%= link_to food.name, food %>
     <div class="rating">
-      <% n = food.avg_rate || 0 %>
+      <% n = food.average()&.avg || 0 %>
       <% for i in 1..n %>
-        <img src="/assets/star-on.png">
+      <img src="/assets/star-on.png">
       <% end %>
       <% for i in 1..5-n %>
-        <img src="/assets/star-off.png">
+      <img src="/assets/star-off.png">
       <% end %>
     </div>
   </div>
