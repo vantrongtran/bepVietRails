@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post::UserPost::Tip.new post_params
+    @post = Post::UserPost.new post_params
     if @post.save
       add_message_flash :success, t(:created)
     else
