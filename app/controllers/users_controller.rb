@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @post = Post.new
+    @favorite_foods = @user.favorite_foods.page(params[:page_food]).per 8
+    @activities = @user.activities.page(params[:page]).per 10
   end
 
   def update
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
     else
       add_message_flash :error, @user.errors.full_messages
     end
-    redirect_to @user
+    redirect_to user_path(current_user, tab: "profile")
   end
 
   protected

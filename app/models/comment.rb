@@ -2,12 +2,18 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :target, polymorphic: true
   has_many :likes, as: :target, dependent: :destroy
-
-  after_create :send_notification
+  has_many :activities, as: :target, dependent: :destroy
 
   validates :content, presence: true
 
+  after_create :send_notification
+  after_create :create_activity
+
   private
+  def create_activity
+    Activity.create action_type: :comment, user_id: self.user_id, target: self.target
+  end
+
   def send_notification
     if target.is_a? Post
       users = self.target.commentors

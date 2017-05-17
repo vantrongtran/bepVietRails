@@ -13,13 +13,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post::UserPost::Tip.new post_params
+    @post = Post::UserPost.new post_params
     if @post.save
       add_message_flash :success, t(:created)
     else
       add_message_flash_now :error, @post.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to user_path(current_user, tab: "user-posts")
   end
 
   def edit
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     else
       add_message_flash :error, @post.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to user_path(current_user, tab: "user-posts")
   end
 
   def destroy
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     else
       add_message_flash_now :error, @post.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to user_path(current_user, tab: "user-posts")
   end
 
   private

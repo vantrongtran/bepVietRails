@@ -8,6 +8,7 @@ en:
       result: "Result"
       food: "Foods"
       posttip: "Tips"
+      postuserpost: "Posts"
       ingredient: "Ingredients"
       user: "Users"
   static_pages:
@@ -19,10 +20,20 @@ en:
     index:
       posts: "Following posts"
       title: "Timeline"
+  activities:
+    rate: "rate for"
+    write: "write"
+    like: "likes"
+    post: "%{user} post %{target}"
+    comment: "commented on"
+    comment_like: "commented of %{user} on %{target}"
+    activity: "%{user} %{action} %{type}"
   user_invalid: "Invalid username or password!"
+  postuserpost: "Post"
   login: "Login"
   categories_title: "Categories"
   calorie: "Calorie: %{calorie}"
+  comment_name_activities: "comment of %{@user}"
   search_p: "Search"
   host: "Eating Well"
   posttip: "Tips"

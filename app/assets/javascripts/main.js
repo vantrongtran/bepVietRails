@@ -208,7 +208,7 @@ $(document).ready(function() {
   $("#user-avatar-edit").click(function(){
     $("#btn-user-avatar").click();
   });
-
+  openTabUser();
 });
 
 // function showActive(target) {
@@ -262,3 +262,8 @@ function disable_input() {
   $("#edit_user :input").prop("disabled", true);
 }
 
+function openTabUser(){
+  if (/[?&]tab=/.test(window.location.href)) {
+    $("a[href='#" + window.location.href.match(/[?&]tab=([^&]*)/)[1] + "']").click();
+  }
+}
