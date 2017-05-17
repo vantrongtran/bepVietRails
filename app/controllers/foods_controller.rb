@@ -11,6 +11,10 @@ class FoodsController < ApplicationController
 
   def show
     @comment = Comment.new
+    respond_to do |format|
+      format.html
+      format.json {render json: {food: @food.to_json, comments: @food.comments}}
+    end
   end
 
   private
