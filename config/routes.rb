@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
   namespace :admin do
     root "dashboard#index"
+    resources :dashboard
     resources :foods
     resources :food_target_conditions, only: [:new, :create]
     resources :categories

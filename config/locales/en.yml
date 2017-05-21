@@ -102,6 +102,8 @@ en:
   condition: "Condition"
   favorite: "Favorite"
   mailer:
+    delete: "Sorry, You have been removed from the system!"
+    registration: "Welcome to BepViet, Registration successfully!"
     comment:
       subject: "Notification comment"
       message: "%{user} has make a new comment for the posts: \"%{post}.\""
@@ -194,7 +196,13 @@ en:
         users: "Users"
         title: "Users management"
     dashboard:
+      modal_send_mail:
+        add: "Send"
+        mail_to: "Mail to"
+        subject: "Subject"
+        content: "Content"
       index:
+        send_all: "Send mail"
         dashboard: "Dashboard"
         foods: "Foods"
         tips: "Tips"

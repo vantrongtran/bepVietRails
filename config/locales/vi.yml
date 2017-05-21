@@ -300,6 +300,8 @@ vi:
   confirm_delete: "Bạn thực sự muốn xóa????"
   tag: "Hashtag"
   mailer:
+    delete: "Xin lỗi, bạn đã bị xóa ra khỏi hệ thống!"
+    registration: "Chào mừng đến với Bếp Việt, bạn đã đăng ký thành công!"
     comment:
       subject: "Bình luận mới!!!"
       message: "%{user} đã bình luận về: \"%{post}.\""
@@ -387,7 +389,13 @@ vi:
       food_tree: "Foods Tree"
   admin:
     dashboard:
+      modal_send_mail:
+        add: "Gửi"
+        mail_to: "Gửi đến"
+        subject: "Chủ đề"
+        content: "Nội dung"
       index:
+        send_all: "Gửi mail"
         dashboard: "Dashboard"
         foods: "Foods"
         tips: "Tips"
