@@ -77,7 +77,10 @@
             </div>
           </div>
           <div class="row">
-          <%= render @foods %>
+            <%= render @foods %>
+          </div>
+          <div class="row">
+            <%= paginate @foods %>
           </div>
         <% end %>
     </div>

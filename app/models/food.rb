@@ -54,25 +54,60 @@ class Food < ApplicationRecord
   end
 
   class << self
-    def suggest target_conditions
+    def suggest target_conditions, page
       return unless target_conditions && target_conditions.any?
-      conditions = target_conditions.inject([]){|result, tc| result << c = tc.condition unless result.include? c}
+      conditions = target_conditions.inject([]){|result, tc| result << c = tc.condition unless result.include? c}.uniq
       c45 = C45.new FoodTargetCondition.all, conditions
-      root = c45.root
-      maps = target_conditions.map {|node| {condition_id: node.condition.id, condition_detail_id: node.condition_detail.id}}
+      root = [c45.root]
+      maps = target_conditions.map {|node| {condition_id: node.condition.id, condition_detail_id: node.condition_detail.id}}.uniq
+      not_ids = []
+      first_time = maps.size
       while maps.count > 0
-        ins = maps.select{|node| node[:condition_id] == root.condition.id}.first
-        temple = root.children.select{|c| c&.condition.id == ins[:condition_detail_id] && c&.is_match == true}.first
-        if temple
+        ins = maps.select{|node| node[:condition_id] == root.first.condition.id}
+        temple = []
+        root.each do |node|
+          temple.push *node.children.select{|c| get_match_conditions(ins, c)}
+          if first_time == maps.size
+            node.children.select{|c| get_not_match_conditions(ins, c)}.each do |n|
+              not_ids.push *n.food_target_conditions.map(&:food_id)
+            end
+          end
+        end
+        if temple.any?
           root = temple
         else
-          root.children.first if root.children&.first
           break
         end
-        root = root.children.first if root.children&.first
-        maps.delete ins
+        root.each_with_index do |node, index|
+          root[index] = root[index].children&.first if root[index].children&.first
+        end
+        ins.each do |i|
+          maps.delete i
+        end
       end
-      Food.where(id: root.food_target_conditions.map(&:food_id))
+      ids = []
+      root.each do |node|
+        ids.push *node.food_target_conditions.map(&:food_id)
+      end
+      ids = ids.uniq
+      ids.each do |i|
+        ids.delete(i) if not_ids.include?(i)
+      end
+      Food.where(id: ids).page(page).per(8)
+    end
+
+    private
+    def get_match_conditions ins, root_children
+      ins.each do |i|
+        return true if root_children&.condition.id == i[:condition_detail_id] && root_children&.is_match == true
+      end
+      return false
+    end
+    def get_not_match_conditions ins, root_children
+      ins.each do |i|
+        return true if root_children&.condition.id == i[:condition_detail_id] && root_children&.is_match == false
+      end
+      return false
     end
   end
 end
