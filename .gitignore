@@ -28,3 +28,4 @@ public/uploads
 # Ignore application configuration
 /config/application.yml
 dump.rdb
+/redis-stable/*

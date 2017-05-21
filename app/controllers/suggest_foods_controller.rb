@@ -2,10 +2,10 @@ class SuggestFoodsController < ApplicationController
   def index
     if params[:suggest] && condition_params[:user_conditions_attributes].values.first[:condition_detail_id]
       target_conditions = User.new.user_conditions.build condition_params[:user_conditions_attributes].values
-      @foods = Food.suggest(target_conditions)
+      @foods = Food.suggest(target_conditions, params[:page])
     else
       if user_signed_in?
-        @foods = Food.suggest(current_user.user_conditions)
+        @foods = Food.suggest(current_user.user_conditions, params[:page])
       end
     end
     if @foods&.any?
