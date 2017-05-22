@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validate :validate_birthday, on: [:create, :update], unless: :valid_birthday?
   validates_length_of       :password, within: Devise.password_length, allow_blank: true
 
+  after_destroy :send_mail_delete
+
   def password_required?
     return false if email.blank?
     !persisted? || !password.nil? || !password_confirmation.nil?
@@ -119,5 +121,9 @@ class User < ApplicationRecord
 
   def valid_birthday?
     birthday.nil? || birthday <= Time.zone.now
+  end
+
+  def send_mail_delete
+    UserNotifierMailer.send_email_delete(self).deliver_now
   end
 end

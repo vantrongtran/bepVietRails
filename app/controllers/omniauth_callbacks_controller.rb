@@ -24,6 +24,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.remote_avatar_url = "#{@identity.image}?type=large".gsub! "http:", "https:"
       @user.save
       @identity.update_attribute( :user_id, @user.id )
+      UserNotifierMailer.send_email_registration(@user).deliver_now
     end
 
     if @user.email.blank? && @identity.email

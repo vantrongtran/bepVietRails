@@ -14,6 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
+      UserNotifierMailer.send_email_registration(current_user).deliver_now
       add_message_flash :notice, t(:registration_success)
     else
       clean_up_passwords resource
