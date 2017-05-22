@@ -89,6 +89,7 @@
             <div>
               <%= label_tag t(".cooking_method"), nil, class: "control-label" %>
               <%= cktext_area_tag "food[cooking_method]", nil, rows: 40 %>
+              <%= text_area_tag "cooking_method", nil, rows: 40, disabled: true, style: "visibility: hidden; display: none;" %>
             </div>
           </div>
         </div>

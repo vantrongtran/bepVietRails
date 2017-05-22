@@ -202,7 +202,7 @@ en:
         subject: "Subject"
         content: "Content"
       index:
-        send_all: "Send mail"
+        send_all: "Send mail to all users"
         dashboard: "Dashboard"
         foods: "Foods"
         tips: "Tips"

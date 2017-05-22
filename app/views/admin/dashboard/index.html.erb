@@ -40,6 +40,10 @@
         <div class="card-content">
           <p class="category"><%= t".user_posts" %></p>
           <h3 class="title"><%=  Post::UserPost.all.size %></h3>
+          <button class="btn btn-primary btn-round btn-just-icon btn-simple btn-xs pull-right"  data-toggle="modal" data-target="#modal-send-mail" data-original-title="<%= t ".send_all" %>" title="">
+            <i class="material-icons">contact_mail</i>
+            <div class="ripple-container"></div>
+          </button>
         </div>
         <div class="card-footer">
           <div class="stats">
@@ -64,7 +68,6 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-primary btn-just-icon pull-right" data-toggle="modal" data-target="#modal-send-mail"><%= t ".send_all" %></button>
   </div>
 </div>
 <% provide :modal, render("admin/dashboard/modal_send_mail") %>
