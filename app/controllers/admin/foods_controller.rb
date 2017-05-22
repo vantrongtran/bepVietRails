@@ -3,7 +3,7 @@ class Admin::FoodsController < Admin::AdminController
 
   def index
     if params[:ingredient]
-      @ingredients = Ingredient.search_by_name params[:ingredient]
+      @ingredients = Ingredient.name_like params[:ingredient]
     else
       @food = Food.new
       @foods = Food.name_like(params[:keyword]).page(params[:page])
@@ -12,6 +12,9 @@ class Admin::FoodsController < Admin::AdminController
 
   def create
     @food = Food.new food_params
+    if params[:cooking_method].present?
+      @food.cooking_method = params[:cooking_method]
+    end
     if @food.save
       add_message_flash :success, t(:created)
     else
